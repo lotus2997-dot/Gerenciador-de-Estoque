@@ -1,2 +1,3 @@
 # Gerenciador-de-Estoque
-Console.While(69)
+Console.While(69);
+'-'
