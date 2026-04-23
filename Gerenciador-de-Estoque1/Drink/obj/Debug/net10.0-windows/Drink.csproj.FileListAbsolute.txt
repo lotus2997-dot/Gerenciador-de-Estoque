@@ -1,0 +1,43 @@
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.frmEstoque.resources
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.frmEventos.resources
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.frmLogin.resources
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.frmRetorno.resources
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.csproj.GenerateResource.cache
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.AssemblyInfo.cs
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Projetos faculdade\Drink\bin\Debug\net10.0-windows\Drink.exe
+C:\Users\User\Documents\Projetos faculdade\Drink\bin\Debug\net10.0-windows\Drink.deps.json
+C:\Users\User\Documents\Projetos faculdade\Drink\bin\Debug\net10.0-windows\Drink.runtimeconfig.json
+C:\Users\User\Documents\Projetos faculdade\Drink\bin\Debug\net10.0-windows\Drink.dll
+C:\Users\User\Documents\Projetos faculdade\Drink\bin\Debug\net10.0-windows\Drink.pdb
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.frmPrincipal.resources
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.dll
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\refint\Drink.dll
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.pdb
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.genruntimeconfig.cache
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\ref\Drink.dll
+C:\Users\User\Documents\Projetos faculdade\Drink\obj\Debug\net10.0-windows\Drink.Properties.Resources.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.frmEstoque.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.frmEventos.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.frmLogin.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.frmPrincipal.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.frmRetorno.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.Properties.Resources.resources
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.csproj.GenerateResource.cache
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.AssemblyInfoInputs.cache
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.AssemblyInfo.cs
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.csproj.CoreCompileInputs.cache
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.sourcelink.json
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.dll
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\refint\Drink.dll
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.pdb
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\bin\Debug\net10.0-windows\Drink.exe
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\bin\Debug\net10.0-windows\Drink.deps.json
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\bin\Debug\net10.0-windows\Drink.runtimeconfig.json
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\bin\Debug\net10.0-windows\Drink.dll
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\bin\Debug\net10.0-windows\Drink.pdb
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\Drink.genruntimeconfig.cache
+C:\Users\lotus\source\repos\Gerenciador-de-Estoque1\Drink\obj\Debug\net10.0-windows\ref\Drink.dll
