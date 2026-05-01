@@ -1,0 +1,720 @@
+﻿namespace Drink
+{
+    partial class frmEstoque
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            pnlCabecalho = new Panel();
+            lblStatusSistema = new Label();
+            lblTotalItensCabecalho = new Label();
+            lblTitulo = new Label();
+            pnlResumo = new Panel();
+            panel1 = new Panel();
+            lblVencimento = new Label();
+            lblVencendoValor = new Label();
+            panel2 = new Panel();
+            lblMinimo = new Label();
+            lblMinimoValor = new Label();
+            pnlCategorias = new Panel();
+            lblCategoria = new Label();
+            lblCategoriaValor = new Label();
+            pnlCardItens = new Panel();
+            lblCardItensDesc = new Label();
+            lblCardItensTitulo = new Label();
+            lblItensCadastrados = new Label();
+            tabEstoque = new TabControl();
+            tabTodosItens = new TabPage();
+            pnlBotoes = new Panel();
+            btnAtualizar = new Button();
+            btnEditar = new Button();
+            btnRemover = new Button();
+            btnEntrada = new Button();
+            btnSaida = new Button();
+            btnNovoItem = new Button();
+            dgvEstoque = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            colCategoria = new DataGridViewTextBoxColumn();
+            colQuantidade = new DataGridViewTextBoxColumn();
+            colUnidade = new DataGridViewTextBoxColumn();
+            colValidade = new DataGridViewTextBoxColumn();
+            colQuantidadeMinima = new DataGridViewTextBoxColumn();
+            colStatus = new DataGridViewTextBoxColumn();
+            colObservacao = new DataGridViewTextBoxColumn();
+            btnLimparFiltro = new Button();
+            btnPesquisar = new Button();
+            dtpFiltroValidade = new DateTimePicker();
+            chkTodasValidades = new CheckBox();
+            lblFiltroValidade = new Label();
+            grpFiltros = new GroupBox();
+            cmbFiltroStatus = new ComboBox();
+            lblFilrosStatus = new Label();
+            cmbFiltroCategoria = new ComboBox();
+            lblFiltroCategoria = new Label();
+            txtFiltroNome = new TextBox();
+            lblFiltroNome = new Label();
+            tabBaixoEstoque = new TabPage();
+            tabVencendo = new TabPage();
+            tabHistorico = new TabPage();
+            pnlCabecalho.SuspendLayout();
+            pnlResumo.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            pnlCategorias.SuspendLayout();
+            pnlCardItens.SuspendLayout();
+            tabEstoque.SuspendLayout();
+            tabTodosItens.SuspendLayout();
+            pnlBotoes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvEstoque).BeginInit();
+            grpFiltros.SuspendLayout();
+            SuspendLayout();
+            // 
+            // pnlCabecalho
+            // 
+            pnlCabecalho.BackColor = Color.FromArgb(20, 59, 102);
+            pnlCabecalho.Controls.Add(lblStatusSistema);
+            pnlCabecalho.Controls.Add(lblTotalItensCabecalho);
+            pnlCabecalho.Controls.Add(lblTitulo);
+            pnlCabecalho.Dock = DockStyle.Top;
+            pnlCabecalho.Location = new Point(0, 0);
+            pnlCabecalho.Name = "pnlCabecalho";
+            pnlCabecalho.Size = new Size(1350, 70);
+            pnlCabecalho.TabIndex = 16;
+            // 
+            // lblStatusSistema
+            // 
+            lblStatusSistema.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblStatusSistema.AutoSize = true;
+            lblStatusSistema.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStatusSistema.ForeColor = Color.White;
+            lblStatusSistema.Location = new Point(980, 25);
+            lblStatusSistema.Name = "lblStatusSistema";
+            lblStatusSistema.Size = new Size(114, 15);
+            lblStatusSistema.TabIndex = 2;
+            lblStatusSistema.Text = "Status: Operacional";
+            // 
+            // lblTotalItensCabecalho
+            // 
+            lblTotalItensCabecalho.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTotalItensCabecalho.AutoSize = true;
+            lblTotalItensCabecalho.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotalItensCabecalho.ForeColor = Color.White;
+            lblTotalItensCabecalho.Location = new Point(1160, 25);
+            lblTotalItensCabecalho.Name = "lblTotalItensCabecalho";
+            lblTotalItensCabecalho.Size = new Size(94, 15);
+            lblTotalItensCabecalho.TabIndex = 1;
+            lblTotalItensCabecalho.Text = "Total de itens: 0";
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(30, 20);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(410, 37);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "GERENCIAMENTO DE ESTOQUE";
+            // 
+            // pnlResumo
+            // 
+            pnlResumo.Controls.Add(panel1);
+            pnlResumo.Controls.Add(panel2);
+            pnlResumo.Controls.Add(pnlCategorias);
+            pnlResumo.Controls.Add(pnlCardItens);
+            pnlResumo.Dock = DockStyle.Top;
+            pnlResumo.Location = new Point(0, 70);
+            pnlResumo.Name = "pnlResumo";
+            pnlResumo.Size = new Size(1350, 95);
+            pnlResumo.TabIndex = 17;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblVencimento);
+            panel1.Controls.Add(lblVencendoValor);
+            panel1.Location = new Point(915, 15);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(285, 65);
+            panel1.TabIndex = 20;
+            // 
+            // lblVencimento
+            // 
+            lblVencimento.AutoSize = true;
+            lblVencimento.Location = new Point(60, 10);
+            lblVencimento.Name = "lblVencimento";
+            lblVencimento.Size = new Size(59, 15);
+            lblVencimento.TabIndex = 0;
+            lblVencimento.Text = "Vencendo";
+            // 
+            // lblVencendoValor
+            // 
+            lblVencendoValor.AutoSize = true;
+            lblVencendoValor.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblVencendoValor.ForeColor = Color.FromArgb(20, 59, 102);
+            lblVencendoValor.Location = new Point(60, 28);
+            lblVencendoValor.Name = "lblVencendoValor";
+            lblVencendoValor.Size = new Size(28, 32);
+            lblVencendoValor.TabIndex = 1;
+            lblVencendoValor.Text = "0";
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(lblMinimo);
+            panel2.Controls.Add(lblMinimoValor);
+            panel2.Location = new Point(615, 15);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(285, 65);
+            panel2.TabIndex = 21;
+            // 
+            // lblMinimo
+            // 
+            lblMinimo.AutoSize = true;
+            lblMinimo.Location = new Point(60, 10);
+            lblMinimo.Name = "lblMinimo";
+            lblMinimo.Size = new Size(105, 15);
+            lblMinimo.TabIndex = 0;
+            lblMinimo.Text = "Abaixo do mínimo";
+            // 
+            // lblMinimoValor
+            // 
+            lblMinimoValor.AutoSize = true;
+            lblMinimoValor.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMinimoValor.ForeColor = Color.FromArgb(20, 59, 102);
+            lblMinimoValor.Location = new Point(60, 28);
+            lblMinimoValor.Name = "lblMinimoValor";
+            lblMinimoValor.Size = new Size(28, 32);
+            lblMinimoValor.TabIndex = 1;
+            lblMinimoValor.Text = "0";
+            // 
+            // pnlCategorias
+            // 
+            pnlCategorias.BackColor = Color.White;
+            pnlCategorias.BorderStyle = BorderStyle.FixedSingle;
+            pnlCategorias.Controls.Add(lblCategoria);
+            pnlCategorias.Controls.Add(lblCategoriaValor);
+            pnlCategorias.Location = new Point(315, 15);
+            pnlCategorias.Name = "pnlCategorias";
+            pnlCategorias.Size = new Size(285, 65);
+            pnlCategorias.TabIndex = 19;
+            // 
+            // lblCategoria
+            // 
+            lblCategoria.AutoSize = true;
+            lblCategoria.Location = new Point(60, 10);
+            lblCategoria.Name = "lblCategoria";
+            lblCategoria.Size = new Size(63, 15);
+            lblCategoria.TabIndex = 0;
+            lblCategoria.Text = "Categorias";
+            // 
+            // lblCategoriaValor
+            // 
+            lblCategoriaValor.AutoSize = true;
+            lblCategoriaValor.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCategoriaValor.ForeColor = Color.FromArgb(20, 59, 102);
+            lblCategoriaValor.Location = new Point(60, 28);
+            lblCategoriaValor.Name = "lblCategoriaValor";
+            lblCategoriaValor.Size = new Size(28, 32);
+            lblCategoriaValor.TabIndex = 1;
+            lblCategoriaValor.Text = "0";
+            // 
+            // pnlCardItens
+            // 
+            pnlCardItens.BackColor = Color.White;
+            pnlCardItens.BorderStyle = BorderStyle.FixedSingle;
+            pnlCardItens.Controls.Add(lblCardItensDesc);
+            pnlCardItens.Controls.Add(lblCardItensTitulo);
+            pnlCardItens.Controls.Add(lblItensCadastrados);
+            pnlCardItens.Location = new Point(15, 15);
+            pnlCardItens.Name = "pnlCardItens";
+            pnlCardItens.Size = new Size(285, 65);
+            pnlCardItens.TabIndex = 18;
+            // 
+            // lblCardItensDesc
+            // 
+            lblCardItensDesc.AutoSize = true;
+            lblCardItensDesc.Location = new Point(60, 52);
+            lblCardItensDesc.Name = "lblCardItensDesc";
+            lblCardItensDesc.Size = new Size(139, 15);
+            lblCardItensDesc.TabIndex = 2;
+            lblCardItensDesc.Text = "Total de itens no estoque";
+            // 
+            // lblCardItensTitulo
+            // 
+            lblCardItensTitulo.AutoSize = true;
+            lblCardItensTitulo.Location = new Point(60, 10);
+            lblCardItensTitulo.Name = "lblCardItensTitulo";
+            lblCardItensTitulo.Size = new Size(98, 15);
+            lblCardItensTitulo.TabIndex = 0;
+            lblCardItensTitulo.Text = "Itens cadastrados";
+            // 
+            // lblItensCadastrados
+            // 
+            lblItensCadastrados.AutoSize = true;
+            lblItensCadastrados.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblItensCadastrados.ForeColor = Color.FromArgb(20, 59, 102);
+            lblItensCadastrados.Location = new Point(60, 28);
+            lblItensCadastrados.Name = "lblItensCadastrados";
+            lblItensCadastrados.Size = new Size(28, 32);
+            lblItensCadastrados.TabIndex = 1;
+            lblItensCadastrados.Text = "0";
+            // 
+            // tabEstoque
+            // 
+            tabEstoque.Controls.Add(tabTodosItens);
+            tabEstoque.Controls.Add(tabBaixoEstoque);
+            tabEstoque.Controls.Add(tabVencendo);
+            tabEstoque.Controls.Add(tabHistorico);
+            tabEstoque.Dock = DockStyle.Fill;
+            tabEstoque.Location = new Point(0, 165);
+            tabEstoque.Name = "tabEstoque";
+            tabEstoque.SelectedIndex = 0;
+            tabEstoque.Size = new Size(1350, 564);
+            tabEstoque.TabIndex = 18;
+            // 
+            // tabTodosItens
+            // 
+            tabTodosItens.Controls.Add(pnlBotoes);
+            tabTodosItens.Controls.Add(dgvEstoque);
+            tabTodosItens.Controls.Add(btnLimparFiltro);
+            tabTodosItens.Controls.Add(btnPesquisar);
+            tabTodosItens.Controls.Add(dtpFiltroValidade);
+            tabTodosItens.Controls.Add(chkTodasValidades);
+            tabTodosItens.Controls.Add(lblFiltroValidade);
+            tabTodosItens.Controls.Add(grpFiltros);
+            tabTodosItens.Location = new Point(4, 24);
+            tabTodosItens.Name = "tabTodosItens";
+            tabTodosItens.Padding = new Padding(3);
+            tabTodosItens.Size = new Size(1342, 536);
+            tabTodosItens.TabIndex = 0;
+            tabTodosItens.Text = "Todos os itens";
+            tabTodosItens.UseVisualStyleBackColor = true;
+            // 
+            // pnlBotoes
+            // 
+            pnlBotoes.BackColor = Color.White;
+            pnlBotoes.Controls.Add(btnAtualizar);
+            pnlBotoes.Controls.Add(btnEditar);
+            pnlBotoes.Controls.Add(btnRemover);
+            pnlBotoes.Controls.Add(btnEntrada);
+            pnlBotoes.Controls.Add(btnSaida);
+            pnlBotoes.Controls.Add(btnNovoItem);
+            pnlBotoes.Dock = DockStyle.Bottom;
+            pnlBotoes.Location = new Point(3, 463);
+            pnlBotoes.Name = "pnlBotoes";
+            pnlBotoes.Size = new Size(1336, 70);
+            pnlBotoes.TabIndex = 7;
+            // 
+            // btnAtualizar
+            // 
+            btnAtualizar.BackColor = Color.FromArgb(20, 59, 102);
+            btnAtualizar.FlatStyle = FlatStyle.Flat;
+            btnAtualizar.ForeColor = Color.White;
+            btnAtualizar.Location = new Point(920, 18);
+            btnAtualizar.Name = "btnAtualizar";
+            btnAtualizar.Size = new Size(140, 35);
+            btnAtualizar.TabIndex = 5;
+            btnAtualizar.Text = "Atualizar";
+            btnAtualizar.UseVisualStyleBackColor = false;
+            // 
+            // btnEditar
+            // 
+            btnEditar.BackColor = Color.FromArgb(20, 59, 102);
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(220, 18);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(140, 35);
+            btnEditar.TabIndex = 4;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
+            // 
+            // btnRemover
+            // 
+            btnRemover.BackColor = Color.FromArgb(140, 40, 40);
+            btnRemover.FlatStyle = FlatStyle.Flat;
+            btnRemover.ForeColor = Color.White;
+            btnRemover.Location = new Point(395, 18);
+            btnRemover.Name = "btnRemover";
+            btnRemover.Size = new Size(140, 35);
+            btnRemover.TabIndex = 3;
+            btnRemover.Text = "Remover";
+            btnRemover.UseVisualStyleBackColor = false;
+            // 
+            // btnEntrada
+            // 
+            btnEntrada.BackColor = Color.FromArgb(0, 140, 70);
+            btnEntrada.FlatStyle = FlatStyle.Flat;
+            btnEntrada.ForeColor = Color.White;
+            btnEntrada.Location = new Point(570, 18);
+            btnEntrada.Name = "btnEntrada";
+            btnEntrada.Size = new Size(140, 35);
+            btnEntrada.TabIndex = 2;
+            btnEntrada.Text = "Entrada";
+            btnEntrada.UseVisualStyleBackColor = false;
+            // 
+            // btnSaida
+            // 
+            btnSaida.BackColor = Color.FromArgb(230, 130, 40);
+            btnSaida.FlatStyle = FlatStyle.Flat;
+            btnSaida.ForeColor = Color.White;
+            btnSaida.Location = new Point(745, 18);
+            btnSaida.Name = "btnSaida";
+            btnSaida.Size = new Size(140, 35);
+            btnSaida.TabIndex = 1;
+            btnSaida.Text = "Saida";
+            btnSaida.UseVisualStyleBackColor = false;
+            // 
+            // btnNovoItem
+            // 
+            btnNovoItem.BackColor = Color.FromArgb(20, 59, 102);
+            btnNovoItem.FlatStyle = FlatStyle.Flat;
+            btnNovoItem.ForeColor = Color.White;
+            btnNovoItem.Location = new Point(45, 18);
+            btnNovoItem.Name = "btnNovoItem";
+            btnNovoItem.Size = new Size(140, 35);
+            btnNovoItem.TabIndex = 0;
+            btnNovoItem.Text = "Novo Item";
+            btnNovoItem.UseVisualStyleBackColor = false;
+            btnNovoItem.Click += btnNovoItem_Click;
+            // 
+            // dgvEstoque
+            // 
+            dgvEstoque.AllowUserToAddRows = false;
+            dgvEstoque.AllowUserToDeleteRows = false;
+            dgvEstoque.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvEstoque.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEstoque.BackgroundColor = Color.White;
+            dgvEstoque.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEstoque.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, colCategoria, colQuantidade, colUnidade, colValidade, colQuantidadeMinima, colStatus, colObservacao });
+            dgvEstoque.Location = new Point(15, 120);
+            dgvEstoque.MultiSelect = false;
+            dgvEstoque.Name = "dgvEstoque";
+            dgvEstoque.ReadOnly = true;
+            dgvEstoque.RowHeadersVisible = false;
+            dgvEstoque.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEstoque.Size = new Size(1300, 330);
+            dgvEstoque.TabIndex = 6;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "ID";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.Name = "colNome";
+            colNome.ReadOnly = true;
+            // 
+            // colCategoria
+            // 
+            colCategoria.HeaderText = "Categoria";
+            colCategoria.Name = "colCategoria";
+            colCategoria.ReadOnly = true;
+            // 
+            // colQuantidade
+            // 
+            colQuantidade.HeaderText = "Quantidade";
+            colQuantidade.Name = "colQuantidade";
+            colQuantidade.ReadOnly = true;
+            // 
+            // colUnidade
+            // 
+            colUnidade.HeaderText = "Unidade";
+            colUnidade.Name = "colUnidade";
+            colUnidade.ReadOnly = true;
+            // 
+            // colValidade
+            // 
+            colValidade.HeaderText = "Validade";
+            colValidade.Name = "colValidade";
+            colValidade.ReadOnly = true;
+            // 
+            // colQuantidadeMinima
+            // 
+            colQuantidadeMinima.HeaderText = "Qtd. Mínima";
+            colQuantidadeMinima.Name = "colQuantidadeMinima";
+            colQuantidadeMinima.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            colStatus.HeaderText = "Status\n";
+            colStatus.Name = "colStatus";
+            colStatus.ReadOnly = true;
+            // 
+            // colObservacao
+            // 
+            colObservacao.HeaderText = "Observação";
+            colObservacao.Name = "colObservacao";
+            colObservacao.ReadOnly = true;
+            // 
+            // btnLimparFiltro
+            // 
+            btnLimparFiltro.BackColor = Color.WhiteSmoke;
+            btnLimparFiltro.FlatStyle = FlatStyle.Flat;
+            btnLimparFiltro.ForeColor = Color.Black;
+            btnLimparFiltro.Location = new Point(1190, 48);
+            btnLimparFiltro.Name = "btnLimparFiltro";
+            btnLimparFiltro.Size = new Size(120, 30);
+            btnLimparFiltro.TabIndex = 5;
+            btnLimparFiltro.Text = "Limpar";
+            btnLimparFiltro.UseVisualStyleBackColor = false;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.BackColor = Color.FromArgb(20, 59, 102);
+            btnPesquisar.FlatStyle = FlatStyle.Flat;
+            btnPesquisar.ForeColor = Color.White;
+            btnPesquisar.Location = new Point(1060, 48);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(120, 30);
+            btnPesquisar.TabIndex = 4;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = false;
+            // 
+            // dtpFiltroValidade
+            // 
+            dtpFiltroValidade.Format = DateTimePickerFormat.Short;
+            dtpFiltroValidade.Location = new Point(830, 50);
+            dtpFiltroValidade.Name = "dtpFiltroValidade";
+            dtpFiltroValidade.ShowUpDown = true;
+            dtpFiltroValidade.Size = new Size(130, 23);
+            dtpFiltroValidade.TabIndex = 3;
+            // 
+            // chkTodasValidades
+            // 
+            chkTodasValidades.AutoSize = true;
+            chkTodasValidades.Location = new Point(760, 52);
+            chkTodasValidades.Name = "chkTodasValidades";
+            chkTodasValidades.Size = new Size(57, 19);
+            chkTodasValidades.TabIndex = 2;
+            chkTodasValidades.Text = "Todas";
+            chkTodasValidades.UseVisualStyleBackColor = true;
+            // 
+            // lblFiltroValidade
+            // 
+            lblFiltroValidade.AutoSize = true;
+            lblFiltroValidade.Location = new Point(760, 25);
+            lblFiltroValidade.Name = "lblFiltroValidade";
+            lblFiltroValidade.Size = new Size(54, 15);
+            lblFiltroValidade.TabIndex = 1;
+            lblFiltroValidade.Text = "Validade:";
+            // 
+            // grpFiltros
+            // 
+            grpFiltros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            grpFiltros.Controls.Add(cmbFiltroStatus);
+            grpFiltros.Controls.Add(lblFilrosStatus);
+            grpFiltros.Controls.Add(cmbFiltroCategoria);
+            grpFiltros.Controls.Add(lblFiltroCategoria);
+            grpFiltros.Controls.Add(txtFiltroNome);
+            grpFiltros.Controls.Add(lblFiltroNome);
+            grpFiltros.Location = new Point(15, 15);
+            grpFiltros.Name = "grpFiltros";
+            grpFiltros.Size = new Size(1300, 90);
+            grpFiltros.TabIndex = 0;
+            grpFiltros.TabStop = false;
+            grpFiltros.Text = "Filtros";
+            // 
+            // cmbFiltroStatus
+            // 
+            cmbFiltroStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFiltroStatus.FormattingEnabled = true;
+            cmbFiltroStatus.Location = new Point(520, 50);
+            cmbFiltroStatus.Name = "cmbFiltroStatus";
+            cmbFiltroStatus.Size = new Size(220, 23);
+            cmbFiltroStatus.TabIndex = 5;
+            // 
+            // lblFilrosStatus
+            // 
+            lblFilrosStatus.AutoSize = true;
+            lblFilrosStatus.Location = new Point(520, 25);
+            lblFilrosStatus.Name = "lblFilrosStatus";
+            lblFilrosStatus.Size = new Size(42, 15);
+            lblFilrosStatus.TabIndex = 4;
+            lblFilrosStatus.Text = "Status:";
+            // 
+            // cmbFiltroCategoria
+            // 
+            cmbFiltroCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFiltroCategoria.FormattingEnabled = true;
+            cmbFiltroCategoria.Location = new Point(280, 50);
+            cmbFiltroCategoria.Name = "cmbFiltroCategoria";
+            cmbFiltroCategoria.Size = new Size(220, 23);
+            cmbFiltroCategoria.TabIndex = 3;
+            // 
+            // lblFiltroCategoria
+            // 
+            lblFiltroCategoria.AutoSize = true;
+            lblFiltroCategoria.Location = new Point(280, 25);
+            lblFiltroCategoria.Name = "lblFiltroCategoria";
+            lblFiltroCategoria.Size = new Size(61, 15);
+            lblFiltroCategoria.TabIndex = 2;
+            lblFiltroCategoria.Text = "Categoria:";
+            // 
+            // txtFiltroNome
+            // 
+            txtFiltroNome.Location = new Point(20, 50);
+            txtFiltroNome.Name = "txtFiltroNome";
+            txtFiltroNome.Size = new Size(240, 23);
+            txtFiltroNome.TabIndex = 1;
+            // 
+            // lblFiltroNome
+            // 
+            lblFiltroNome.AutoSize = true;
+            lblFiltroNome.Location = new Point(20, 25);
+            lblFiltroNome.Name = "lblFiltroNome";
+            lblFiltroNome.Size = new Size(43, 15);
+            lblFiltroNome.TabIndex = 0;
+            lblFiltroNome.Text = "Nome:";
+            // 
+            // tabBaixoEstoque
+            // 
+            tabBaixoEstoque.Location = new Point(4, 24);
+            tabBaixoEstoque.Name = "tabBaixoEstoque";
+            tabBaixoEstoque.Padding = new Padding(3);
+            tabBaixoEstoque.Size = new Size(1342, 536);
+            tabBaixoEstoque.TabIndex = 1;
+            tabBaixoEstoque.Text = "Baixo Estoque";
+            tabBaixoEstoque.UseVisualStyleBackColor = true;
+            // 
+            // tabVencendo
+            // 
+            tabVencendo.Location = new Point(4, 24);
+            tabVencendo.Name = "tabVencendo";
+            tabVencendo.Padding = new Padding(3);
+            tabVencendo.Size = new Size(1342, 536);
+            tabVencendo.TabIndex = 2;
+            tabVencendo.Text = "Vencendo";
+            tabVencendo.UseVisualStyleBackColor = true;
+            // 
+            // tabHistorico
+            // 
+            tabHistorico.Location = new Point(4, 24);
+            tabHistorico.Name = "tabHistorico";
+            tabHistorico.Padding = new Padding(3);
+            tabHistorico.Size = new Size(1342, 536);
+            tabHistorico.TabIndex = 3;
+            tabHistorico.Text = "Histórico";
+            tabHistorico.UseVisualStyleBackColor = true;
+            // 
+            // frmEstoque
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 246, 248);
+            ClientSize = new Size(1350, 729);
+            Controls.Add(tabEstoque);
+            Controls.Add(pnlResumo);
+            Controls.Add(pnlCabecalho);
+            Name = "frmEstoque";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gerenciamento de Estoque";
+            pnlCabecalho.ResumeLayout(false);
+            pnlCabecalho.PerformLayout();
+            pnlResumo.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            pnlCategorias.ResumeLayout(false);
+            pnlCategorias.PerformLayout();
+            pnlCardItens.ResumeLayout(false);
+            pnlCardItens.PerformLayout();
+            tabEstoque.ResumeLayout(false);
+            tabTodosItens.ResumeLayout(false);
+            tabTodosItens.PerformLayout();
+            pnlBotoes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvEstoque).EndInit();
+            grpFiltros.ResumeLayout(false);
+            grpFiltros.PerformLayout();
+            ResumeLayout(false);
+        }
+
+        #endregion
+        private Panel pnlCabecalho;
+        private Label lblStatusSistema;
+        private Label lblTotalItensCabecalho;
+        private Label lblTitulo;
+        private Panel pnlResumo;
+        private Panel pnlCardItens;
+        private Label lblCardItensDesc;
+        private Label lblItensCadastrados;
+        private Label lblCardItensTitulo;
+        private Panel panel1;
+        private Label lblVencimento;
+        private Label lblVencendoValor;
+        private Panel panel2;
+        private Label lblMinimo;
+        private Label lblMinimoValor;
+        private Panel pnlCategorias;
+        private Label lblCategoria;
+        private Label lblCategoriaValor;
+        private TabControl tabEstoque;
+        private TabPage tabTodosItens;
+        private TabPage tabBaixoEstoque;
+        private TabPage tabVencendo;
+        private TabPage tabHistorico;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private GroupBox grpFiltros;
+        private TextBox txtFiltroNome;
+        private Label lblFiltroNome;
+        private Label lblFiltroCategoria;
+        private DateTimePicker dtpFiltroValidade;
+        private CheckBox chkTodasValidades;
+        private Label lblFiltroValidade;
+        private ComboBox cmbFiltroStatus;
+        private Label lblFilrosStatus;
+        private ComboBox cmbFiltroCategoria;
+        private Button btnLimparFiltro;
+        private Button btnPesquisar;
+        private DataGridView dgvEstoque;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colNome;
+        private DataGridViewTextBoxColumn colCategoria;
+        private DataGridViewTextBoxColumn colQuantidade;
+        private DataGridViewTextBoxColumn colUnidade;
+        private DataGridViewTextBoxColumn colValidade;
+        private DataGridViewTextBoxColumn colQuantidadeMinima;
+        private DataGridViewTextBoxColumn colStatus;
+        private DataGridViewTextBoxColumn colObservacao;
+        private Panel pnlBotoes;
+        private Button btnEditar;
+        private Button btnRemover;
+        private Button btnEntrada;
+        private Button btnSaida;
+        private Button btnNovoItem;
+        private Button btnAtualizar;
+    }
+}
