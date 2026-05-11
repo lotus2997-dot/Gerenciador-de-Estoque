@@ -5,8 +5,8 @@ namespace Drink
 {
     public static class DadosApp
     {
-        public static List<Ingrediente> Ingredientes = new List<Ingrediente>();
-        public static List<Ingrediente> ItensEvento = new List<Ingrediente>();
-        public static List<Ingrediente> ItensRetorno = new List<Ingrediente>();
+        public static List<Item> Ingredientes = new List<Item>();
+        public static List<Item> ItensEvento = new List<Item>();
+        public static List<Item> ItensRetorno = new List<Item>();
     }
 }

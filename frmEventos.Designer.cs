@@ -45,19 +45,12 @@
             tabControl1 = new TabControl();
             tabDadosEvento = new TabPage();
             tabItensEvento = new TabPage();
-            btnConfirmarSeparação = new Button();
             pnlBotoesItens = new Panel();
+            btnConfirmarSeparação = new Button();
             btnRemoverItem = new Button();
             btnEditarItem = new Button();
             btnNovoItem = new Button();
             dgvItensEvento = new DataGridView();
-            colId = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colCategoria = new DataGridViewTextBoxColumn();
-            colQuantidade = new DataGridViewTextBoxColumn();
-            colValidade = new DataGridViewTextBoxColumn();
-            colStatus = new DataGridViewTextBoxColumn();
-            colObservacao = new DataGridViewTextBoxColumn();
             btnLimparFiltro = new Button();
             btnPesquisar = new Button();
             lblFiltroCategoria = new Label();
@@ -283,19 +276,6 @@
             tabItensEvento.Text = "Itens do Evento";
             tabItensEvento.UseVisualStyleBackColor = true;
             // 
-            // btnConfirmarSeparação
-            // 
-            btnConfirmarSeparação.BackColor = Color.FromArgb(0, 140, 70);
-            btnConfirmarSeparação.FlatStyle = FlatStyle.Flat;
-            btnConfirmarSeparação.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfirmarSeparação.ForeColor = Color.White;
-            btnConfirmarSeparação.Location = new Point(650, 20);
-            btnConfirmarSeparação.Name = "btnConfirmarSeparação";
-            btnConfirmarSeparação.Size = new Size(190, 38);
-            btnConfirmarSeparação.TabIndex = 7;
-            btnConfirmarSeparação.Text = "Confirmar Separação";
-            btnConfirmarSeparação.UseVisualStyleBackColor = false;
-            // 
             // pnlBotoesItens
             // 
             pnlBotoesItens.BackColor = Color.White;
@@ -309,6 +289,19 @@
             pnlBotoesItens.Size = new Size(1336, 80);
             pnlBotoesItens.TabIndex = 6;
             // 
+            // btnConfirmarSeparação
+            // 
+            btnConfirmarSeparação.BackColor = Color.FromArgb(0, 140, 70);
+            btnConfirmarSeparação.FlatStyle = FlatStyle.Flat;
+            btnConfirmarSeparação.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmarSeparação.ForeColor = Color.White;
+            btnConfirmarSeparação.Location = new Point(650, 20);
+            btnConfirmarSeparação.Name = "btnConfirmarSeparação";
+            btnConfirmarSeparação.Size = new Size(190, 38);
+            btnConfirmarSeparação.TabIndex = 7;
+            btnConfirmarSeparação.Text = "Confirmar Separação";
+            btnConfirmarSeparação.UseVisualStyleBackColor = false;
+            // 
             // btnRemoverItem
             // 
             btnRemoverItem.BackColor = Color.FromArgb(130, 40, 40);
@@ -321,6 +314,7 @@
             btnRemoverItem.TabIndex = 2;
             btnRemoverItem.Text = "Remover";
             btnRemoverItem.UseVisualStyleBackColor = false;
+            btnRemoverItem.Click += btnRemoverItem_Click;
             // 
             // btnEditarItem
             // 
@@ -347,6 +341,7 @@
             btnNovoItem.TabIndex = 0;
             btnNovoItem.Text = "Novo Item";
             btnNovoItem.UseVisualStyleBackColor = false;
+            btnNovoItem.Click += btnNovoItem_Click;
             // 
             // dgvItensEvento
             // 
@@ -356,7 +351,6 @@
             dgvItensEvento.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvItensEvento.BackgroundColor = Color.White;
             dgvItensEvento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvItensEvento.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, colCategoria, colQuantidade, colValidade, colStatus, colObservacao });
             dgvItensEvento.Location = new Point(15, 130);
             dgvItensEvento.MultiSelect = false;
             dgvItensEvento.Name = "dgvItensEvento";
@@ -365,48 +359,6 @@
             dgvItensEvento.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvItensEvento.Size = new Size(1300, 400);
             dgvItensEvento.TabIndex = 5;
-            // 
-            // colId
-            // 
-            colId.HeaderText = "ID";
-            colId.Name = "colId";
-            colId.ReadOnly = true;
-            // 
-            // colNome
-            // 
-            colNome.HeaderText = "Nome";
-            colNome.Name = "colNome";
-            colNome.ReadOnly = true;
-            // 
-            // colCategoria
-            // 
-            colCategoria.HeaderText = "Categoria";
-            colCategoria.Name = "colCategoria";
-            colCategoria.ReadOnly = true;
-            // 
-            // colQuantidade
-            // 
-            colQuantidade.HeaderText = "Qtd";
-            colQuantidade.Name = "colQuantidade";
-            colQuantidade.ReadOnly = true;
-            // 
-            // colValidade
-            // 
-            colValidade.HeaderText = "Validade";
-            colValidade.Name = "colValidade";
-            colValidade.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            colStatus.HeaderText = "Status";
-            colStatus.Name = "colStatus";
-            colStatus.ReadOnly = true;
-            // 
-            // colObservacao
-            // 
-            colObservacao.HeaderText = "Observação";
-            colObservacao.Name = "colObservacao";
-            colObservacao.ReadOnly = true;
             // 
             // btnLimparFiltro
             // 
@@ -534,6 +486,7 @@
             Name = "frmEventos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gerenciamento de Evento";
+            Load += frmEventos_Load;
             pnlCabecalho.ResumeLayout(false);
             pnlCabecalho.PerformLayout();
             pnlResumoEvento.ResumeLayout(false);
@@ -578,13 +531,6 @@
         private Button btnPesquisar;
         private DataGridView dgvItensEvento;
         private Panel pnlBotoesItens;
-        private DataGridViewTextBoxColumn colId;
-        private DataGridViewTextBoxColumn colNome;
-        private DataGridViewTextBoxColumn colCategoria;
-        private DataGridViewTextBoxColumn colQuantidade;
-        private DataGridViewTextBoxColumn colValidade;
-        private DataGridViewTextBoxColumn colStatus;
-        private DataGridViewTextBoxColumn colObservacao;
         private Button btnRemoverItem;
         private Button btnEditarItem;
         private Button btnNovoItem;

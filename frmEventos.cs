@@ -1,5 +1,6 @@
 ﻿using Drink.Models;
 using System;
+using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
@@ -9,6 +10,9 @@ namespace Drink
 {
     public partial class frmEventos : Form
     {
+        private Evento eventoAtual; // variável para armazenar o evento que esta aberto na tela, pra poder usar ele em outros métodos
+
+        private List<Item> itensEstoque = new List<Item>(); // cria uma lista de itens do estoque, pra poder usar ela em outros métodos
         public frmEventos()
         {
             InitializeComponent();
@@ -58,13 +62,6 @@ namespace Drink
         {
             dgvItensEvento.Rows.Clear();
 
-            dgvItensEvento.Rows.Add("001", "Gelo", "Bebidas", "20,00", "28/04/2026", "Separado", "OK");
-            dgvItensEvento.Rows.Add("002", "Limão", "Frutas", "5,00", "29/04/2026", "Separado", "OK");
-            dgvItensEvento.Rows.Add("003", "Vodka", "Bebidas", "3,00", "28/04/2026", "Separado", "Conferido");
-            dgvItensEvento.Rows.Add("004", "Whisky", "Bebidas", "2,00", "28/04/2026", "Separado", "OK");
-            dgvItensEvento.Rows.Add("005", "Refrigerante Cola", "Bebidas", "10,00", "30/04/2026", "Pendente", "Aguardando");
-            dgvItensEvento.Rows.Add("006", "Água Mineral", "Bebidas", "15,00", "30/04/2026", "Pendente", "OK");
-            dgvItensEvento.Rows.Add("007", "Taças de Vidro", "Utensílios", "50,00", "-", "Disponível", "Limpar antes do uso");
 
             ColorirStatus();
         }
@@ -72,6 +69,7 @@ namespace Drink
         // Este método percorre todas as linhas do DataGridView de itens do evento.
         // Para cada linha, ele lê o valor da coluna "colStatus".
         // Dependendo do status encontrado, ele muda a cor do texto dessa célula.
+        //
         private void ColorirStatus()
         {
             foreach (DataGridViewRow row in dgvItensEvento.Rows)
@@ -95,6 +93,102 @@ namespace Drink
                     row.Cells["colStatus"].Style.ForeColor = Color.Purple;
                 }
             }
+        }
+
+        private void frmEventos_Load(object sender, EventArgs e) //método que executa quando a tela de eventos é aberta, ele carrega um evento exemplo para mostrar as informações do evento e os itens do evento
+        {
+            eventoAtual = new Evento //evento exemplo
+            {
+                Id = 1,
+                Nome = "Nome do Evento",
+                Data = new DateTime(2026, 04, 28),
+                Local = "Local do Evento",
+                Responsavel = "Administrador",
+                Status = "Em Separação"
+            };
+
+            AtualizarTabelaItens();
+        }
+        private void AtualizarTabelaItens() //método para atualizar a tabela de itens do evento, ele pega os itens do evento atual e coloca eles na tabela
+        {
+            var dadosTabela = eventoAtual.Itens.Select(itemEvento => new //seleciona os itens do evento atual e transforma eles em um formato que a tabela consegue entender
+            {
+                ID = itemEvento.Id.ToString("000"), //formata o id do item para ter 3 digitos
+                Nome = itemEvento.Item.Nome,
+                Categoria = itemEvento.Item.Categoria,
+                Qtd = itemEvento.QuantidadeSeparada,
+                Unidade = itemEvento.Item.Unidade,
+                Status = itemEvento.Status,
+                Origem = itemEvento.VeioDoEstoque ? "Estoque" : "Externo" //verifica se o item veio do estoque ou se é um item externo e mostra na tabela
+            }).ToList(); //transforma os itens selecionados em uma lista
+
+            dgvItensEvento.DataSource = null;
+            dgvItensEvento.DataSource = dadosTabela;
+        }
+
+        private void btnNovoItem_Click(object sender, EventArgs e)
+        {
+            frmNovoItemEvento telaNovoItem = new frmNovoItemEvento(itensEstoque); //abre a tela do novo item
+
+            if (telaNovoItem.ShowDialog() == DialogResult.OK) //verifica se o usuário clicou em adicionar na tela do novo item 
+            {
+                ItemEvento? novoItem = telaNovoItem.ItemCriado;//pega o item criado na tela do novo item
+
+                if (novoItem == null)
+                {
+                    return;
+                }
+
+                if (eventoAtual.Itens.Any()) //verifica se tem algum item
+                {
+                    novoItem.Id = eventoAtual.Itens.Max(i => i.Id) + 1; //se tiver, adiciona +1 no id
+                }
+                else
+                {
+                    novoItem.Id = 1; //se não, coloca 1 no id
+                }
+
+                eventoAtual.Itens.Add(novoItem); //coloca o item criado na lista de itens do evento atual
+
+                AtualizarTabelaItens(); //atualiza a tabela de itens do evento para mostrar o item que acabou de ser adicionado
+            }
+        }
+
+        private void btnRemoverItem_Click(object sender, EventArgs e)
+        {
+            if (dgvItensEvento.CurrentRow == null) //verifica se o usuário selecionou alguma linha no dgv
+            {
+                MessageBox.Show("Selecione um item para remover.");
+                return;
+            }
+
+            string idTexto = dgvItensEvento.CurrentRow.Cells["ID"].Value.ToString(); //pega o valor da coluna id da linha selecionada e transforma e string
+
+            int idItem = int.Parse(idTexto); //pega o valor transformado em string e transforma em int
+
+            ItemEvento? itemSelecionado = eventoAtual.Itens.FirstOrDefault(i => i.Id == idItem); // // Usa o id selecionado no dgv para encontrar o item correspondente na lista do evento
+
+            if (itemSelecionado == null)
+            {
+                MessageBox.Show("Item não encontrado.");
+                return;
+            }
+
+            DialogResult resposta = MessageBox.Show(    // confirmaçao se o usuário realmente quer remover o item selecionado do evento
+                "Deseja realmente remover este item do evento?",
+                "Remover item",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resposta == DialogResult.No)
+            {
+                return;
+            }
+
+            eventoAtual.Itens.Remove(itemSelecionado); //remove o item selecionado da lista de itens do evento
+
+            AtualizarTabelaItens(); //atualiza a tabela
         }
     }
 }

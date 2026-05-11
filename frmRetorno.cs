@@ -52,7 +52,7 @@ namespace Drink
             if (existente != null)
                 existente.QuantidadeAtual += nudQuantidade.Value;
             else
-                DadosApp.ItensRetorno.Add(new Ingrediente
+                DadosApp.ItensRetorno.Add(new Item
                 {
                     Id = DadosApp.ItensRetorno.Count > 0?DadosApp.ItensRetorno.Max(i => i.Id) + 1: 1,
                     Nome = nome,
@@ -105,7 +105,7 @@ namespace Drink
             if (ingrediente != null)
                 ingrediente.QuantidadeAtual += nudQuantidade.Value;
             else
-                DadosApp.Ingredientes.Add(new Ingrediente
+                DadosApp.Ingredientes.Add(new Item
                 {
                     Id = DadosApp.Ingredientes.Count + 1,
                     Nome = item.Nome,
