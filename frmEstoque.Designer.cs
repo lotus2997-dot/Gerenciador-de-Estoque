@@ -43,7 +43,6 @@
             lblCategoria = new Label();
             lblCategoriaValor = new Label();
             pnlCardItens = new Panel();
-            lblCardItensDesc = new Label();
             lblCardItensTitulo = new Label();
             lblItensCadastrados = new Label();
             tabEstoque = new TabControl();
@@ -67,14 +66,14 @@
             colObservacao = new DataGridViewTextBoxColumn();
             btnLimparFiltro = new Button();
             btnPesquisar = new Button();
-            dtpFiltroValidade = new DateTimePicker();
-            chkTodasValidades = new CheckBox();
-            lblFiltroValidade = new Label();
             grpFiltros = new GroupBox();
             cmbFiltroStatus = new ComboBox();
             lblFilrosStatus = new Label();
             cmbFiltroCategoria = new ComboBox();
             lblFiltroCategoria = new Label();
+            lblFiltroValidade = new Label();
+            chkTodasValidades = new CheckBox();
+            dtpFiltroValidade = new DateTimePicker();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
             tabBaixoEstoque = new TabPage();
@@ -249,22 +248,12 @@
             // 
             pnlCardItens.BackColor = Color.White;
             pnlCardItens.BorderStyle = BorderStyle.FixedSingle;
-            pnlCardItens.Controls.Add(lblCardItensDesc);
             pnlCardItens.Controls.Add(lblCardItensTitulo);
             pnlCardItens.Controls.Add(lblItensCadastrados);
             pnlCardItens.Location = new Point(15, 15);
             pnlCardItens.Name = "pnlCardItens";
             pnlCardItens.Size = new Size(285, 65);
             pnlCardItens.TabIndex = 18;
-            // 
-            // lblCardItensDesc
-            // 
-            lblCardItensDesc.AutoSize = true;
-            lblCardItensDesc.Location = new Point(60, 52);
-            lblCardItensDesc.Name = "lblCardItensDesc";
-            lblCardItensDesc.Size = new Size(139, 15);
-            lblCardItensDesc.TabIndex = 2;
-            lblCardItensDesc.Text = "Total de itens no estoque";
             // 
             // lblCardItensTitulo
             // 
@@ -305,9 +294,6 @@
             tabTodosItens.Controls.Add(dgvEstoque);
             tabTodosItens.Controls.Add(btnLimparFiltro);
             tabTodosItens.Controls.Add(btnPesquisar);
-            tabTodosItens.Controls.Add(dtpFiltroValidade);
-            tabTodosItens.Controls.Add(chkTodasValidades);
-            tabTodosItens.Controls.Add(lblFiltroValidade);
             tabTodosItens.Controls.Add(grpFiltros);
             tabTodosItens.Location = new Point(4, 24);
             tabTodosItens.Name = "tabTodosItens";
@@ -355,6 +341,7 @@
             btnEditar.TabIndex = 4;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnRemover
             // 
@@ -367,6 +354,7 @@
             btnRemover.TabIndex = 3;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
+            btnRemover.Click += btnRemover_Click;
             // 
             // btnEntrada
             // 
@@ -414,6 +402,7 @@
             dgvEstoque.BackgroundColor = Color.White;
             dgvEstoque.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEstoque.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, colCategoria, colQuantidade, colUnidade, colValidade, colQuantidadeMinima, colStatus, colObservacao });
+            dgvEstoque.EnableHeadersVisualStyles = false;
             dgvEstoque.Location = new Point(15, 120);
             dgvEstoque.MultiSelect = false;
             dgvEstoque.Name = "dgvEstoque";
@@ -501,34 +490,6 @@
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = false;
             // 
-            // dtpFiltroValidade
-            // 
-            dtpFiltroValidade.Format = DateTimePickerFormat.Short;
-            dtpFiltroValidade.Location = new Point(830, 50);
-            dtpFiltroValidade.Name = "dtpFiltroValidade";
-            dtpFiltroValidade.ShowUpDown = true;
-            dtpFiltroValidade.Size = new Size(130, 23);
-            dtpFiltroValidade.TabIndex = 3;
-            // 
-            // chkTodasValidades
-            // 
-            chkTodasValidades.AutoSize = true;
-            chkTodasValidades.Location = new Point(760, 52);
-            chkTodasValidades.Name = "chkTodasValidades";
-            chkTodasValidades.Size = new Size(57, 19);
-            chkTodasValidades.TabIndex = 2;
-            chkTodasValidades.Text = "Todas";
-            chkTodasValidades.UseVisualStyleBackColor = true;
-            // 
-            // lblFiltroValidade
-            // 
-            lblFiltroValidade.AutoSize = true;
-            lblFiltroValidade.Location = new Point(760, 25);
-            lblFiltroValidade.Name = "lblFiltroValidade";
-            lblFiltroValidade.Size = new Size(54, 15);
-            lblFiltroValidade.TabIndex = 1;
-            lblFiltroValidade.Text = "Validade:";
-            // 
             // grpFiltros
             // 
             grpFiltros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -536,6 +497,9 @@
             grpFiltros.Controls.Add(lblFilrosStatus);
             grpFiltros.Controls.Add(cmbFiltroCategoria);
             grpFiltros.Controls.Add(lblFiltroCategoria);
+            grpFiltros.Controls.Add(lblFiltroValidade);
+            grpFiltros.Controls.Add(chkTodasValidades);
+            grpFiltros.Controls.Add(dtpFiltroValidade);
             grpFiltros.Controls.Add(txtFiltroNome);
             grpFiltros.Controls.Add(lblFiltroNome);
             grpFiltros.Location = new Point(15, 15);
@@ -580,6 +544,34 @@
             lblFiltroCategoria.Size = new Size(61, 15);
             lblFiltroCategoria.TabIndex = 2;
             lblFiltroCategoria.Text = "Categoria:";
+            // 
+            // lblFiltroValidade
+            // 
+            lblFiltroValidade.AutoSize = true;
+            lblFiltroValidade.Location = new Point(792, 19);
+            lblFiltroValidade.Name = "lblFiltroValidade";
+            lblFiltroValidade.Size = new Size(54, 15);
+            lblFiltroValidade.TabIndex = 1;
+            lblFiltroValidade.Text = "Validade:";
+            // 
+            // chkTodasValidades
+            // 
+            chkTodasValidades.AutoSize = true;
+            chkTodasValidades.Location = new Point(792, 37);
+            chkTodasValidades.Name = "chkTodasValidades";
+            chkTodasValidades.Size = new Size(57, 19);
+            chkTodasValidades.TabIndex = 2;
+            chkTodasValidades.Text = "Todas";
+            chkTodasValidades.UseVisualStyleBackColor = true;
+            // 
+            // dtpFiltroValidade
+            // 
+            dtpFiltroValidade.Format = DateTimePickerFormat.Short;
+            dtpFiltroValidade.Location = new Point(855, 35);
+            dtpFiltroValidade.Name = "dtpFiltroValidade";
+            dtpFiltroValidade.ShowUpDown = true;
+            dtpFiltroValidade.Size = new Size(130, 23);
+            dtpFiltroValidade.TabIndex = 3;
             // 
             // txtFiltroNome
             // 
@@ -652,7 +644,6 @@
             pnlCardItens.PerformLayout();
             tabEstoque.ResumeLayout(false);
             tabTodosItens.ResumeLayout(false);
-            tabTodosItens.PerformLayout();
             pnlBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvEstoque).EndInit();
             grpFiltros.ResumeLayout(false);
@@ -667,7 +658,6 @@
         private Label lblTitulo;
         private Panel pnlResumo;
         private Panel pnlCardItens;
-        private Label lblCardItensDesc;
         private Label lblItensCadastrados;
         private Label lblCardItensTitulo;
         private Panel panel1;
@@ -684,9 +674,6 @@
         private TabPage tabBaixoEstoque;
         private TabPage tabVencendo;
         private TabPage tabHistorico;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
-        private TabPage tabPage3;
         private GroupBox grpFiltros;
         private TextBox txtFiltroNome;
         private Label lblFiltroNome;

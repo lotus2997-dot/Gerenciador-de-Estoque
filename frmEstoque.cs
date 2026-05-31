@@ -1,22 +1,188 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using Drink.Dados;
 using Drink.Models;
+using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Drink
 {
+
     public partial class frmEstoque : Form
     {
-
         public frmEstoque()
         {
             InitializeComponent();
+            CarregarDadosTeste();
+            ConfigurarAparenciaTabela();
+            AtualizarDados();
         }
+        public void AtualizarDados()
+        {
+            AtualizarTabelaEstoque();
+            ColorirStatus();
+        }
+        private void ConfigurarAparenciaTabela()
+        {
+            // Define a fonte geral da tabela.
+            dgvEstoque.Font = new Font("Segoe UI", 10);
 
+            // Define a altura das linhas.
+            dgvEstoque.RowTemplate.Height = 32;
+
+            // Cores do cabeçalho.
+            dgvEstoque.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 59, 102);
+            dgvEstoque.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvEstoque.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvEstoque.ColumnHeadersHeight = 35;
+
+            // Cor de seleção.
+            dgvEstoque.DefaultCellStyle.SelectionBackColor = Color.FromArgb(210, 230, 250);
+            dgvEstoque.DefaultCellStyle.SelectionForeColor = Color.Black;
+        }
+        private void ColorirStatus()
+        {
+            foreach (DataGridViewRow row in dgvEstoque.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                string status = row.Cells["colStatus"].Value?.ToString() ?? "";
+
+                DataGridViewCell celulaStatus = row.Cells["colStatus"];
+
+                // Reseta o estilo antes de aplicar uma nova cor
+                celulaStatus.Style.ForeColor = Color.Black;
+                celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Regular);
+
+                if (status == "Normal")
+                {
+                    celulaStatus.Style.ForeColor = Color.Green;
+                }
+                else if (status == "Sem estoque")
+                {
+                    celulaStatus.Style.ForeColor = Color.DarkOrange;
+                    celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                }
+                else if (status == "Vencendo")
+                {
+                    celulaStatus.Style.ForeColor = Color.Blue;
+                    celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                }
+                else if (status == "Abaixo do mínimo")
+                {
+                    celulaStatus.Style.ForeColor = Color.Purple;
+                    celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                }
+                else if (status == "Vencido")
+                {
+                    celulaStatus.Style.ForeColor = Color.Red;
+                    celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                }
+                else if (status == "Inativo")
+                {
+                    celulaStatus.Style.ForeColor = Color.Gray;
+                    celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Italic);
+                }
+            }
+        }
+        private void AtualizarTabelaEstoque()
+        {
+            dgvEstoque.Rows.Clear();
+            foreach (var item in DadosTemporarios.Itens)
+            {
+                dgvEstoque.Rows.Add(
+                    item.Id,
+                    item.Nome,
+                    item.Categoria,
+                    item.QuantidadeAtual,
+                    item.Unidade,
+                    item.Validade,
+                    item.QuantidadeMinima,
+                    item.Status,
+                    item.Observacao
+                );
+            }
+        }
+        private void CarregarDadosTeste()
+        {
+            if (DadosTemporarios.Itens.Count == 0)
+            {
+                Item limao = new Item();
+
+                limao.Nome = "Limão";
+                limao.Id = 7756;
+                limao.Validade = DateTime.Parse("2026-08-08");
+                limao.QuantidadeAtual = 20;
+                limao.QuantidadeMinima = 1;
+                limao.Observacao = "Limão para caipirinha";
+                limao.Unidade = "kg";
+                limao.Categoria = "Frutas";
+
+                DadosTemporarios.Itens.Add(limao);
+            }
+        }
+        private Item? ObterItemSelecionado()
+        {
+            if (dgvEstoque.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvEstoque.SelectedRows[0];
+                int id = Convert.ToInt32(row.Cells["colId"].Value);
+                return DadosTemporarios.Itens.FirstOrDefault(i => i.Id == id);
+            }
+            return null;
+        }
         private void btnNovoItem_Click(object sender, EventArgs e)
         {
-            frmAdicionarEstoque telaCadastro = new frmAdicionarEstoque();
+            frmAdicionarEstoque telaCadastro = new frmAdicionarEstoque(this);
             telaCadastro.ShowDialog();
         }
+       
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            Item? item = ObterItemSelecionado();
+
+            if (item == null)
+            {
+                MessageBox.Show("Selecione um item para remover.");
+                return;
+            }
+            DialogResult resposta = MessageBox.Show(
+           "Tem certeza que deseja remover este item?",
+           "Confirmar remoção",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+            );
+
+            if (resposta == DialogResult.No)
+            {
+                return;
+            }
+
+
+            item.Ativo = false;
+            item.UltimaAtualizacao = DateTime.Now;
+
+            AtualizarDados();
+
+            MessageBox.Show("Item removido com sucesso.");
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Item? item = ObterItemSelecionado();
+
+            if (item == null)
+            {
+                MessageBox.Show("Selecione um item para editar.");
+                return;
+            }
+
+            frmAdicionarEstoque telaCadastro = new frmAdicionarEstoque(this);
+            telaCadastro.CarregarItemParaEdicao(item);
+            telaCadastro.ShowDialog();
+        }
+
     }
+    
 }

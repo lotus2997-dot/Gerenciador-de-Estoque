@@ -19,8 +19,8 @@ namespace Drink
         {
             string usuario = txtUsuario.Text;
             string senha = txtSenha.Text;
-
-            if (usuario == "admin" && senha == "1234")   //Definição de usuario e senha
+            //Definição de usuario e senha
+            if (usuario == "admin" && senha == "1234")   
             {
                 this.Hide();
                 frmPrincipal menu = new frmPrincipal(usuario);

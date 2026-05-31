@@ -1,34 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\",
+  "WorkspaceRootPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\luquinha\\source\\repos\\gerenciadordeestoquelucasredesign\\frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\luquinha\\source\\repos\\gerenciadordeestoquelucasredesign\\frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\new estoque\\gerenciador-de-estoque\\frmadicionarestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmadicionarestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\luquinha\\source\\repos\\gerenciadordeestoquelucasredesign\\frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\new estoque\\gerenciador-de-estoque\\frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\luquinha\\source\\repos\\gerenciadordeestoquelucasredesign\\models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:models\\evento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\luquinha\\source\\repos\\gerenciadordeestoquelucasredesign\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\luquinha\\source\\repos\\gerenciadordeestoquelucasredesign\\models\\itemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:models\\itemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\new estoque\\gerenciador-de-estoque\\frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +30,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmRetorno.cs",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
+              "RelativeDocumentMoniker": "frmRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
+              "RelativeToolTip": "frmRetorno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T11:56:15.656Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmRetorno.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
+              "RelativeDocumentMoniker": "frmRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs [Design]",
+              "RelativeToolTip": "frmRetorno.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-26T11:56:11.222Z",
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -50,91 +64,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ItemEvento.cs",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\Models\\ItemEvento.cs",
-              "RelativeDocumentMoniker": "Models\\ItemEvento.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\Models\\ItemEvento.cs",
-              "RelativeToolTip": "Models\\ItemEvento.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T02:20:21.795Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Item.cs",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\Models\\Item.cs",
-              "RelativeDocumentMoniker": "Models\\Item.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\Models\\Item.cs",
-              "RelativeToolTip": "Models\\Item.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T02:20:15.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Evento.cs",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\Models\\Evento.cs",
-              "RelativeDocumentMoniker": "Models\\Evento.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\Models\\Evento.cs",
-              "RelativeToolTip": "Models\\Evento.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T02:20:13.505Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmEventos.cs",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmEventos.cs",
-              "RelativeDocumentMoniker": "frmEventos.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmEventos.cs",
-              "RelativeToolTip": "frmEventos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T21:15:09.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmEventos.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmEventos.cs",
-              "RelativeDocumentMoniker": "frmEventos.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmEventos.cs [Projeto]",
-              "RelativeToolTip": "frmEventos.cs [Projeto]",
+              "Title": "frmAdicionarEstoque.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarEstoque.cs",
+              "RelativeDocumentMoniker": "frmAdicionarEstoque.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarEstoque.cs [Design]",
+              "RelativeToolTip": "frmAdicionarEstoque.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T23:19:45.937Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2026-05-31T10:51:43.924Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmNovoItemEvento.cs",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmNovoItemEvento.cs",
-              "RelativeDocumentMoniker": "frmNovoItemEvento.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmNovoItemEvento.cs",
-              "RelativeToolTip": "frmNovoItemEvento.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAYwJEAAAAUAAAAAAAAAA==",
+              "Title": "frmAdicionarRetorno.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs",
+              "RelativeDocumentMoniker": "frmAdicionarRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs [Design]",
+              "RelativeToolTip": "frmAdicionarRetorno.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T02:30:32.477Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-26T12:05:25.11Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "frmNovoItemEvento.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmNovoItemEvento.cs",
-              "RelativeDocumentMoniker": "frmNovoItemEvento.cs",
-              "ToolTip": "C:\\Users\\Luquinha\\source\\repos\\GerenciadorDeEstoqueLucasReDesign\\frmNovoItemEvento.cs [Projeto]",
-              "RelativeToolTip": "frmNovoItemEvento.cs [Projeto]",
+              "DocumentIndex": 2,
+              "Title": "frmAdicionarRetorno.cs",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs",
+              "RelativeDocumentMoniker": "frmAdicionarRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs",
+              "RelativeToolTip": "frmAdicionarRetorno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T02:34:49.232Z"
+              "WhenOpened": "2026-05-26T12:11:37.32Z"
             }
           ]
         }

@@ -44,27 +44,58 @@
             lblEventoTitulo = new Label();
             tabControl1 = new TabControl();
             tabDadosEvento = new TabPage();
+            pnlDadosEvento = new Panel();
+            btnParaItens = new Button();
+            btnSalvarDadosEvento = new Button();
+            btnLimparDadosEvento = new Button();
+            grpDetalhesEvento = new GroupBox();
+            nudQtdPessoas = new NumericUpDown();
+            label9 = new Label();
+            txtContatoResponsavel = new TextBox();
+            dtpHoraFim = new DateTimePicker();
+            dtpHoraInicio = new DateTimePicker();
+            cmbStatusEvento = new ComboBox();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            grpInformaçõesPrincipais = new GroupBox();
+            txtResponsavelEvento = new TextBox();
+            txtLocalEvento = new TextBox();
+            dtpDataEvento = new DateTimePicker();
+            txtNomeEvento = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            lblSubitituloDadosEvento = new Label();
+            lblTituloDadosEvento = new Label();
             tabItensEvento = new TabPage();
             pnlBotoesItens = new Panel();
-            btnConfirmarSeparação = new Button();
+            btnConfirmarSeparacao = new Button();
             btnRemoverItem = new Button();
             btnEditarItem = new Button();
             btnNovoItem = new Button();
             dgvItensEvento = new DataGridView();
             btnLimparFiltro = new Button();
             btnPesquisar = new Button();
-            lblFiltroCategoria = new Label();
             grpFiltros = new GroupBox();
             lblFiltroStatus = new Label();
             cmbFiltroStatus = new ComboBox();
             cmbFiltroCategoria = new ComboBox();
             txtFiltroNome = new TextBox();
+            lblFiltroCategoria = new Label();
             lblFiltroNome = new Label();
             tabRetorno = new TabPage();
             tabHistorico = new TabPage();
             pnlCabecalho.SuspendLayout();
             pnlResumoEvento.SuspendLayout();
             tabControl1.SuspendLayout();
+            tabDadosEvento.SuspendLayout();
+            pnlDadosEvento.SuspendLayout();
+            grpDetalhesEvento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQtdPessoas).BeginInit();
+            grpInformaçõesPrincipais.SuspendLayout();
             tabItensEvento.SuspendLayout();
             pnlBotoesItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvItensEvento).BeginInit();
@@ -251,6 +282,8 @@
             // 
             // tabDadosEvento
             // 
+            tabDadosEvento.BackColor = Color.FromArgb(245, 247, 250);
+            tabDadosEvento.Controls.Add(pnlDadosEvento);
             tabDadosEvento.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tabDadosEvento.Location = new Point(4, 26);
             tabDadosEvento.Name = "tabDadosEvento";
@@ -258,7 +291,266 @@
             tabDadosEvento.Size = new Size(1342, 534);
             tabDadosEvento.TabIndex = 0;
             tabDadosEvento.Text = "Dados do Evento";
-            tabDadosEvento.UseVisualStyleBackColor = true;
+            // 
+            // pnlDadosEvento
+            // 
+            pnlDadosEvento.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlDadosEvento.BackColor = Color.White;
+            pnlDadosEvento.Controls.Add(btnParaItens);
+            pnlDadosEvento.Controls.Add(btnSalvarDadosEvento);
+            pnlDadosEvento.Controls.Add(btnLimparDadosEvento);
+            pnlDadosEvento.Controls.Add(grpDetalhesEvento);
+            pnlDadosEvento.Controls.Add(grpInformaçõesPrincipais);
+            pnlDadosEvento.Controls.Add(lblSubitituloDadosEvento);
+            pnlDadosEvento.Controls.Add(lblTituloDadosEvento);
+            pnlDadosEvento.Location = new Point(20, 20);
+            pnlDadosEvento.Name = "pnlDadosEvento";
+            pnlDadosEvento.Size = new Size(1290, 480);
+            pnlDadosEvento.TabIndex = 0;
+            // 
+            // btnParaItens
+            // 
+            btnParaItens.BackColor = Color.FromArgb(30, 100, 170);
+            btnParaItens.FlatStyle = FlatStyle.Flat;
+            btnParaItens.ForeColor = Color.White;
+            btnParaItens.Location = new Point(1113, 412);
+            btnParaItens.Name = "btnParaItens";
+            btnParaItens.Size = new Size(130, 36);
+            btnParaItens.TabIndex = 6;
+            btnParaItens.Text = "Ir para Itens";
+            btnParaItens.UseVisualStyleBackColor = false;
+            // 
+            // btnSalvarDadosEvento
+            // 
+            btnSalvarDadosEvento.BackColor = Color.FromArgb(20, 59, 102);
+            btnSalvarDadosEvento.FlatStyle = FlatStyle.Flat;
+            btnSalvarDadosEvento.ForeColor = Color.White;
+            btnSalvarDadosEvento.Location = new Point(781, 412);
+            btnSalvarDadosEvento.Name = "btnSalvarDadosEvento";
+            btnSalvarDadosEvento.Size = new Size(140, 36);
+            btnSalvarDadosEvento.TabIndex = 5;
+            btnSalvarDadosEvento.Text = "Salvar Dados";
+            btnSalvarDadosEvento.UseVisualStyleBackColor = false;
+            // 
+            // btnLimparDadosEvento
+            // 
+            btnLimparDadosEvento.AutoSize = true;
+            btnLimparDadosEvento.BackColor = Color.FromArgb(230, 230, 230);
+            btnLimparDadosEvento.FlatStyle = FlatStyle.Flat;
+            btnLimparDadosEvento.ForeColor = SystemColors.ControlText;
+            btnLimparDadosEvento.Location = new Point(960, 412);
+            btnLimparDadosEvento.Name = "btnLimparDadosEvento";
+            btnLimparDadosEvento.Size = new Size(110, 36);
+            btnLimparDadosEvento.TabIndex = 4;
+            btnLimparDadosEvento.Text = "Limpar";
+            btnLimparDadosEvento.UseVisualStyleBackColor = false;
+            // 
+            // grpDetalhesEvento
+            // 
+            grpDetalhesEvento.Controls.Add(nudQtdPessoas);
+            grpDetalhesEvento.Controls.Add(label9);
+            grpDetalhesEvento.Controls.Add(txtContatoResponsavel);
+            grpDetalhesEvento.Controls.Add(dtpHoraFim);
+            grpDetalhesEvento.Controls.Add(dtpHoraInicio);
+            grpDetalhesEvento.Controls.Add(cmbStatusEvento);
+            grpDetalhesEvento.Controls.Add(label8);
+            grpDetalhesEvento.Controls.Add(label7);
+            grpDetalhesEvento.Controls.Add(label6);
+            grpDetalhesEvento.Controls.Add(label5);
+            grpDetalhesEvento.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpDetalhesEvento.Location = new Point(650, 90);
+            grpDetalhesEvento.Name = "grpDetalhesEvento";
+            grpDetalhesEvento.Size = new Size(600, 260);
+            grpDetalhesEvento.TabIndex = 3;
+            grpDetalhesEvento.TabStop = false;
+            grpDetalhesEvento.Text = "Detalhes do evento";
+            // 
+            // nudQtdPessoas
+            // 
+            nudQtdPessoas.Location = new Point(292, 58);
+            nudQtdPessoas.Name = "nudQtdPessoas";
+            nudQtdPessoas.Size = new Size(211, 25);
+            nudQtdPessoas.TabIndex = 10;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(292, 37);
+            label9.Name = "label9";
+            label9.Size = new Size(211, 17);
+            label9.TabIndex = 9;
+            label9.Text = "Quantidade estimada de pessoas";
+            // 
+            // txtContatoResponsavel
+            // 
+            txtContatoResponsavel.Location = new Point(20, 216);
+            txtContatoResponsavel.Name = "txtContatoResponsavel";
+            txtContatoResponsavel.Size = new Size(200, 25);
+            txtContatoResponsavel.TabIndex = 8;
+            // 
+            // dtpHoraFim
+            // 
+            dtpHoraFim.Format = DateTimePickerFormat.Short;
+            dtpHoraFim.Location = new Point(20, 161);
+            dtpHoraFim.Name = "dtpHoraFim";
+            dtpHoraFim.Size = new Size(200, 25);
+            dtpHoraFim.TabIndex = 7;
+            // 
+            // dtpHoraInicio
+            // 
+            dtpHoraInicio.Format = DateTimePickerFormat.Short;
+            dtpHoraInicio.Location = new Point(20, 110);
+            dtpHoraInicio.Name = "dtpHoraInicio";
+            dtpHoraInicio.Size = new Size(200, 25);
+            dtpHoraInicio.TabIndex = 6;
+            // 
+            // cmbStatusEvento
+            // 
+            cmbStatusEvento.FormattingEnabled = true;
+            cmbStatusEvento.Location = new Point(20, 57);
+            cmbStatusEvento.Name = "cmbStatusEvento";
+            cmbStatusEvento.Size = new Size(200, 25);
+            cmbStatusEvento.TabIndex = 4;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(20, 196);
+            label8.Name = "label8";
+            label8.Size = new Size(57, 17);
+            label8.TabIndex = 3;
+            label8.Text = "Contato";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(20, 141);
+            label7.Name = "label7";
+            label7.Size = new Size(82, 17);
+            label7.TabIndex = 2;
+            label7.Text = "Hora de fim";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(20, 90);
+            label6.Name = "label6";
+            label6.Size = new Size(95, 17);
+            label6.TabIndex = 1;
+            label6.Text = "Hora de início";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(20, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(46, 17);
+            label5.TabIndex = 0;
+            label5.Text = "Status";
+            // 
+            // grpInformaçõesPrincipais
+            // 
+            grpInformaçõesPrincipais.Controls.Add(txtResponsavelEvento);
+            grpInformaçõesPrincipais.Controls.Add(txtLocalEvento);
+            grpInformaçõesPrincipais.Controls.Add(dtpDataEvento);
+            grpInformaçõesPrincipais.Controls.Add(txtNomeEvento);
+            grpInformaçõesPrincipais.Controls.Add(label4);
+            grpInformaçõesPrincipais.Controls.Add(label3);
+            grpInformaçõesPrincipais.Controls.Add(label2);
+            grpInformaçõesPrincipais.Controls.Add(label1);
+            grpInformaçõesPrincipais.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpInformaçõesPrincipais.Location = new Point(25, 90);
+            grpInformaçõesPrincipais.Name = "grpInformaçõesPrincipais";
+            grpInformaçõesPrincipais.Size = new Size(600, 260);
+            grpInformaçõesPrincipais.TabIndex = 2;
+            grpInformaçõesPrincipais.TabStop = false;
+            grpInformaçõesPrincipais.Text = "Informações principais";
+            // 
+            // txtResponsavelEvento
+            // 
+            txtResponsavelEvento.Location = new Point(22, 216);
+            txtResponsavelEvento.Name = "txtResponsavelEvento";
+            txtResponsavelEvento.Size = new Size(197, 25);
+            txtResponsavelEvento.TabIndex = 7;
+            // 
+            // txtLocalEvento
+            // 
+            txtLocalEvento.Location = new Point(25, 161);
+            txtLocalEvento.Name = "txtLocalEvento";
+            txtLocalEvento.Size = new Size(197, 25);
+            txtLocalEvento.TabIndex = 6;
+            // 
+            // dtpDataEvento
+            // 
+            dtpDataEvento.Format = DateTimePickerFormat.Short;
+            dtpDataEvento.Location = new Point(22, 110);
+            dtpDataEvento.Name = "dtpDataEvento";
+            dtpDataEvento.Size = new Size(200, 25);
+            dtpDataEvento.TabIndex = 5;
+            // 
+            // txtNomeEvento
+            // 
+            txtNomeEvento.Location = new Point(22, 57);
+            txtNomeEvento.Name = "txtNomeEvento";
+            txtNomeEvento.Size = new Size(200, 25);
+            txtNomeEvento.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(22, 196);
+            label4.Name = "label4";
+            label4.Size = new Size(172, 17);
+            label4.TabIndex = 3;
+            label4.Text = "Responsável / Proprietário";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(22, 37);
+            label3.Name = "label3";
+            label3.Size = new Size(111, 17);
+            label3.TabIndex = 2;
+            label3.Text = "Nome do evento";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 141);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 17);
+            label2.TabIndex = 1;
+            label2.Text = "Local";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(22, 90);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 17);
+            label1.TabIndex = 0;
+            label1.Text = "Data do evento";
+            // 
+            // lblSubitituloDadosEvento
+            // 
+            lblSubitituloDadosEvento.AutoSize = true;
+            lblSubitituloDadosEvento.ForeColor = SystemColors.WindowFrame;
+            lblSubitituloDadosEvento.Location = new Point(27, 55);
+            lblSubitituloDadosEvento.Name = "lblSubitituloDadosEvento";
+            lblSubitituloDadosEvento.Size = new Size(421, 17);
+            lblSubitituloDadosEvento.TabIndex = 1;
+            lblSubitituloDadosEvento.Text = "Preencha os dados principais antes de separar os itens para o evento.";
+            // 
+            // lblTituloDadosEvento
+            // 
+            lblTituloDadosEvento.AutoSize = true;
+            lblTituloDadosEvento.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTituloDadosEvento.ForeColor = Color.FromArgb(20, 59, 102);
+            lblTituloDadosEvento.Location = new Point(25, 20);
+            lblTituloDadosEvento.Name = "lblTituloDadosEvento";
+            lblTituloDadosEvento.Size = new Size(240, 30);
+            lblTituloDadosEvento.TabIndex = 0;
+            lblTituloDadosEvento.Text = "Informações do Evento";
             // 
             // tabItensEvento
             // 
@@ -266,7 +558,6 @@
             tabItensEvento.Controls.Add(dgvItensEvento);
             tabItensEvento.Controls.Add(btnLimparFiltro);
             tabItensEvento.Controls.Add(btnPesquisar);
-            tabItensEvento.Controls.Add(lblFiltroCategoria);
             tabItensEvento.Controls.Add(grpFiltros);
             tabItensEvento.Location = new Point(4, 26);
             tabItensEvento.Name = "tabItensEvento";
@@ -279,7 +570,7 @@
             // pnlBotoesItens
             // 
             pnlBotoesItens.BackColor = Color.White;
-            pnlBotoesItens.Controls.Add(btnConfirmarSeparação);
+            pnlBotoesItens.Controls.Add(btnConfirmarSeparacao);
             pnlBotoesItens.Controls.Add(btnRemoverItem);
             pnlBotoesItens.Controls.Add(btnEditarItem);
             pnlBotoesItens.Controls.Add(btnNovoItem);
@@ -289,18 +580,19 @@
             pnlBotoesItens.Size = new Size(1336, 80);
             pnlBotoesItens.TabIndex = 6;
             // 
-            // btnConfirmarSeparação
+            // btnConfirmarSeparacao
             // 
-            btnConfirmarSeparação.BackColor = Color.FromArgb(0, 140, 70);
-            btnConfirmarSeparação.FlatStyle = FlatStyle.Flat;
-            btnConfirmarSeparação.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfirmarSeparação.ForeColor = Color.White;
-            btnConfirmarSeparação.Location = new Point(650, 20);
-            btnConfirmarSeparação.Name = "btnConfirmarSeparação";
-            btnConfirmarSeparação.Size = new Size(190, 38);
-            btnConfirmarSeparação.TabIndex = 7;
-            btnConfirmarSeparação.Text = "Confirmar Separação";
-            btnConfirmarSeparação.UseVisualStyleBackColor = false;
+            btnConfirmarSeparacao.BackColor = Color.FromArgb(0, 140, 70);
+            btnConfirmarSeparacao.FlatStyle = FlatStyle.Flat;
+            btnConfirmarSeparacao.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmarSeparacao.ForeColor = Color.White;
+            btnConfirmarSeparacao.Location = new Point(650, 20);
+            btnConfirmarSeparacao.Name = "btnConfirmarSeparacao";
+            btnConfirmarSeparacao.Size = new Size(190, 38);
+            btnConfirmarSeparacao.TabIndex = 7;
+            btnConfirmarSeparacao.Text = "Confirmar Separação";
+            btnConfirmarSeparacao.UseVisualStyleBackColor = false;
+            btnConfirmarSeparacao.Click += btnConfirmarSeparacao_Click;
             // 
             // btnRemoverItem
             // 
@@ -387,15 +679,6 @@
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = false;
             // 
-            // lblFiltroCategoria
-            // 
-            lblFiltroCategoria.AutoSize = true;
-            lblFiltroCategoria.Location = new Point(350, 30);
-            lblFiltroCategoria.Name = "lblFiltroCategoria";
-            lblFiltroCategoria.Size = new Size(65, 17);
-            lblFiltroCategoria.TabIndex = 2;
-            lblFiltroCategoria.Text = "Categoria";
-            // 
             // grpFiltros
             // 
             grpFiltros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -403,6 +686,7 @@
             grpFiltros.Controls.Add(cmbFiltroStatus);
             grpFiltros.Controls.Add(cmbFiltroCategoria);
             grpFiltros.Controls.Add(txtFiltroNome);
+            grpFiltros.Controls.Add(lblFiltroCategoria);
             grpFiltros.Controls.Add(lblFiltroNome);
             grpFiltros.Location = new Point(15, 15);
             grpFiltros.Name = "grpFiltros";
@@ -414,7 +698,7 @@
             // lblFiltroStatus
             // 
             lblFiltroStatus.AutoSize = true;
-            lblFiltroStatus.Location = new Point(600, 15);
+            lblFiltroStatus.Location = new Point(601, 30);
             lblFiltroStatus.Name = "lblFiltroStatus";
             lblFiltroStatus.Size = new Size(46, 17);
             lblFiltroStatus.TabIndex = 3;
@@ -445,6 +729,15 @@
             txtFiltroNome.Name = "txtFiltroNome";
             txtFiltroNome.Size = new Size(300, 25);
             txtFiltroNome.TabIndex = 1;
+            // 
+            // lblFiltroCategoria
+            // 
+            lblFiltroCategoria.AutoSize = true;
+            lblFiltroCategoria.Location = new Point(350, 30);
+            lblFiltroCategoria.Name = "lblFiltroCategoria";
+            lblFiltroCategoria.Size = new Size(65, 17);
+            lblFiltroCategoria.TabIndex = 2;
+            lblFiltroCategoria.Text = "Categoria";
             // 
             // lblFiltroNome
             // 
@@ -486,14 +779,20 @@
             Name = "frmEventos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gerenciamento de Evento";
-            Load += frmEventos_Load;
             pnlCabecalho.ResumeLayout(false);
             pnlCabecalho.PerformLayout();
             pnlResumoEvento.ResumeLayout(false);
             pnlResumoEvento.PerformLayout();
             tabControl1.ResumeLayout(false);
+            tabDadosEvento.ResumeLayout(false);
+            pnlDadosEvento.ResumeLayout(false);
+            pnlDadosEvento.PerformLayout();
+            grpDetalhesEvento.ResumeLayout(false);
+            grpDetalhesEvento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQtdPessoas).EndInit();
+            grpInformaçõesPrincipais.ResumeLayout(false);
+            grpInformaçõesPrincipais.PerformLayout();
             tabItensEvento.ResumeLayout(false);
-            tabItensEvento.PerformLayout();
             pnlBotoesItens.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvItensEvento).EndInit();
             grpFiltros.ResumeLayout(false);
@@ -535,6 +834,32 @@
         private Button btnEditarItem;
         private Button btnNovoItem;
         private Button btnRetorno;
-        private Button btnConfirmarSeparação;
+        private Button btnConfirmarSeparacao;
+        private Panel pnlDadosEvento;
+        private Label lblSubitituloDadosEvento;
+        private Label lblTituloDadosEvento;
+        private GroupBox grpInformaçõesPrincipais;
+        private TextBox txtNomeEvento;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private GroupBox grpDetalhesEvento;
+        private ComboBox cmbStatusEvento;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private TextBox txtResponsavelEvento;
+        private TextBox txtLocalEvento;
+        private DateTimePicker dtpDataEvento;
+        private TextBox txtContatoResponsavel;
+        private DateTimePicker dtpHoraFim;
+        private DateTimePicker dtpHoraInicio;
+        private NumericUpDown nudQtdPessoas;
+        private Label label9;
+        private Button btnSalvarDadosEvento;
+        private Button btnLimparDadosEvento;
+        private Button btnParaItens;
     }
 }

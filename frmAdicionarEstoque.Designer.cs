@@ -31,37 +31,37 @@
             pnlCabecalho = new Panel();
             lblTitulo = new Label();
             grpDadosItem = new GroupBox();
-            lblNome = new Label();
-            txtNome = new TextBox();
-            lblCategoria = new Label();
-            cmbCategoria = new ComboBox();
-            cmbUnidade = new ComboBox();
-            lblUnidade = new Label();
-            nudQuantidadeAtual = new NumericUpDown();
-            lblQuantidadeAtual = new Label();
+            txtFornecedor = new TextBox();
+            txtObservacao = new TextBox();
+            lblObservacao = new Label();
+            lblFornecedor = new Label();
+            dtpValidade = new DateTimePicker();
+            lblValidade = new Label();
             lblQuantidadeMinima = new Label();
             nudQuantidadeMinima = new NumericUpDown();
-            lblValidade = new Label();
-            dtpValidade = new DateTimePicker();
-            lblFornecedor = new Label();
-            lblObservacao = new Label();
-            txtObservacao = new TextBox();
-            txtFornecedor = new TextBox();
+            lblQuantidadeAtual = new Label();
+            nudQuantidadeAtual = new NumericUpDown();
+            cmbUnidade = new ComboBox();
+            lblUnidade = new Label();
+            cmbCategoria = new ComboBox();
+            lblCategoria = new Label();
+            txtNome = new TextBox();
+            lblNome = new Label();
             grpInformacoes = new GroupBox();
-            lblDataCadastro = new Label();
-            lblDataCadastroValor = new Label();
-            lblUltimaAtualizacao = new Label();
-            lblUltimaAtualizacaoValor = new Label();
-            lblStatusItem = new Label();
-            lblStatusItemValor = new Label();
             chkItemAtivo = new CheckBox();
+            lblStatusItemValor = new Label();
+            lblStatusItem = new Label();
+            lblUltimaAtualizacaoValor = new Label();
+            lblUltimaAtualizacao = new Label();
+            lblDataCadastroValor = new Label();
+            lblDataCadastro = new Label();
             btnSalvar = new Button();
             btnCancelar = new Button();
             btnLimpar = new Button();
             pnlCabecalho.SuspendLayout();
             grpDadosItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudQuantidadeAtual).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantidadeMinima).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidadeAtual).BeginInit();
             grpInformacoes.SuspendLayout();
             SuspendLayout();
             // 
@@ -111,75 +111,55 @@
             grpDadosItem.TabStop = false;
             grpDadosItem.Text = "Dados do Item";
             // 
-            // lblNome
+            // txtFornecedor
             // 
-            lblNome.AutoSize = true;
-            lblNome.Location = new Point(20, 30);
-            lblNome.Name = "lblNome";
-            lblNome.Size = new Size(43, 15);
-            lblNome.TabIndex = 0;
-            lblNome.Text = "Nome:";
+            txtFornecedor.Location = new Point(370, 108);
+            txtFornecedor.Name = "txtFornecedor";
+            txtFornecedor.Size = new Size(130, 23);
+            txtFornecedor.TabIndex = 15;
             // 
-            // txtNome
+            // txtObservacao
             // 
-            txtNome.Location = new Point(20, 50);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(240, 23);
-            txtNome.TabIndex = 1;
+            txtObservacao.Location = new Point(290, 170);
+            txtObservacao.Multiline = true;
+            txtObservacao.Name = "txtObservacao";
+            txtObservacao.Size = new Size(210, 50);
+            txtObservacao.TabIndex = 14;
             // 
-            // lblCategoria
+            // lblObservacao
             // 
-            lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(20, 85);
-            lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(61, 15);
-            lblCategoria.TabIndex = 2;
-            lblCategoria.Text = "Categoria:";
+            lblObservacao.AutoSize = true;
+            lblObservacao.Location = new Point(290, 150);
+            lblObservacao.Name = "lblObservacao";
+            lblObservacao.Size = new Size(72, 15);
+            lblObservacao.TabIndex = 13;
+            lblObservacao.Text = "Observação:";
             // 
-            // cmbCategoria
+            // lblFornecedor
             // 
-            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(20, 105);
-            cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(240, 23);
-            cmbCategoria.TabIndex = 3;
+            lblFornecedor.AutoSize = true;
+            lblFornecedor.Location = new Point(290, 110);
+            lblFornecedor.Name = "lblFornecedor";
+            lblFornecedor.Size = new Size(70, 15);
+            lblFornecedor.TabIndex = 12;
+            lblFornecedor.Text = "Fornecedor:";
             // 
-            // cmbUnidade
+            // dtpValidade
             // 
-            cmbUnidade.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbUnidade.FormattingEnabled = true;
-            cmbUnidade.Location = new Point(20, 160);
-            cmbUnidade.Name = "cmbUnidade";
-            cmbUnidade.Size = new Size(240, 23);
-            cmbUnidade.TabIndex = 5;
+            dtpValidade.Format = DateTimePickerFormat.Short;
+            dtpValidade.Location = new Point(360, 68);
+            dtpValidade.Name = "dtpValidade";
+            dtpValidade.Size = new Size(140, 23);
+            dtpValidade.TabIndex = 11;
             // 
-            // lblUnidade
+            // lblValidade
             // 
-            lblUnidade.AutoSize = true;
-            lblUnidade.Location = new Point(20, 140);
-            lblUnidade.Name = "lblUnidade";
-            lblUnidade.Size = new Size(54, 15);
-            lblUnidade.TabIndex = 4;
-            lblUnidade.Text = "Unidade:";
-            // 
-            // nudQuantidadeAtual
-            // 
-            nudQuantidadeAtual.DecimalPlaces = 2;
-            nudQuantidadeAtual.Location = new Point(140, 193);
-            nudQuantidadeAtual.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            nudQuantidadeAtual.Name = "nudQuantidadeAtual";
-            nudQuantidadeAtual.Size = new Size(120, 23);
-            nudQuantidadeAtual.TabIndex = 6;
-            // 
-            // lblQuantidadeAtual
-            // 
-            lblQuantidadeAtual.AutoSize = true;
-            lblQuantidadeAtual.Location = new Point(20, 195);
-            lblQuantidadeAtual.Name = "lblQuantidadeAtual";
-            lblQuantidadeAtual.Size = new Size(103, 15);
-            lblQuantidadeAtual.TabIndex = 7;
-            lblQuantidadeAtual.Text = "Quantidade Atual:";
+            lblValidade.AutoSize = true;
+            lblValidade.Location = new Point(290, 70);
+            lblValidade.Name = "lblValidade";
+            lblValidade.Size = new Size(54, 15);
+            lblValidade.TabIndex = 10;
+            lblValidade.Text = "Validade:";
             // 
             // lblQuantidadeMinima
             // 
@@ -199,55 +179,75 @@
             nudQuantidadeMinima.Size = new Size(90, 23);
             nudQuantidadeMinima.TabIndex = 8;
             // 
-            // lblValidade
+            // lblQuantidadeAtual
             // 
-            lblValidade.AutoSize = true;
-            lblValidade.Location = new Point(290, 70);
-            lblValidade.Name = "lblValidade";
-            lblValidade.Size = new Size(54, 15);
-            lblValidade.TabIndex = 10;
-            lblValidade.Text = "Validade:";
+            lblQuantidadeAtual.AutoSize = true;
+            lblQuantidadeAtual.Location = new Point(20, 195);
+            lblQuantidadeAtual.Name = "lblQuantidadeAtual";
+            lblQuantidadeAtual.Size = new Size(103, 15);
+            lblQuantidadeAtual.TabIndex = 7;
+            lblQuantidadeAtual.Text = "Quantidade Atual:";
             // 
-            // dtpValidade
+            // nudQuantidadeAtual
             // 
-            dtpValidade.Format = DateTimePickerFormat.Short;
-            dtpValidade.Location = new Point(360, 68);
-            dtpValidade.Name = "dtpValidade";
-            dtpValidade.Size = new Size(140, 23);
-            dtpValidade.TabIndex = 11;
+            nudQuantidadeAtual.DecimalPlaces = 2;
+            nudQuantidadeAtual.Location = new Point(140, 193);
+            nudQuantidadeAtual.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            nudQuantidadeAtual.Name = "nudQuantidadeAtual";
+            nudQuantidadeAtual.Size = new Size(120, 23);
+            nudQuantidadeAtual.TabIndex = 6;
             // 
-            // lblFornecedor
+            // cmbUnidade
             // 
-            lblFornecedor.AutoSize = true;
-            lblFornecedor.Location = new Point(290, 110);
-            lblFornecedor.Name = "lblFornecedor";
-            lblFornecedor.Size = new Size(70, 15);
-            lblFornecedor.TabIndex = 12;
-            lblFornecedor.Text = "Fornecedor:";
+            cmbUnidade.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbUnidade.FormattingEnabled = true;
+            cmbUnidade.Location = new Point(20, 160);
+            cmbUnidade.Name = "cmbUnidade";
+            cmbUnidade.Size = new Size(240, 23);
+            cmbUnidade.TabIndex = 5;
             // 
-            // lblObservacao
+            // lblUnidade
             // 
-            lblObservacao.AutoSize = true;
-            lblObservacao.Location = new Point(290, 150);
-            lblObservacao.Name = "lblObservacao";
-            lblObservacao.Size = new Size(72, 15);
-            lblObservacao.TabIndex = 13;
-            lblObservacao.Text = "Observação:";
+            lblUnidade.AutoSize = true;
+            lblUnidade.Location = new Point(20, 140);
+            lblUnidade.Name = "lblUnidade";
+            lblUnidade.Size = new Size(54, 15);
+            lblUnidade.TabIndex = 4;
+            lblUnidade.Text = "Unidade:";
             // 
-            // txtObservacao
+            // cmbCategoria
             // 
-            txtObservacao.Location = new Point(290, 170);
-            txtObservacao.Multiline = true;
-            txtObservacao.Name = "txtObservacao";
-            txtObservacao.Size = new Size(210, 50);
-            txtObservacao.TabIndex = 14;
+            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategoria.FormattingEnabled = true;
+            cmbCategoria.Location = new Point(20, 105);
+            cmbCategoria.Name = "cmbCategoria";
+            cmbCategoria.Size = new Size(240, 23);
+            cmbCategoria.TabIndex = 3;
             // 
-            // txtFornecedor
+            // lblCategoria
             // 
-            txtFornecedor.Location = new Point(370, 108);
-            txtFornecedor.Name = "txtFornecedor";
-            txtFornecedor.Size = new Size(130, 23);
-            txtFornecedor.TabIndex = 15;
+            lblCategoria.AutoSize = true;
+            lblCategoria.Location = new Point(20, 85);
+            lblCategoria.Name = "lblCategoria";
+            lblCategoria.Size = new Size(61, 15);
+            lblCategoria.TabIndex = 2;
+            lblCategoria.Text = "Categoria:";
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(20, 50);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(240, 23);
+            txtNome.TabIndex = 1;
+            // 
+            // lblNome
+            // 
+            lblNome.AutoSize = true;
+            lblNome.Location = new Point(20, 30);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(43, 15);
+            lblNome.TabIndex = 0;
+            lblNome.Text = "Nome:";
             // 
             // grpInformacoes
             // 
@@ -265,52 +265,17 @@
             grpInformacoes.TabStop = false;
             grpInformacoes.Text = "Informações";
             // 
-            // lblDataCadastro
+            // chkItemAtivo
             // 
-            lblDataCadastro.AutoSize = true;
-            lblDataCadastro.Location = new Point(15, 35);
-            lblDataCadastro.Name = "lblDataCadastro";
-            lblDataCadastro.Size = new Size(101, 15);
-            lblDataCadastro.TabIndex = 0;
-            lblDataCadastro.Text = "Data do Cadastro:";
-            // 
-            // lblDataCadastroValor
-            // 
-            lblDataCadastroValor.AutoSize = true;
-            lblDataCadastroValor.ForeColor = Color.FromArgb(80, 80, 80);
-            lblDataCadastroValor.Location = new Point(15, 60);
-            lblDataCadastroValor.Name = "lblDataCadastroValor";
-            lblDataCadastroValor.Size = new Size(12, 15);
-            lblDataCadastroValor.TabIndex = 1;
-            lblDataCadastroValor.Text = "-";
-            // 
-            // lblUltimaAtualizacao
-            // 
-            lblUltimaAtualizacao.AutoSize = true;
-            lblUltimaAtualizacao.Location = new Point(15, 95);
-            lblUltimaAtualizacao.Name = "lblUltimaAtualizacao";
-            lblUltimaAtualizacao.Size = new Size(109, 15);
-            lblUltimaAtualizacao.TabIndex = 2;
-            lblUltimaAtualizacao.Text = "Última Atualização:";
-            // 
-            // lblUltimaAtualizacaoValor
-            // 
-            lblUltimaAtualizacaoValor.AutoSize = true;
-            lblUltimaAtualizacaoValor.ForeColor = Color.FromArgb(80, 80, 80);
-            lblUltimaAtualizacaoValor.Location = new Point(15, 120);
-            lblUltimaAtualizacaoValor.Name = "lblUltimaAtualizacaoValor";
-            lblUltimaAtualizacaoValor.Size = new Size(12, 15);
-            lblUltimaAtualizacaoValor.TabIndex = 3;
-            lblUltimaAtualizacaoValor.Text = "-";
-            // 
-            // lblStatusItem
-            // 
-            lblStatusItem.AutoSize = true;
-            lblStatusItem.Location = new Point(15, 155);
-            lblStatusItem.Name = "lblStatusItem";
-            lblStatusItem.Size = new Size(42, 15);
-            lblStatusItem.TabIndex = 4;
-            lblStatusItem.Text = "Status:";
+            chkItemAtivo.AutoSize = true;
+            chkItemAtivo.Checked = true;
+            chkItemAtivo.CheckState = CheckState.Checked;
+            chkItemAtivo.Location = new Point(15, 205);
+            chkItemAtivo.Name = "chkItemAtivo";
+            chkItemAtivo.Size = new Size(81, 19);
+            chkItemAtivo.TabIndex = 6;
+            chkItemAtivo.Text = "Item Ativo";
+            chkItemAtivo.UseVisualStyleBackColor = true;
             // 
             // lblStatusItemValor
             // 
@@ -323,17 +288,52 @@
             lblStatusItemValor.TabIndex = 5;
             lblStatusItemValor.Text = "Normal";
             // 
-            // chkItemAtivo
+            // lblStatusItem
             // 
-            chkItemAtivo.AutoSize = true;
-            chkItemAtivo.Checked = true;
-            chkItemAtivo.CheckState = CheckState.Checked;
-            chkItemAtivo.Location = new Point(15, 205);
-            chkItemAtivo.Name = "chkItemAtivo";
-            chkItemAtivo.Size = new Size(81, 19);
-            chkItemAtivo.TabIndex = 6;
-            chkItemAtivo.Text = "Item Ativo";
-            chkItemAtivo.UseVisualStyleBackColor = true;
+            lblStatusItem.AutoSize = true;
+            lblStatusItem.Location = new Point(15, 155);
+            lblStatusItem.Name = "lblStatusItem";
+            lblStatusItem.Size = new Size(42, 15);
+            lblStatusItem.TabIndex = 4;
+            lblStatusItem.Text = "Status:";
+            // 
+            // lblUltimaAtualizacaoValor
+            // 
+            lblUltimaAtualizacaoValor.AutoSize = true;
+            lblUltimaAtualizacaoValor.ForeColor = Color.FromArgb(80, 80, 80);
+            lblUltimaAtualizacaoValor.Location = new Point(15, 120);
+            lblUltimaAtualizacaoValor.Name = "lblUltimaAtualizacaoValor";
+            lblUltimaAtualizacaoValor.Size = new Size(12, 15);
+            lblUltimaAtualizacaoValor.TabIndex = 3;
+            lblUltimaAtualizacaoValor.Text = "-";
+            // 
+            // lblUltimaAtualizacao
+            // 
+            lblUltimaAtualizacao.AutoSize = true;
+            lblUltimaAtualizacao.Location = new Point(15, 95);
+            lblUltimaAtualizacao.Name = "lblUltimaAtualizacao";
+            lblUltimaAtualizacao.Size = new Size(109, 15);
+            lblUltimaAtualizacao.TabIndex = 2;
+            lblUltimaAtualizacao.Text = "Última Atualização:";
+            // 
+            // lblDataCadastroValor
+            // 
+            lblDataCadastroValor.AutoSize = true;
+            lblDataCadastroValor.ForeColor = Color.FromArgb(80, 80, 80);
+            lblDataCadastroValor.Location = new Point(15, 60);
+            lblDataCadastroValor.Name = "lblDataCadastroValor";
+            lblDataCadastroValor.Size = new Size(12, 15);
+            lblDataCadastroValor.TabIndex = 1;
+            lblDataCadastroValor.Text = "-";
+            // 
+            // lblDataCadastro
+            // 
+            lblDataCadastro.AutoSize = true;
+            lblDataCadastro.Location = new Point(15, 35);
+            lblDataCadastro.Name = "lblDataCadastro";
+            lblDataCadastro.Size = new Size(101, 15);
+            lblDataCadastro.TabIndex = 0;
+            lblDataCadastro.Text = "Data do Cadastro:";
             // 
             // btnSalvar
             // 
@@ -347,6 +347,7 @@
             btnSalvar.TabIndex = 3;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
@@ -392,8 +393,8 @@
             pnlCabecalho.PerformLayout();
             grpDadosItem.ResumeLayout(false);
             grpDadosItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudQuantidadeAtual).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantidadeMinima).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidadeAtual).EndInit();
             grpInformacoes.ResumeLayout(false);
             grpInformacoes.PerformLayout();
             ResumeLayout(false);

@@ -1,51 +1,55 @@
-﻿using System;
+﻿using Drink.Dados;
+using Drink.Models;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Drink.Models;
 
 namespace Drink
 {
     public partial class frmNovoItemEvento : Form
     {
         private List<Item> _itensEstoque;
-        public ItemEvento? ItemCriado { get; private set; } //pega o item criado para poder usar ele na tela de eventos
+
+        public ItemEvento? ItemCriado { get; private set; }
 
         public frmNovoItemEvento(List<Item> itensEstoque)
         {
             InitializeComponent();
-
             _itensEstoque = itensEstoque;
         }
 
         private void frmNovoItemEvento_Load(object sender, EventArgs e)
         {
-            rdbItemEstoque.Checked = true;
-
             CarregarItensDoEstoque();
+
+            if (_itensEstoque.Count > 0)
+            {
+                rdbItemEstoque.Checked = true;
+            }
+            else
+            {
+                rdbItemEstoque.Enabled = false;
+                rdbItemExterno.Checked = true;
+            }
 
             AtualizarTipoItem();
         }
-
-        private void CarregarItensDoEstoque()  //método pra carregar os itens do estoque no combo box
+        private void CarregarItensDoEstoque()
         {
-            cmbItensEstoque.DataSource = null; //limpa o combo box, pra evitar erros
-
-            cmbItensEstoque.DataSource = _itensEstoque; //coloca a lista de itens do estoque feita logo acima dentro do combo box
-
-            cmbItensEstoque.DisplayMember = "Nome"; //mostra o nome do item no combo box
-
-            cmbItensEstoque.ValueMember = "Id"; //define que o valor interno do item é o id, ele mostra o nome, mas por trás o sistema sabe o id do item.
+            cmbItensEstoque.DataSource = null;
+            cmbItensEstoque.DataSource = _itensEstoque;
+            cmbItensEstoque.DisplayMember = "Nome";
+            cmbItensEstoque.ValueMember = "Id";
         }
 
         private void AtualizarTipoItem()
         {
-            bool itemDoEstoque = rdbItemEstoque.Checked; //verifica se a opção item do estoque no radiobutton esta marcada (se estiver marcada = true, se não estiver marcada = false)
 
-            cmbItensEstoque.Enabled = itemDoEstoque; //ativa o combo box dos itens do estoque se for um item do estoque
-
-            txtNomeExterno.Enabled = !itemDoEstoque; //ativa o txtbox do nome externo se o bool do itemdoestoque for false
-            txtCategoriaExterna.Enabled = !itemDoEstoque;//mesma coisa do acima só que com categoria
-            txtUnidadeExterna.Enabled = !itemDoEstoque; //mesma coisa do de cima só que com unidade
+            bool itemDoEstoque = rdbItemEstoque.Checked;
+            cmbItensEstoque.Enabled = itemDoEstoque;
+            txtNomeExterno.Enabled = !itemDoEstoque;
+            txtCategoriaExterna.Enabled = !itemDoEstoque;
+            txtUnidadeExterna.Enabled = !itemDoEstoque;
         }
 
         private void rdbItemEstoque_CheckedChanged(object sender, EventArgs e)
@@ -80,28 +84,29 @@ namespace Drink
                 return;
             }
 
-            DialogResult = DialogResult.OK; //define que o resultado do dialog é OK, isso é usado para saber se o usuário realmente criou um item ou se ele fechou a janela sem criar um item
+            DialogResult = DialogResult.OK;
 
             Close();
         }
 
-        private void AdicionarItemDoEstoque() //método usado quando o usuário marca a opção Item do estoque
+        private void AdicionarItemDoEstoque()
         {
-            Item? itemSelecionado = cmbItensEstoque.SelectedItem as Item; //pega o item selecionado no combo box e converte ele para o tipo Item
 
-            if (itemSelecionado == null)  //verifica se algum item foi selecionado no combo box
+            Item? itemSelecionado = cmbItensEstoque.SelectedItem as Item;
+
+            if (itemSelecionado == null)
             {
                 MessageBox.Show("Selecione um item do estoque.");
                 return;
             }
 
-            if (nudQuantidade.Value > itemSelecionado.QuantidadeAtual) //verifica se a quantidade informada é maior que a quantidade disponivel no estoque
+            if (nudQuantidade.Value > itemSelecionado.QuantidadeAtual)
             {
                 MessageBox.Show("A quantidade informada é maior que a quantidade disponível no estoque.");
                 return;
             }
 
-            ItemCriado = new ItemEvento //cria um novo item evento com as informações do item selecionado e a quantidade informada
+            ItemCriado = new ItemEvento
             {
                 Item = itemSelecionado,
                 QuantidadeSeparada = nudQuantidade.Value,
@@ -110,26 +115,63 @@ namespace Drink
                 VeioDoEstoque = true
             };
         }
-
-        private void AdicionarItemExterno() //metodo usado quando a opcão item externo é marcada
+        private int GerarIdItemExterno()
         {
-            if (string.IsNullOrWhiteSpace(txtNomeExterno.Text)) //verifica se nome do item externo foi colocado no txtbox
+            Random random = new Random();
+            int idGerado;
+            bool idJaExiste;
+
+            do
+            {
+                idGerado = random.Next(1000, 10000);
+                idJaExiste = false;
+
+                foreach (Item item in DadosTemporarios.Itens)
+                {
+                    if (item.Id == idGerado)
+                    {
+                        idJaExiste = true;
+                        break;
+                    }
+                }
+
+            } while (idJaExiste);
+
+            return idGerado;
+        }
+
+        private void AdicionarItemExterno()
+        {
+            if (string.IsNullOrWhiteSpace(txtNomeExterno.Text))
             {
                 MessageBox.Show("Informe o nome do item externo.");
                 return;
             }
 
-            Item itemExterno = new Item //cria um novo item com as informações informadas nos txtbox
+            if (string.IsNullOrWhiteSpace(txtCategoriaExterna.Text))
             {
-                Id = 0,
-                Nome = txtNomeExterno.Text,
-                Categoria = txtCategoriaExterna.Text,
-                Unidade = txtUnidadeExterna.Text,
+                MessageBox.Show("Informe a categoria do item externo.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtUnidadeExterna.Text))
+            {
+                MessageBox.Show("Informe a unidade do item externo.");
+                return;
+            }
+
+            Item itemExterno = new Item
+            {
+                Id = GerarIdItemExterno(),
+                Nome = txtNomeExterno.Text.Trim(),
+                Categoria = txtCategoriaExterna.Text.Trim(),
+                Unidade = txtUnidadeExterna.Text.Trim(),
                 QuantidadeAtual = 0,
-                QuantidadeMinima = 0
+                QuantidadeMinima = 0,
+                Ativo = true
             };
 
-            ItemCriado = new ItemEvento //cria um novo item evento com as informaçoes do item externo criado e a quantidade informada
+            ItemCriado = new ItemEvento
             {
                 Item = itemExterno,
                 QuantidadeSeparada = nudQuantidade.Value,
@@ -141,8 +183,8 @@ namespace Drink
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel; //define que o resultado do dialog é Cancel, isso é usado para saber que o usuário cancelou a criação do item, ou seja, ele não criou um item e fechou a janela
 
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }
