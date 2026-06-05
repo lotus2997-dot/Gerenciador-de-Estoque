@@ -68,6 +68,7 @@
             btnLimparRetorno.TabIndex = 28;
             btnLimparRetorno.Text = "Limpar";
             btnLimparRetorno.UseVisualStyleBackColor = false;
+            btnLimparRetorno.Click += btnLimparRetorno_Click;
             // 
             // btnCancelarRetorno
             // 
@@ -79,6 +80,7 @@
             btnCancelarRetorno.TabIndex = 27;
             btnCancelarRetorno.Text = "Cancelar";
             btnCancelarRetorno.UseVisualStyleBackColor = false;
+            btnCancelarRetorno.Click += btnCancelarRetorno_Click;
             // 
             // btnAdicionarRetorno
             // 

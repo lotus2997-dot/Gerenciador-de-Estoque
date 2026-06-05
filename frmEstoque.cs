@@ -20,7 +20,7 @@ namespace Drink
         }
         public void AtualizarDados()
         {
-            AtualizarTabelaEstoque(DadosTemporarios.Itens);
+            AtualizarTabelaEstoque(DadosTemporarios.Itens.Where(i => i.Ativo));
             AtualizarResumo();
             ColorirStatus();
         }

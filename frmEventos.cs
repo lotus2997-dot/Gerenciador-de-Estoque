@@ -18,18 +18,25 @@ namespace Drink
             CarregarCombosTela();
             CriarEventoAtual();
             AtualizarTabelaItens();
+            AtualizarResumoEvento();
         }
 
         private void CriarEventoAtual()
         {
-            eventoAtual = new Evento();
-            eventoAtual.Id = GerarProximoIdEvento();
-            eventoAtual.Nome = "Evento em edição";
-            eventoAtual.Data = DateTime.Today;
-            eventoAtual.Status = "Em montagem";
+            eventoAtual = new Evento
+            {
+                Id = GerarProximoIdEvento(),
+                Nome = "Evento em edição",
+                Data = DateTime.Today,
+                Local = "",
+                Responsavel = "",
+                ContatoResponsavel = "",
+                QuantidadePessoas = 0,
+                Status = "Em montagem",
+                Itens = new List<ItemEvento>()
+            };
 
-            if (eventoAtual.Itens == null)
-                eventoAtual.Itens = new List<ItemEvento>();
+            AtualizarResumoEvento();
         }
 
         private int GerarProximoIdEvento()
@@ -48,6 +55,7 @@ namespace Drink
                 .ToList();
         }
 
+
         private int GerarProximoIdItemEvento()
         {
             if (eventoAtual.Itens.Count == 0) return 1;
@@ -59,35 +67,61 @@ namespace Drink
 
             cmbFiltroCategoria.Items.Clear();
             cmbFiltroCategoria.Items.Add("Todas");
-            foreach (var categoria in CatalogosSistema.Categorias)
-                cmbFiltroCategoria.Items.Add(categoria);
+            foreach (var cat in CatalogosSistema.Categorias)
+                cmbFiltroCategoria.Items.Add(cat);
             cmbFiltroCategoria.SelectedIndex = 0;
 
             cmbFiltroStatus.Items.Clear();
             cmbFiltroStatus.Items.Add("Todos");
-            foreach (var status in CatalogosSistema.StatusRetorno)
-                cmbFiltroStatus.Items.Add(status);
+            foreach (var st in CatalogosSistema.StatusRetorno)
+                cmbFiltroStatus.Items.Add(st);
             cmbFiltroStatus.Items.Add("Separado");
             cmbFiltroStatus.SelectedIndex = 0;
+
+            RecarregarComboEventos(); // ← carrega cmbEventoSelecionadoE
         }
 
-        private void AtualizarTabelaItens()
+        private void RecarregarComboEventos()
         {
-            var dadosTabela = eventoAtual.Itens
-                .Select(itemEvento => new
-                {
-                    ID = itemEvento.Id,
-                    Nome = itemEvento.Item?.Nome ?? "",
-                    Categoria = itemEvento.Item?.Categoria ?? "",
-                    Qtd = itemEvento.QuantidadeSeparada,
-                    Unidade = itemEvento.Item?.Unidade ?? "",
-                    Status = itemEvento.Status,
-                    Origem = itemEvento.VeioDoEstoque ? "Estoque" : "Compra direta"
-                })
-                .ToList();
+            cmbEventoSelecionadoE.SelectedIndexChanged -= cmbEventoSelecionadoE_SelectedIndexChanged;
+
+            cmbEventoSelecionadoE.DataSource = null;
+            cmbEventoSelecionadoE.DataSource = DadosTemporarios.Eventos.ToList();
+            cmbEventoSelecionadoE.DisplayMember = "Nome";
+            cmbEventoSelecionadoE.ValueMember = "Id";
+            cmbEventoSelecionadoE.SelectedIndex = -1;
+
+            cmbEventoSelecionadoE.SelectedIndexChanged += cmbEventoSelecionadoE_SelectedIndexChanged;
+        }
+
+
+        private void AtualizarTabelaItens(string nomeFiltro = "", string categoriaFiltro = "", string statusFiltro = "")
+        {
+            var itens = eventoAtual.Itens.AsEnumerable();
+
+            if (!string.IsNullOrWhiteSpace(nomeFiltro))
+                itens = itens.Where(ie => ie.Item != null &&
+                            ie.Item.Nome.Contains(nomeFiltro, StringComparison.OrdinalIgnoreCase));
+
+            if (categoriaFiltro != "Todas")
+                itens = itens.Where(ie => ie.Item?.Categoria == categoriaFiltro);
+
+            if (statusFiltro != "Todos")
+                itens = itens.Where(ie => ie.Status == statusFiltro);
+
+            var dados = itens.Select(ie => new
+            {
+                ID = ie.Id,
+                Nome = ie.Item?.Nome ?? "",
+                Categoria = ie.Item?.Categoria ?? "",
+                Qtd = ie.QuantidadeSeparada,
+                Unidade = ie.Item?.Unidade ?? "",
+                Status = ie.Status,
+                Origem = ie.VeioDoEstoque ? "Estoque" : "Compra direta"
+            }).ToList();
 
             dgvItensEvento.DataSource = null;
-            dgvItensEvento.DataSource = dadosTabela;
+            dgvItensEvento.DataSource = dados;
         }
 
         private ItemEvento? ObterItemEventoSelecionado()
@@ -117,6 +151,47 @@ namespace Drink
                 DadosTemporarios.Eventos.Add(eventoAtual);
             }
         }
+        private void AtualizarResumoEvento()
+        {
+            lblEventoValor.Text = string.IsNullOrWhiteSpace(eventoAtual.Nome)
+                ? "Evento sem nome"
+                : eventoAtual.Nome;
+
+            lblDataValor.Text = eventoAtual.Data == DateTime.MinValue
+                ? "-"
+                : eventoAtual.Data.ToString("dd/MM/yyyy");
+
+            lblLocalValor.Text = string.IsNullOrWhiteSpace(eventoAtual.Local)
+                ? "-"
+                : eventoAtual.Local;
+
+            lblResponsavelValor.Text = string.IsNullOrWhiteSpace(eventoAtual.Responsavel)
+                ? "-"
+                : eventoAtual.Responsavel;
+        }
+
+        private bool SalvarDadosEvento()
+        {
+            if (string.IsNullOrWhiteSpace(txtNomeEvento.Text) ||
+                string.IsNullOrWhiteSpace(txtLocalEvento.Text))
+            {
+                MessageBox.Show("Preencha os campos obrigatórios: Nome e Local.");
+                return false;
+            }
+
+            eventoAtual.Nome = txtNomeEvento.Text.Trim();
+            eventoAtual.Local = txtLocalEvento.Text.Trim();
+            eventoAtual.Responsavel = txtResponsavelEvento.Text.Trim();
+            eventoAtual.Data = dtpDataEvento.Value.Date;
+            eventoAtual.Status = cmbStatusEvento.Text;
+            eventoAtual.QuantidadePessoas = (int)nudQtdPessoas.Value;
+
+            SalvarOuAtualizarEvento();
+            RecarregarComboEventos();
+            AtualizarResumoEvento();
+            return true;
+        }
+
 
         private void btnNovoItem_Click(object sender, EventArgs e)
         {
@@ -134,6 +209,7 @@ namespace Drink
             }
         }
 
+
         private void btnEditarItem_Click(object sender, EventArgs e)
         {
             ItemEvento? itemEvento = ObterItemEventoSelecionado();
@@ -147,7 +223,7 @@ namespace Drink
             List<Item> itensDisponiveis = ObterItensDisponiveisDoEstoque();
             frmNovoItemEvento telaEditar = new frmNovoItemEvento(itensDisponiveis);
 
-            telaEditar.CarregarItemParaEdicao(itemEvento); // ← ANTES do ShowDialog
+            telaEditar.CarregarItemParaEdicao(itemEvento);
 
             if (telaEditar.ShowDialog() == DialogResult.OK)
             {
@@ -253,18 +329,62 @@ namespace Drink
             MessageBox.Show("Separação confirmada com sucesso.");
         }
 
-        private void btnRetorno_Click(object sender, EventArgs e)
+        private void cmbEventoSelecionadoE_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (eventoAtual.Status != "Separado")
-            {
-                MessageBox.Show("Confirme a separação do evento antes de registrar o retorno.", "Atenção",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (cmbEventoSelecionadoE.SelectedItem is not Evento eventoEscolhido) return;
 
-            frmAdicionarRetorno telaRetorno = new frmAdicionarRetorno(eventoAtual);
-            telaRetorno.ShowDialog();
-            AtualizarTabelaItens(); // atualiza a grid após o retorno
+            eventoAtual = eventoEscolhido;
+            CarregarCamposDadosEvento();
+            AtualizarTabelaItens();
+            AtualizarResumoEvento();
+        }
+        private void CarregarCamposDadosEvento()
+        {
+            txtNomeEvento.Text = eventoAtual.Nome;
+            txtLocalEvento.Text = eventoAtual.Local;
+            txtResponsavelEvento.Text = eventoAtual.Responsavel;
+            nudQtdPessoas.Value = eventoAtual.QuantidadePessoas;
+            dtpDataEvento.Value = eventoAtual.Data == DateTime.MinValue ? DateTime.Today : eventoAtual.Data;
+            cmbStatusEvento.Text = eventoAtual.Status;
+        }
+
+        private void btnLimparDadosEvento_Click(object sender, EventArgs e)
+        {
+
+            // Limpa os campos do formulário
+            txtNomeEvento.Clear();
+            txtLocalEvento.Clear();
+            txtResponsavelEvento.Clear();
+            nudQtdPessoas.Value = 0;
+            dtpDataEvento.Value = DateTime.Today;
+            cmbStatusEvento.SelectedIndex = 0;
+
+            // Deseleciona o combo para não parecer que ainda está editando um evento salvo
+            cmbEventoSelecionadoE.SelectedIndexChanged -= cmbEventoSelecionadoE_SelectedIndexChanged;
+            cmbEventoSelecionadoE.SelectedIndex = -1;
+            cmbEventoSelecionadoE.SelectedIndexChanged += cmbEventoSelecionadoE_SelectedIndexChanged;
+        }
+
+        private void btnSalvarDadosEvento_Click(object sender, EventArgs e)
+        {
+            SalvarDadosEvento();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            AtualizarTabelaItens(
+            nomeFiltro: txtFiltroNome.Text.Trim(),
+            categoriaFiltro: cmbFiltroCategoria.Text,
+            statusFiltro: cmbFiltroStatus.Text
+            );
+        }
+
+        private void btnLimparFiltro_Click(object sender, EventArgs e)
+        {
+            txtFiltroNome.Clear();
+            cmbFiltroCategoria.SelectedIndex = 0; // "Todas"
+            cmbFiltroStatus.SelectedIndex = 0; // "Todos"
+            AtualizarTabelaItens();
         }
     }
 }

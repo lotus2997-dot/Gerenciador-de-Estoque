@@ -66,8 +66,6 @@
             lblFiltroCategoria = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
-            tabBaixoEstoque = new TabPage();
-            tabVencendo = new TabPage();
             pnlCabecalho.SuspendLayout();
             pnlResumo.SuspendLayout();
             panel1.SuspendLayout();
@@ -208,8 +206,6 @@
             // tabEstoque
             // 
             tabEstoque.Controls.Add(tabTodosItens);
-            tabEstoque.Controls.Add(tabBaixoEstoque);
-            tabEstoque.Controls.Add(tabVencendo);
             tabEstoque.Dock = DockStyle.Fill;
             tabEstoque.Location = new Point(0, 165);
             tabEstoque.Name = "tabEstoque";
@@ -254,7 +250,6 @@
             btnAtualizarEstoque.TabIndex = 5;
             btnAtualizarEstoque.Text = "Atualizar";
             btnAtualizarEstoque.UseVisualStyleBackColor = false;
-            btnAtualizarEstoque.Click += btnAtualizarEstoque_Click;
             // 
             // btnEditar
             // 
@@ -464,26 +459,6 @@
             lblFiltroNome.TabIndex = 0;
             lblFiltroNome.Text = "Nome:";
             // 
-            // tabBaixoEstoque
-            // 
-            tabBaixoEstoque.Location = new Point(4, 24);
-            tabBaixoEstoque.Name = "tabBaixoEstoque";
-            tabBaixoEstoque.Padding = new Padding(3);
-            tabBaixoEstoque.Size = new Size(1342, 536);
-            tabBaixoEstoque.TabIndex = 1;
-            tabBaixoEstoque.Text = "Baixo Estoque";
-            tabBaixoEstoque.UseVisualStyleBackColor = true;
-            // 
-            // tabVencendo
-            // 
-            tabVencendo.Location = new Point(4, 24);
-            tabVencendo.Name = "tabVencendo";
-            tabVencendo.Padding = new Padding(3);
-            tabVencendo.Size = new Size(1342, 536);
-            tabVencendo.TabIndex = 2;
-            tabVencendo.Text = "Vencendo";
-            tabVencendo.UseVisualStyleBackColor = true;
-            // 
             // frmEstoque
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -529,8 +504,6 @@
         private Label lblMinimoValor;
         private TabControl tabEstoque;
         private TabPage tabTodosItens;
-        private TabPage tabBaixoEstoque;
-        private TabPage tabVencendo;
         private GroupBox grpFiltros;
         private TextBox txtFiltroNome;
         private Label lblFiltroNome;

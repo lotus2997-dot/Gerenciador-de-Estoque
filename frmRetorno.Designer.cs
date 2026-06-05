@@ -33,7 +33,6 @@
             pnlResumoRetorno = new Panel();
             label10 = new Label();
             cmbEventoSelecionado = new ComboBox();
-            btnConferirRetorno = new Button();
             lblResponsavelValor = new Label();
             lblDataValor = new Label();
             lblResponsavelTitulo = new Label();
@@ -44,18 +43,10 @@
             tabDadosRetorno = new TabPage();
             pnlDadosEventoRetorno = new Panel();
             btnParaItensRetorno = new Button();
-            btnSalvarDadosEventoRetorno = new Button();
-            btnLimparDadosEventoRetorno = new Button();
             grpDetalhesEventoRetorno = new GroupBox();
             nudQtdPessoasRetorno = new NumericUpDown();
             label9 = new Label();
-            txtContatoResponsavelRetorno = new TextBox();
-            dtpHoraFimRetorno = new DateTimePicker();
-            dtpHoraInicioRetorno = new DateTimePicker();
             cmbStatusEventoRetorno = new ComboBox();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
             label5 = new Label();
             grpInformações = new GroupBox();
             txtResponsavelEventoRetorno = new TextBox();
@@ -73,7 +64,6 @@
             btnConfirmar = new Button();
             btnRemover = new Button();
             btnNovoItem = new Button();
-            btnEditarItem = new Button();
             dgvRetorno = new DataGridView();
             grpFiltros = new GroupBox();
             btnLimparFiltro = new Button();
@@ -84,7 +74,6 @@
             lblFiltroUnidade = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
-            tabConferencia = new TabPage();
             pnlResumoRetorno.SuspendLayout();
             tabControl1.SuspendLayout();
             tabDadosRetorno.SuspendLayout();
@@ -123,7 +112,6 @@
             // 
             pnlResumoRetorno.Controls.Add(label10);
             pnlResumoRetorno.Controls.Add(cmbEventoSelecionado);
-            pnlResumoRetorno.Controls.Add(btnConferirRetorno);
             pnlResumoRetorno.Controls.Add(lblResponsavelValor);
             pnlResumoRetorno.Controls.Add(lblDataValor);
             pnlResumoRetorno.Controls.Add(lblResponsavelTitulo);
@@ -153,19 +141,6 @@
             cmbEventoSelecionado.Size = new Size(165, 23);
             cmbEventoSelecionado.TabIndex = 7;
             cmbEventoSelecionado.SelectedIndexChanged += cmbEventoSelecionado_SelectedIndexChanged_1;
-            // 
-            // btnConferirRetorno
-            // 
-            btnConferirRetorno.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnConferirRetorno.BackColor = Color.FromArgb(30, 100, 170);
-            btnConferirRetorno.FlatStyle = FlatStyle.Flat;
-            btnConferirRetorno.ForeColor = Color.White;
-            btnConferirRetorno.Location = new Point(1133, 27);
-            btnConferirRetorno.Name = "btnConferirRetorno";
-            btnConferirRetorno.Size = new Size(150, 38);
-            btnConferirRetorno.TabIndex = 3;
-            btnConferirRetorno.Text = "Conferir Retorno";
-            btnConferirRetorno.UseVisualStyleBackColor = false;
             // 
             // lblResponsavelValor
             // 
@@ -231,7 +206,6 @@
             // 
             tabControl1.Controls.Add(tabDadosRetorno);
             tabControl1.Controls.Add(tabItensRetorno);
-            tabControl1.Controls.Add(tabConferencia);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 165);
             tabControl1.Name = "tabControl1";
@@ -255,8 +229,6 @@
             pnlDadosEventoRetorno.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlDadosEventoRetorno.BackColor = Color.White;
             pnlDadosEventoRetorno.Controls.Add(btnParaItensRetorno);
-            pnlDadosEventoRetorno.Controls.Add(btnSalvarDadosEventoRetorno);
-            pnlDadosEventoRetorno.Controls.Add(btnLimparDadosEventoRetorno);
             pnlDadosEventoRetorno.Controls.Add(grpDetalhesEventoRetorno);
             pnlDadosEventoRetorno.Controls.Add(grpInformações);
             pnlDadosEventoRetorno.Controls.Add(lblSubitituloDadosEventoRetorno);
@@ -271,49 +243,18 @@
             btnParaItensRetorno.BackColor = Color.FromArgb(30, 100, 170);
             btnParaItensRetorno.FlatStyle = FlatStyle.Flat;
             btnParaItensRetorno.ForeColor = Color.White;
-            btnParaItensRetorno.Location = new Point(1113, 412);
+            btnParaItensRetorno.Location = new Point(47, 418);
             btnParaItensRetorno.Name = "btnParaItensRetorno";
             btnParaItensRetorno.Size = new Size(130, 36);
             btnParaItensRetorno.TabIndex = 6;
             btnParaItensRetorno.Text = "Ir para Itens";
             btnParaItensRetorno.UseVisualStyleBackColor = false;
             // 
-            // btnSalvarDadosEventoRetorno
-            // 
-            btnSalvarDadosEventoRetorno.BackColor = Color.FromArgb(20, 59, 102);
-            btnSalvarDadosEventoRetorno.FlatStyle = FlatStyle.Flat;
-            btnSalvarDadosEventoRetorno.ForeColor = Color.White;
-            btnSalvarDadosEventoRetorno.Location = new Point(781, 412);
-            btnSalvarDadosEventoRetorno.Name = "btnSalvarDadosEventoRetorno";
-            btnSalvarDadosEventoRetorno.Size = new Size(140, 36);
-            btnSalvarDadosEventoRetorno.TabIndex = 5;
-            btnSalvarDadosEventoRetorno.Text = "Salvar Dados";
-            btnSalvarDadosEventoRetorno.UseVisualStyleBackColor = false;
-            // 
-            // btnLimparDadosEventoRetorno
-            // 
-            btnLimparDadosEventoRetorno.AutoSize = true;
-            btnLimparDadosEventoRetorno.BackColor = Color.FromArgb(230, 230, 230);
-            btnLimparDadosEventoRetorno.FlatStyle = FlatStyle.Flat;
-            btnLimparDadosEventoRetorno.ForeColor = SystemColors.ControlText;
-            btnLimparDadosEventoRetorno.Location = new Point(960, 412);
-            btnLimparDadosEventoRetorno.Name = "btnLimparDadosEventoRetorno";
-            btnLimparDadosEventoRetorno.Size = new Size(110, 36);
-            btnLimparDadosEventoRetorno.TabIndex = 4;
-            btnLimparDadosEventoRetorno.Text = "Limpar";
-            btnLimparDadosEventoRetorno.UseVisualStyleBackColor = false;
-            // 
             // grpDetalhesEventoRetorno
             // 
             grpDetalhesEventoRetorno.Controls.Add(nudQtdPessoasRetorno);
             grpDetalhesEventoRetorno.Controls.Add(label9);
-            grpDetalhesEventoRetorno.Controls.Add(txtContatoResponsavelRetorno);
-            grpDetalhesEventoRetorno.Controls.Add(dtpHoraFimRetorno);
-            grpDetalhesEventoRetorno.Controls.Add(dtpHoraInicioRetorno);
             grpDetalhesEventoRetorno.Controls.Add(cmbStatusEventoRetorno);
-            grpDetalhesEventoRetorno.Controls.Add(label8);
-            grpDetalhesEventoRetorno.Controls.Add(label7);
-            grpDetalhesEventoRetorno.Controls.Add(label6);
             grpDetalhesEventoRetorno.Controls.Add(label5);
             grpDetalhesEventoRetorno.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grpDetalhesEventoRetorno.Location = new Point(650, 90);
@@ -326,7 +267,7 @@
             // nudQtdPessoasRetorno
             // 
             nudQtdPessoasRetorno.Font = new Font("Segoe UI", 9.75F);
-            nudQtdPessoasRetorno.Location = new Point(20, 273);
+            nudQtdPessoasRetorno.Location = new Point(20, 114);
             nudQtdPessoasRetorno.Name = "nudQtdPessoasRetorno";
             nudQtdPessoasRetorno.Size = new Size(211, 25);
             nudQtdPessoasRetorno.TabIndex = 10;
@@ -335,37 +276,11 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9.75F);
-            label9.Location = new Point(20, 253);
+            label9.Location = new Point(20, 90);
             label9.Name = "label9";
             label9.Size = new Size(204, 17);
             label9.TabIndex = 9;
             label9.Text = "Quantidade estimada de pessoas";
-            // 
-            // txtContatoResponsavelRetorno
-            // 
-            txtContatoResponsavelRetorno.Font = new Font("Segoe UI", 9.75F);
-            txtContatoResponsavelRetorno.Location = new Point(20, 216);
-            txtContatoResponsavelRetorno.Name = "txtContatoResponsavelRetorno";
-            txtContatoResponsavelRetorno.Size = new Size(200, 25);
-            txtContatoResponsavelRetorno.TabIndex = 8;
-            // 
-            // dtpHoraFimRetorno
-            // 
-            dtpHoraFimRetorno.Font = new Font("Segoe UI", 9.75F);
-            dtpHoraFimRetorno.Format = DateTimePickerFormat.Short;
-            dtpHoraFimRetorno.Location = new Point(20, 161);
-            dtpHoraFimRetorno.Name = "dtpHoraFimRetorno";
-            dtpHoraFimRetorno.Size = new Size(200, 25);
-            dtpHoraFimRetorno.TabIndex = 7;
-            // 
-            // dtpHoraInicioRetorno
-            // 
-            dtpHoraInicioRetorno.Font = new Font("Segoe UI", 9.75F);
-            dtpHoraInicioRetorno.Format = DateTimePickerFormat.Short;
-            dtpHoraInicioRetorno.Location = new Point(20, 110);
-            dtpHoraInicioRetorno.Name = "dtpHoraInicioRetorno";
-            dtpHoraInicioRetorno.Size = new Size(200, 25);
-            dtpHoraInicioRetorno.TabIndex = 6;
             // 
             // cmbStatusEventoRetorno
             // 
@@ -375,36 +290,6 @@
             cmbStatusEventoRetorno.Name = "cmbStatusEventoRetorno";
             cmbStatusEventoRetorno.Size = new Size(200, 25);
             cmbStatusEventoRetorno.TabIndex = 4;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9.75F);
-            label8.Location = new Point(20, 196);
-            label8.Name = "label8";
-            label8.Size = new Size(54, 17);
-            label8.TabIndex = 3;
-            label8.Text = "Contato";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9.75F);
-            label7.Location = new Point(20, 141);
-            label7.Name = "label7";
-            label7.Size = new Size(78, 17);
-            label7.TabIndex = 2;
-            label7.Text = "Hora de fim";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9.75F);
-            label6.Location = new Point(20, 90);
-            label6.Name = "label6";
-            label6.Size = new Size(90, 17);
-            label6.TabIndex = 1;
-            label6.Text = "Hora de início";
             // 
             // label5
             // 
@@ -547,7 +432,6 @@
             pnlBotoesRetorno.Controls.Add(btnConfirmar);
             pnlBotoesRetorno.Controls.Add(btnRemover);
             pnlBotoesRetorno.Controls.Add(btnNovoItem);
-            pnlBotoesRetorno.Controls.Add(btnEditarItem);
             pnlBotoesRetorno.Dock = DockStyle.Bottom;
             pnlBotoesRetorno.Location = new Point(3, 453);
             pnlBotoesRetorno.Name = "pnlBotoesRetorno";
@@ -560,12 +444,13 @@
             btnConfirmar.FlatStyle = FlatStyle.Flat;
             btnConfirmar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnConfirmar.ForeColor = Color.White;
-            btnConfirmar.Location = new Point(650, 20);
+            btnConfirmar.Location = new Point(477, 20);
             btnConfirmar.Name = "btnConfirmar";
             btnConfirmar.Size = new Size(190, 38);
             btnConfirmar.TabIndex = 6;
             btnConfirmar.Text = "Devolver ao Estoque";
             btnConfirmar.UseVisualStyleBackColor = false;
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // btnRemover
             // 
@@ -573,12 +458,13 @@
             btnRemover.FlatStyle = FlatStyle.Flat;
             btnRemover.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRemover.ForeColor = Color.White;
-            btnRemover.Location = new Point(420, 20);
+            btnRemover.Location = new Point(217, 20);
             btnRemover.Name = "btnRemover";
             btnRemover.Size = new Size(150, 38);
             btnRemover.TabIndex = 5;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
+            btnRemover.Click += btnRemover_Click;
             // 
             // btnNovoItem
             // 
@@ -593,19 +479,6 @@
             btnNovoItem.Text = "Novo Item";
             btnNovoItem.UseVisualStyleBackColor = false;
             btnNovoItem.Click += btnNovoItem_Click;
-            // 
-            // btnEditarItem
-            // 
-            btnEditarItem.BackColor = Color.FromArgb(20, 59, 102);
-            btnEditarItem.FlatStyle = FlatStyle.Flat;
-            btnEditarItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditarItem.ForeColor = Color.White;
-            btnEditarItem.Location = new Point(220, 20);
-            btnEditarItem.Name = "btnEditarItem";
-            btnEditarItem.Size = new Size(150, 38);
-            btnEditarItem.TabIndex = 4;
-            btnEditarItem.Text = "Editar";
-            btnEditarItem.UseVisualStyleBackColor = false;
             // 
             // dgvRetorno
             // 
@@ -722,15 +595,6 @@
             lblFiltroNome.TabIndex = 1;
             lblFiltroNome.Text = "Nome:";
             // 
-            // tabConferencia
-            // 
-            tabConferencia.Location = new Point(4, 24);
-            tabConferencia.Name = "tabConferencia";
-            tabConferencia.Size = new Size(1342, 536);
-            tabConferencia.TabIndex = 2;
-            tabConferencia.Text = "Conferência";
-            tabConferencia.UseVisualStyleBackColor = true;
-            // 
             // frmRetorno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -774,7 +638,6 @@
         private Label lblEventoValor;
         private Label lblDataValor;
         private Label lblDataTitulo;
-        private Button btnConferirRetorno;
         private Label lblResponsavelValor;
         private Label lblResponsavelTitulo;
         private TabControl tabControl1;
@@ -783,7 +646,6 @@
         private GroupBox grpFiltros;
         private TextBox txtFiltroNome;
         private Label lblFiltroNome;
-        private TabPage tabConferencia;
         private ComboBox cmbFiltroStatus;
         private Label lblFiltroStatus;
         private ComboBox cmbFiltroUnidade;
@@ -794,22 +656,10 @@
         private DataGridView dgvRetorno;
         private Button btnRemover;
         private Button btnNovoItem;
-        private Button btnEditarItem;
         private Button btnConfirmar;
         private Panel pnlDadosEventoRetorno;
-        private Button btnParaItensRetorno;
-        private Button btnSalvarDadosEventoRetorno;
-        private Button btnLimparDadosEventoRetorno;
         private GroupBox grpDetalhesEventoRetorno;
-        private NumericUpDown nudQtdPessoasRetorno;
-        private Label label9;
-        private TextBox txtContatoResponsavelRetorno;
-        private DateTimePicker dtpHoraFimRetorno;
-        private DateTimePicker dtpHoraInicioRetorno;
         private ComboBox cmbStatusEventoRetorno;
-        private Label label8;
-        private Label label7;
-        private Label label6;
         private Label label5;
         private GroupBox grpInformações;
         private TextBox txtResponsavelEventoRetorno;
@@ -824,5 +674,8 @@
         private Label lblTituloDadosEventoRetorno;
         private Label label10;
         private ComboBox cmbEventoSelecionado;
+        private Button btnParaItensRetorno;
+        private NumericUpDown nudQtdPessoasRetorno;
+        private Label label9;
     }
 }

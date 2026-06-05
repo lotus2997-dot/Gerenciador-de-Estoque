@@ -92,27 +92,9 @@ namespace Drink
 
         private int GerarId()
         {
-            Random random = new Random();
-            int idGerado;
-            bool idJaExiste;
-
-            do
-            {
-                idGerado = random.Next(1000, 10000);
-                idJaExiste = false;
-
-                foreach (Item item in DadosTemporarios.Itens)
-                {
-                    if (item.Id == idGerado)
-                    {
-                        idJaExiste = true;
-                        break;
-                    }
-                }
-
-            } while (idJaExiste);
-
-            return idGerado;
+            return DadosTemporarios.Itens.Any()
+                ? DadosTemporarios.Itens.Max(i => i.Id) + 1
+                : 1001;
         }
     }
 }
