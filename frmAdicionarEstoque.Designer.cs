@@ -48,7 +48,6 @@
             txtNome = new TextBox();
             lblNome = new Label();
             grpInformacoes = new GroupBox();
-            chkItemAtivo = new CheckBox();
             lblStatusItemValor = new Label();
             lblStatusItem = new Label();
             lblUltimaAtualizacaoValor = new Label();
@@ -251,7 +250,6 @@
             // 
             // grpInformacoes
             // 
-            grpInformacoes.Controls.Add(chkItemAtivo);
             grpInformacoes.Controls.Add(lblStatusItemValor);
             grpInformacoes.Controls.Add(lblStatusItem);
             grpInformacoes.Controls.Add(lblUltimaAtualizacaoValor);
@@ -264,18 +262,6 @@
             grpInformacoes.TabIndex = 2;
             grpInformacoes.TabStop = false;
             grpInformacoes.Text = "Informações";
-            // 
-            // chkItemAtivo
-            // 
-            chkItemAtivo.AutoSize = true;
-            chkItemAtivo.Checked = true;
-            chkItemAtivo.CheckState = CheckState.Checked;
-            chkItemAtivo.Location = new Point(15, 205);
-            chkItemAtivo.Name = "chkItemAtivo";
-            chkItemAtivo.Size = new Size(81, 19);
-            chkItemAtivo.TabIndex = 6;
-            chkItemAtivo.Text = "Item Ativo";
-            chkItemAtivo.UseVisualStyleBackColor = true;
             // 
             // lblStatusItemValor
             // 
@@ -428,7 +414,6 @@
         private Label lblStatusItemValor;
         private Label lblStatusItem;
         private Label lblUltimaAtualizacaoValor;
-        private CheckBox chkItemAtivo;
         private Button btnSalvar;
         private Button btnCancelar;
         private Button btnLimpar;

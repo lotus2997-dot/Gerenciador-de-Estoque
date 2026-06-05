@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             pnlCabecalho = new Panel();
-            lblStatusSistema = new Label();
-            lblTotalItensCabecalho = new Label();
             lblTitulo = new Label();
             pnlResumo = new Panel();
             panel1 = new Panel();
@@ -39,20 +37,15 @@
             panel2 = new Panel();
             lblMinimo = new Label();
             lblMinimoValor = new Label();
-            pnlCategorias = new Panel();
-            lblCategoria = new Label();
-            lblCategoriaValor = new Label();
             pnlCardItens = new Panel();
             lblCardItensTitulo = new Label();
             lblItensCadastrados = new Label();
             tabEstoque = new TabControl();
             tabTodosItens = new TabPage();
             pnlBotoes = new Panel();
-            btnAtualizar = new Button();
+            btnAtualizarEstoque = new Button();
             btnEditar = new Button();
             btnRemover = new Button();
-            btnEntrada = new Button();
-            btnSaida = new Button();
             btnNovoItem = new Button();
             dgvEstoque = new DataGridView();
             colId = new DataGridViewTextBoxColumn();
@@ -64,26 +57,21 @@
             colQuantidadeMinima = new DataGridViewTextBoxColumn();
             colStatus = new DataGridViewTextBoxColumn();
             colObservacao = new DataGridViewTextBoxColumn();
-            btnLimparFiltro = new Button();
-            btnPesquisar = new Button();
             grpFiltros = new GroupBox();
             cmbFiltroStatus = new ComboBox();
             lblFilrosStatus = new Label();
+            btnLimparFiltro = new Button();
             cmbFiltroCategoria = new ComboBox();
+            btnPesquisar = new Button();
             lblFiltroCategoria = new Label();
-            lblFiltroValidade = new Label();
-            chkTodasValidades = new CheckBox();
-            dtpFiltroValidade = new DateTimePicker();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
             tabBaixoEstoque = new TabPage();
             tabVencendo = new TabPage();
-            tabHistorico = new TabPage();
             pnlCabecalho.SuspendLayout();
             pnlResumo.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            pnlCategorias.SuspendLayout();
             pnlCardItens.SuspendLayout();
             tabEstoque.SuspendLayout();
             tabTodosItens.SuspendLayout();
@@ -95,38 +83,12 @@
             // pnlCabecalho
             // 
             pnlCabecalho.BackColor = Color.FromArgb(20, 59, 102);
-            pnlCabecalho.Controls.Add(lblStatusSistema);
-            pnlCabecalho.Controls.Add(lblTotalItensCabecalho);
             pnlCabecalho.Controls.Add(lblTitulo);
             pnlCabecalho.Dock = DockStyle.Top;
             pnlCabecalho.Location = new Point(0, 0);
             pnlCabecalho.Name = "pnlCabecalho";
             pnlCabecalho.Size = new Size(1350, 70);
             pnlCabecalho.TabIndex = 16;
-            // 
-            // lblStatusSistema
-            // 
-            lblStatusSistema.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblStatusSistema.AutoSize = true;
-            lblStatusSistema.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStatusSistema.ForeColor = Color.White;
-            lblStatusSistema.Location = new Point(980, 25);
-            lblStatusSistema.Name = "lblStatusSistema";
-            lblStatusSistema.Size = new Size(114, 15);
-            lblStatusSistema.TabIndex = 2;
-            lblStatusSistema.Text = "Status: Operacional";
-            // 
-            // lblTotalItensCabecalho
-            // 
-            lblTotalItensCabecalho.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblTotalItensCabecalho.AutoSize = true;
-            lblTotalItensCabecalho.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalItensCabecalho.ForeColor = Color.White;
-            lblTotalItensCabecalho.Location = new Point(1160, 25);
-            lblTotalItensCabecalho.Name = "lblTotalItensCabecalho";
-            lblTotalItensCabecalho.Size = new Size(94, 15);
-            lblTotalItensCabecalho.TabIndex = 1;
-            lblTotalItensCabecalho.Text = "Total de itens: 0";
             // 
             // lblTitulo
             // 
@@ -143,7 +105,6 @@
             // 
             pnlResumo.Controls.Add(panel1);
             pnlResumo.Controls.Add(panel2);
-            pnlResumo.Controls.Add(pnlCategorias);
             pnlResumo.Controls.Add(pnlCardItens);
             pnlResumo.Dock = DockStyle.Top;
             pnlResumo.Location = new Point(0, 70);
@@ -157,7 +118,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblVencimento);
             panel1.Controls.Add(lblVencendoValor);
-            panel1.Location = new Point(915, 15);
+            panel1.Location = new Point(656, 15);
             panel1.Name = "panel1";
             panel1.Size = new Size(285, 65);
             panel1.TabIndex = 20;
@@ -176,7 +137,7 @@
             lblVencendoValor.AutoSize = true;
             lblVencendoValor.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVencendoValor.ForeColor = Color.FromArgb(20, 59, 102);
-            lblVencendoValor.Location = new Point(60, 28);
+            lblVencendoValor.Location = new Point(75, 28);
             lblVencendoValor.Name = "lblVencendoValor";
             lblVencendoValor.Size = new Size(28, 32);
             lblVencendoValor.TabIndex = 1;
@@ -188,7 +149,7 @@
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(lblMinimo);
             panel2.Controls.Add(lblMinimoValor);
-            panel2.Location = new Point(615, 15);
+            panel2.Location = new Point(336, 15);
             panel2.Name = "panel2";
             panel2.Size = new Size(285, 65);
             panel2.TabIndex = 21;
@@ -207,42 +168,11 @@
             lblMinimoValor.AutoSize = true;
             lblMinimoValor.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMinimoValor.ForeColor = Color.FromArgb(20, 59, 102);
-            lblMinimoValor.Location = new Point(60, 28);
+            lblMinimoValor.Location = new Point(87, 32);
             lblMinimoValor.Name = "lblMinimoValor";
             lblMinimoValor.Size = new Size(28, 32);
             lblMinimoValor.TabIndex = 1;
             lblMinimoValor.Text = "0";
-            // 
-            // pnlCategorias
-            // 
-            pnlCategorias.BackColor = Color.White;
-            pnlCategorias.BorderStyle = BorderStyle.FixedSingle;
-            pnlCategorias.Controls.Add(lblCategoria);
-            pnlCategorias.Controls.Add(lblCategoriaValor);
-            pnlCategorias.Location = new Point(315, 15);
-            pnlCategorias.Name = "pnlCategorias";
-            pnlCategorias.Size = new Size(285, 65);
-            pnlCategorias.TabIndex = 19;
-            // 
-            // lblCategoria
-            // 
-            lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(60, 10);
-            lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(63, 15);
-            lblCategoria.TabIndex = 0;
-            lblCategoria.Text = "Categorias";
-            // 
-            // lblCategoriaValor
-            // 
-            lblCategoriaValor.AutoSize = true;
-            lblCategoriaValor.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCategoriaValor.ForeColor = Color.FromArgb(20, 59, 102);
-            lblCategoriaValor.Location = new Point(60, 28);
-            lblCategoriaValor.Name = "lblCategoriaValor";
-            lblCategoriaValor.Size = new Size(28, 32);
-            lblCategoriaValor.TabIndex = 1;
-            lblCategoriaValor.Text = "0";
             // 
             // pnlCardItens
             // 
@@ -269,7 +199,7 @@
             lblItensCadastrados.AutoSize = true;
             lblItensCadastrados.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblItensCadastrados.ForeColor = Color.FromArgb(20, 59, 102);
-            lblItensCadastrados.Location = new Point(60, 28);
+            lblItensCadastrados.Location = new Point(82, 28);
             lblItensCadastrados.Name = "lblItensCadastrados";
             lblItensCadastrados.Size = new Size(28, 32);
             lblItensCadastrados.TabIndex = 1;
@@ -280,7 +210,6 @@
             tabEstoque.Controls.Add(tabTodosItens);
             tabEstoque.Controls.Add(tabBaixoEstoque);
             tabEstoque.Controls.Add(tabVencendo);
-            tabEstoque.Controls.Add(tabHistorico);
             tabEstoque.Dock = DockStyle.Fill;
             tabEstoque.Location = new Point(0, 165);
             tabEstoque.Name = "tabEstoque";
@@ -292,8 +221,6 @@
             // 
             tabTodosItens.Controls.Add(pnlBotoes);
             tabTodosItens.Controls.Add(dgvEstoque);
-            tabTodosItens.Controls.Add(btnLimparFiltro);
-            tabTodosItens.Controls.Add(btnPesquisar);
             tabTodosItens.Controls.Add(grpFiltros);
             tabTodosItens.Location = new Point(4, 24);
             tabTodosItens.Name = "tabTodosItens";
@@ -306,11 +233,9 @@
             // pnlBotoes
             // 
             pnlBotoes.BackColor = Color.White;
-            pnlBotoes.Controls.Add(btnAtualizar);
+            pnlBotoes.Controls.Add(btnAtualizarEstoque);
             pnlBotoes.Controls.Add(btnEditar);
             pnlBotoes.Controls.Add(btnRemover);
-            pnlBotoes.Controls.Add(btnEntrada);
-            pnlBotoes.Controls.Add(btnSaida);
             pnlBotoes.Controls.Add(btnNovoItem);
             pnlBotoes.Dock = DockStyle.Bottom;
             pnlBotoes.Location = new Point(3, 463);
@@ -318,17 +243,18 @@
             pnlBotoes.Size = new Size(1336, 70);
             pnlBotoes.TabIndex = 7;
             // 
-            // btnAtualizar
+            // btnAtualizarEstoque
             // 
-            btnAtualizar.BackColor = Color.FromArgb(20, 59, 102);
-            btnAtualizar.FlatStyle = FlatStyle.Flat;
-            btnAtualizar.ForeColor = Color.White;
-            btnAtualizar.Location = new Point(920, 18);
-            btnAtualizar.Name = "btnAtualizar";
-            btnAtualizar.Size = new Size(140, 35);
-            btnAtualizar.TabIndex = 5;
-            btnAtualizar.Text = "Atualizar";
-            btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizarEstoque.BackColor = Color.FromArgb(20, 59, 102);
+            btnAtualizarEstoque.FlatStyle = FlatStyle.Flat;
+            btnAtualizarEstoque.ForeColor = Color.White;
+            btnAtualizarEstoque.Location = new Point(384, 18);
+            btnAtualizarEstoque.Name = "btnAtualizarEstoque";
+            btnAtualizarEstoque.Size = new Size(140, 35);
+            btnAtualizarEstoque.TabIndex = 5;
+            btnAtualizarEstoque.Text = "Atualizar";
+            btnAtualizarEstoque.UseVisualStyleBackColor = false;
+            btnAtualizarEstoque.Click += btnAtualizarEstoque_Click;
             // 
             // btnEditar
             // 
@@ -348,37 +274,13 @@
             btnRemover.BackColor = Color.FromArgb(140, 40, 40);
             btnRemover.FlatStyle = FlatStyle.Flat;
             btnRemover.ForeColor = Color.White;
-            btnRemover.Location = new Point(395, 18);
+            btnRemover.Location = new Point(550, 18);
             btnRemover.Name = "btnRemover";
             btnRemover.Size = new Size(140, 35);
             btnRemover.TabIndex = 3;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
             btnRemover.Click += btnRemover_Click;
-            // 
-            // btnEntrada
-            // 
-            btnEntrada.BackColor = Color.FromArgb(0, 140, 70);
-            btnEntrada.FlatStyle = FlatStyle.Flat;
-            btnEntrada.ForeColor = Color.White;
-            btnEntrada.Location = new Point(570, 18);
-            btnEntrada.Name = "btnEntrada";
-            btnEntrada.Size = new Size(140, 35);
-            btnEntrada.TabIndex = 2;
-            btnEntrada.Text = "Entrada";
-            btnEntrada.UseVisualStyleBackColor = false;
-            // 
-            // btnSaida
-            // 
-            btnSaida.BackColor = Color.FromArgb(230, 130, 40);
-            btnSaida.FlatStyle = FlatStyle.Flat;
-            btnSaida.ForeColor = Color.White;
-            btnSaida.Location = new Point(745, 18);
-            btnSaida.Name = "btnSaida";
-            btnSaida.Size = new Size(140, 35);
-            btnSaida.TabIndex = 1;
-            btnSaida.Text = "Saida";
-            btnSaida.UseVisualStyleBackColor = false;
             // 
             // btnNovoItem
             // 
@@ -466,40 +368,15 @@
             colObservacao.Name = "colObservacao";
             colObservacao.ReadOnly = true;
             // 
-            // btnLimparFiltro
-            // 
-            btnLimparFiltro.BackColor = Color.WhiteSmoke;
-            btnLimparFiltro.FlatStyle = FlatStyle.Flat;
-            btnLimparFiltro.ForeColor = Color.Black;
-            btnLimparFiltro.Location = new Point(1190, 48);
-            btnLimparFiltro.Name = "btnLimparFiltro";
-            btnLimparFiltro.Size = new Size(120, 30);
-            btnLimparFiltro.TabIndex = 5;
-            btnLimparFiltro.Text = "Limpar";
-            btnLimparFiltro.UseVisualStyleBackColor = false;
-            // 
-            // btnPesquisar
-            // 
-            btnPesquisar.BackColor = Color.FromArgb(20, 59, 102);
-            btnPesquisar.FlatStyle = FlatStyle.Flat;
-            btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(1060, 48);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(120, 30);
-            btnPesquisar.TabIndex = 4;
-            btnPesquisar.Text = "Pesquisar";
-            btnPesquisar.UseVisualStyleBackColor = false;
-            // 
             // grpFiltros
             // 
             grpFiltros.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             grpFiltros.Controls.Add(cmbFiltroStatus);
             grpFiltros.Controls.Add(lblFilrosStatus);
+            grpFiltros.Controls.Add(btnLimparFiltro);
             grpFiltros.Controls.Add(cmbFiltroCategoria);
+            grpFiltros.Controls.Add(btnPesquisar);
             grpFiltros.Controls.Add(lblFiltroCategoria);
-            grpFiltros.Controls.Add(lblFiltroValidade);
-            grpFiltros.Controls.Add(chkTodasValidades);
-            grpFiltros.Controls.Add(dtpFiltroValidade);
             grpFiltros.Controls.Add(txtFiltroNome);
             grpFiltros.Controls.Add(lblFiltroNome);
             grpFiltros.Location = new Point(15, 15);
@@ -527,6 +404,19 @@
             lblFilrosStatus.TabIndex = 4;
             lblFilrosStatus.Text = "Status:";
             // 
+            // btnLimparFiltro
+            // 
+            btnLimparFiltro.BackColor = Color.WhiteSmoke;
+            btnLimparFiltro.FlatStyle = FlatStyle.Flat;
+            btnLimparFiltro.ForeColor = Color.Black;
+            btnLimparFiltro.Location = new Point(1155, 33);
+            btnLimparFiltro.Name = "btnLimparFiltro";
+            btnLimparFiltro.Size = new Size(120, 30);
+            btnLimparFiltro.TabIndex = 5;
+            btnLimparFiltro.Text = "Limpar";
+            btnLimparFiltro.UseVisualStyleBackColor = false;
+            btnLimparFiltro.Click += btnLimparFiltro_Click;
+            // 
             // cmbFiltroCategoria
             // 
             cmbFiltroCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -536,6 +426,19 @@
             cmbFiltroCategoria.Size = new Size(220, 23);
             cmbFiltroCategoria.TabIndex = 3;
             // 
+            // btnPesquisar
+            // 
+            btnPesquisar.BackColor = Color.FromArgb(20, 59, 102);
+            btnPesquisar.FlatStyle = FlatStyle.Flat;
+            btnPesquisar.ForeColor = Color.White;
+            btnPesquisar.Location = new Point(1029, 33);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(120, 30);
+            btnPesquisar.TabIndex = 4;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
             // lblFiltroCategoria
             // 
             lblFiltroCategoria.AutoSize = true;
@@ -544,34 +447,6 @@
             lblFiltroCategoria.Size = new Size(61, 15);
             lblFiltroCategoria.TabIndex = 2;
             lblFiltroCategoria.Text = "Categoria:";
-            // 
-            // lblFiltroValidade
-            // 
-            lblFiltroValidade.AutoSize = true;
-            lblFiltroValidade.Location = new Point(792, 19);
-            lblFiltroValidade.Name = "lblFiltroValidade";
-            lblFiltroValidade.Size = new Size(54, 15);
-            lblFiltroValidade.TabIndex = 1;
-            lblFiltroValidade.Text = "Validade:";
-            // 
-            // chkTodasValidades
-            // 
-            chkTodasValidades.AutoSize = true;
-            chkTodasValidades.Location = new Point(792, 37);
-            chkTodasValidades.Name = "chkTodasValidades";
-            chkTodasValidades.Size = new Size(57, 19);
-            chkTodasValidades.TabIndex = 2;
-            chkTodasValidades.Text = "Todas";
-            chkTodasValidades.UseVisualStyleBackColor = true;
-            // 
-            // dtpFiltroValidade
-            // 
-            dtpFiltroValidade.Format = DateTimePickerFormat.Short;
-            dtpFiltroValidade.Location = new Point(855, 35);
-            dtpFiltroValidade.Name = "dtpFiltroValidade";
-            dtpFiltroValidade.ShowUpDown = true;
-            dtpFiltroValidade.Size = new Size(130, 23);
-            dtpFiltroValidade.TabIndex = 3;
             // 
             // txtFiltroNome
             // 
@@ -609,16 +484,6 @@
             tabVencendo.Text = "Vencendo";
             tabVencendo.UseVisualStyleBackColor = true;
             // 
-            // tabHistorico
-            // 
-            tabHistorico.Location = new Point(4, 24);
-            tabHistorico.Name = "tabHistorico";
-            tabHistorico.Padding = new Padding(3);
-            tabHistorico.Size = new Size(1342, 536);
-            tabHistorico.TabIndex = 3;
-            tabHistorico.Text = "Histórico";
-            tabHistorico.UseVisualStyleBackColor = true;
-            // 
             // frmEstoque
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -638,8 +503,6 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            pnlCategorias.ResumeLayout(false);
-            pnlCategorias.PerformLayout();
             pnlCardItens.ResumeLayout(false);
             pnlCardItens.PerformLayout();
             tabEstoque.ResumeLayout(false);
@@ -653,8 +516,6 @@
 
         #endregion
         private Panel pnlCabecalho;
-        private Label lblStatusSistema;
-        private Label lblTotalItensCabecalho;
         private Label lblTitulo;
         private Panel pnlResumo;
         private Panel pnlCardItens;
@@ -666,21 +527,14 @@
         private Panel panel2;
         private Label lblMinimo;
         private Label lblMinimoValor;
-        private Panel pnlCategorias;
-        private Label lblCategoria;
-        private Label lblCategoriaValor;
         private TabControl tabEstoque;
         private TabPage tabTodosItens;
         private TabPage tabBaixoEstoque;
         private TabPage tabVencendo;
-        private TabPage tabHistorico;
         private GroupBox grpFiltros;
         private TextBox txtFiltroNome;
         private Label lblFiltroNome;
         private Label lblFiltroCategoria;
-        private DateTimePicker dtpFiltroValidade;
-        private CheckBox chkTodasValidades;
-        private Label lblFiltroValidade;
         private ComboBox cmbFiltroStatus;
         private Label lblFilrosStatus;
         private ComboBox cmbFiltroCategoria;
@@ -699,9 +553,7 @@
         private Panel pnlBotoes;
         private Button btnEditar;
         private Button btnRemover;
-        private Button btnEntrada;
-        private Button btnSaida;
         private Button btnNovoItem;
-        private Button btnAtualizar;
+        private Button btnAtualizarEstoque;
     }
 }

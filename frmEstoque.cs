@@ -14,13 +14,14 @@ namespace Drink
         public frmEstoque()
         {
             InitializeComponent();
-            CarregarDadosTeste();
             ConfigurarAparenciaTabela();
+            CarregarCombosFiltro();
             AtualizarDados();
         }
         public void AtualizarDados()
         {
-            AtualizarTabelaEstoque();
+            AtualizarTabelaEstoque(DadosTemporarios.Itens);
+            AtualizarResumo();
             ColorirStatus();
         }
         private void ConfigurarAparenciaTabela()
@@ -79,17 +80,30 @@ namespace Drink
                     celulaStatus.Style.ForeColor = Color.Red;
                     celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
                 }
-                else if (status == "Inativo")
-                {
-                    celulaStatus.Style.ForeColor = Color.Gray;
-                    celulaStatus.Style.Font = new Font(dgvEstoque.Font, FontStyle.Italic);
-                }
             }
         }
-        private void AtualizarTabelaEstoque()
+        private void CarregarCombosFiltro()
+        {
+            cmbFiltroCategoria.Items.Clear();
+            cmbFiltroCategoria.Items.Add("Todas");
+            foreach (var categoria in CatalogosSistema.Categorias)
+                cmbFiltroCategoria.Items.Add(categoria);
+            cmbFiltroCategoria.SelectedIndex = 0;
+
+            cmbFiltroStatus.Items.Clear();
+            cmbFiltroStatus.Items.Add("Todos");
+            cmbFiltroStatus.Items.Add("Normal");
+            cmbFiltroStatus.Items.Add("Sem estoque");
+            cmbFiltroStatus.Items.Add("Vencendo");
+            cmbFiltroStatus.Items.Add("Abaixo do mínimo");
+            cmbFiltroStatus.Items.Add("Vencido");
+            cmbFiltroStatus.SelectedIndex = 0;
+        }
+        private void AtualizarTabelaEstoque(IEnumerable<Item> itens)
         {
             dgvEstoque.Rows.Clear();
-            foreach (var item in DadosTemporarios.Itens)
+
+            foreach (var item in itens)
             {
                 dgvEstoque.Rows.Add(
                     item.Id,
@@ -97,31 +111,21 @@ namespace Drink
                     item.Categoria,
                     item.QuantidadeAtual,
                     item.Unidade,
-                    item.Validade,
+                    item.Validade.HasValue ? item.Validade.Value.ToString("dd/MM/yyyy") : "",
                     item.QuantidadeMinima,
                     item.Status,
                     item.Observacao
                 );
             }
         }
-        private void CarregarDadosTeste()
+        private void AtualizarResumo()
         {
-            if (DadosTemporarios.Itens.Count == 0)
-            {
-                Item limao = new Item();
+            var itens = DadosTemporarios.Itens;
 
-                limao.Nome = "Limão";
-                limao.Id = 7756;
-                limao.Validade = DateTime.Parse("2026-08-08");
-                limao.QuantidadeAtual = 20;
-                limao.QuantidadeMinima = 1;
-                limao.Observacao = "Limão para caipirinha";
-                limao.Unidade = "kg";
-                limao.Categoria = "Frutas";
-
-                DadosTemporarios.Itens.Add(limao);
-            }
+            lblMinimoValor.Text = itens.Count(i => i.Status == "Abaixo do mínimo").ToString();
+            lblVencendoValor.Text = itens.Count(i => i.Status == "Vencendo" || i.Status == "Vencido").ToString();
         }
+
         private Item? ObterItemSelecionado()
         {
             if (dgvEstoque.SelectedRows.Count > 0)
@@ -137,7 +141,7 @@ namespace Drink
             frmAdicionarEstoque telaCadastro = new frmAdicionarEstoque(this);
             telaCadastro.ShowDialog();
         }
-       
+
         private void btnRemover_Click(object sender, EventArgs e)
         {
             Item? item = ObterItemSelecionado();
@@ -147,24 +151,19 @@ namespace Drink
                 MessageBox.Show("Selecione um item para remover.");
                 return;
             }
+
             DialogResult resposta = MessageBox.Show(
-           "Tem certeza que deseja remover este item?",
-           "Confirmar remoção",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
+                "Tem certeza que deseja remover este item definitivamente?",
+                "Confirmar remoção",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
             );
 
             if (resposta == DialogResult.No)
-            {
                 return;
-            }
 
-
-            item.Ativo = false;
-            item.UltimaAtualizacao = DateTime.Now;
-
+            DadosTemporarios.Itens.Remove(item);
             AtualizarDados();
-
             MessageBox.Show("Item removido com sucesso.");
         }
 
@@ -183,6 +182,29 @@ namespace Drink
             telaCadastro.ShowDialog();
         }
 
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            var filtroNome = txtFiltroNome.Text.Trim().ToLower();
+            var filtroCategoria = cmbFiltroCategoria.Text;
+            var filtroStatus = cmbFiltroStatus.Text;
+
+            var itensFiltrados = DadosTemporarios.Itens.Where(item =>
+                (string.IsNullOrWhiteSpace(filtroNome) || (item.Nome ?? "").ToLower().Contains(filtroNome)) &&
+                (filtroCategoria == "Todas" || item.Categoria == filtroCategoria) &&
+                (filtroStatus == "Todos" || item.Status == filtroStatus)
+            ).ToList();
+
+            AtualizarTabelaEstoque(itensFiltrados);
+            ColorirStatus();
+        }
+
+        private void btnLimparFiltro_Click(object sender, EventArgs e)
+        {
+            txtFiltroNome.Clear();
+            cmbFiltroCategoria.SelectedIndex = 0;
+            cmbFiltroStatus.SelectedIndex = 0;
+
+            AtualizarDados();
+        }
     }
-    
 }

@@ -37,14 +37,6 @@
             btnCancelar = new Button();
             button1 = new Button();
             btnAdicionar = new Button();
-            grpInformacoes = new GroupBox();
-            chkItemAtivo = new CheckBox();
-            lblStatusItemValor = new Label();
-            lblStatusItem = new Label();
-            lblUltimaAtualizacaoValor = new Label();
-            lblUltimaAtualizacao = new Label();
-            lblDataCadastroValor = new Label();
-            lblDataCadastro = new Label();
             grpDadosItem = new GroupBox();
             label3 = new Label();
             txtObservacao = new TextBox();
@@ -61,7 +53,6 @@
             pnlCabecalho = new Panel();
             lblTitulo = new Label();
             gbTipoItem.SuspendLayout();
-            grpInformacoes.SuspendLayout();
             grpDadosItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantidade).BeginInit();
             pnlCabecalho.SuspendLayout();
@@ -170,92 +161,6 @@
             btnAdicionar.UseVisualStyleBackColor = false;
             btnAdicionar.Click += btnAdicionar_Click;
             // 
-            // grpInformacoes
-            // 
-            grpInformacoes.Controls.Add(chkItemAtivo);
-            grpInformacoes.Controls.Add(lblStatusItemValor);
-            grpInformacoes.Controls.Add(lblStatusItem);
-            grpInformacoes.Controls.Add(lblUltimaAtualizacaoValor);
-            grpInformacoes.Controls.Add(lblUltimaAtualizacao);
-            grpInformacoes.Controls.Add(lblDataCadastroValor);
-            grpInformacoes.Controls.Add(lblDataCadastro);
-            grpInformacoes.Location = new Point(552, 66);
-            grpInformacoes.Name = "grpInformacoes";
-            grpInformacoes.Size = new Size(200, 230);
-            grpInformacoes.TabIndex = 17;
-            grpInformacoes.TabStop = false;
-            grpInformacoes.Text = "Informações";
-            // 
-            // chkItemAtivo
-            // 
-            chkItemAtivo.AutoSize = true;
-            chkItemAtivo.Checked = true;
-            chkItemAtivo.CheckState = CheckState.Checked;
-            chkItemAtivo.Location = new Point(15, 205);
-            chkItemAtivo.Name = "chkItemAtivo";
-            chkItemAtivo.Size = new Size(81, 19);
-            chkItemAtivo.TabIndex = 6;
-            chkItemAtivo.Text = "Item Ativo";
-            chkItemAtivo.UseVisualStyleBackColor = true;
-            // 
-            // lblStatusItemValor
-            // 
-            lblStatusItemValor.AutoSize = true;
-            lblStatusItemValor.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStatusItemValor.ForeColor = Color.Green;
-            lblStatusItemValor.Location = new Point(15, 180);
-            lblStatusItemValor.Name = "lblStatusItemValor";
-            lblStatusItemValor.Size = new Size(62, 20);
-            lblStatusItemValor.TabIndex = 5;
-            lblStatusItemValor.Text = "Normal";
-            // 
-            // lblStatusItem
-            // 
-            lblStatusItem.AutoSize = true;
-            lblStatusItem.Location = new Point(15, 155);
-            lblStatusItem.Name = "lblStatusItem";
-            lblStatusItem.Size = new Size(42, 15);
-            lblStatusItem.TabIndex = 4;
-            lblStatusItem.Text = "Status:";
-            // 
-            // lblUltimaAtualizacaoValor
-            // 
-            lblUltimaAtualizacaoValor.AutoSize = true;
-            lblUltimaAtualizacaoValor.ForeColor = Color.FromArgb(80, 80, 80);
-            lblUltimaAtualizacaoValor.Location = new Point(15, 120);
-            lblUltimaAtualizacaoValor.Name = "lblUltimaAtualizacaoValor";
-            lblUltimaAtualizacaoValor.Size = new Size(12, 15);
-            lblUltimaAtualizacaoValor.TabIndex = 3;
-            lblUltimaAtualizacaoValor.Text = "-";
-            // 
-            // lblUltimaAtualizacao
-            // 
-            lblUltimaAtualizacao.AutoSize = true;
-            lblUltimaAtualizacao.Location = new Point(15, 95);
-            lblUltimaAtualizacao.Name = "lblUltimaAtualizacao";
-            lblUltimaAtualizacao.Size = new Size(109, 15);
-            lblUltimaAtualizacao.TabIndex = 2;
-            lblUltimaAtualizacao.Text = "Última Atualização:";
-            // 
-            // lblDataCadastroValor
-            // 
-            lblDataCadastroValor.AutoSize = true;
-            lblDataCadastroValor.ForeColor = Color.FromArgb(80, 80, 80);
-            lblDataCadastroValor.Location = new Point(15, 60);
-            lblDataCadastroValor.Name = "lblDataCadastroValor";
-            lblDataCadastroValor.Size = new Size(12, 15);
-            lblDataCadastroValor.TabIndex = 1;
-            lblDataCadastroValor.Text = "-";
-            // 
-            // lblDataCadastro
-            // 
-            lblDataCadastro.AutoSize = true;
-            lblDataCadastro.Location = new Point(15, 35);
-            lblDataCadastro.Name = "lblDataCadastro";
-            lblDataCadastro.Size = new Size(101, 15);
-            lblDataCadastro.TabIndex = 0;
-            lblDataCadastro.Text = "Data do Cadastro:";
-            // 
             // grpDadosItem
             // 
             grpDadosItem.Controls.Add(label3);
@@ -274,7 +179,7 @@
             grpDadosItem.Controls.Add(lblNome);
             grpDadosItem.Location = new Point(12, 66);
             grpDadosItem.Name = "grpDadosItem";
-            grpDadosItem.Size = new Size(520, 230);
+            grpDadosItem.Size = new Size(740, 230);
             grpDadosItem.TabIndex = 16;
             grpDadosItem.TabStop = false;
             grpDadosItem.Text = "Dados do Item";
@@ -282,7 +187,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(20, 195);
+            label3.Location = new Point(290, 140);
             label3.Name = "label3";
             label3.Size = new Size(72, 15);
             label3.TabIndex = 15;
@@ -290,16 +195,16 @@
             // 
             // txtObservacao
             // 
-            txtObservacao.Location = new Point(290, 170);
+            txtObservacao.Location = new Point(521, 50);
             txtObservacao.Multiline = true;
             txtObservacao.Name = "txtObservacao";
-            txtObservacao.Size = new Size(210, 50);
+            txtObservacao.Size = new Size(204, 133);
             txtObservacao.TabIndex = 14;
             // 
             // lblObservacao
             // 
             lblObservacao.AutoSize = true;
-            lblObservacao.Location = new Point(290, 150);
+            lblObservacao.Location = new Point(521, 28);
             lblObservacao.Name = "lblObservacao";
             lblObservacao.Size = new Size(72, 15);
             lblObservacao.TabIndex = 13;
@@ -325,10 +230,10 @@
             // nudQuantidade
             // 
             nudQuantidade.DecimalPlaces = 2;
-            nudQuantidade.Location = new Point(112, 193);
+            nudQuantidade.Location = new Point(290, 160);
             nudQuantidade.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             nudQuantidade.Name = "nudQuantidade";
-            nudQuantidade.Size = new Size(148, 23);
+            nudQuantidade.Size = new Size(210, 23);
             nudQuantidade.TabIndex = 6;
             // 
             // txtUnidadeExterna
@@ -412,7 +317,6 @@
             Controls.Add(btnCancelar);
             Controls.Add(button1);
             Controls.Add(btnAdicionar);
-            Controls.Add(grpInformacoes);
             Controls.Add(grpDadosItem);
             Controls.Add(pnlCabecalho);
             Controls.Add(label1);
@@ -424,8 +328,6 @@
             Load += frmNovoItemEvento_Load;
             gbTipoItem.ResumeLayout(false);
             gbTipoItem.PerformLayout();
-            grpInformacoes.ResumeLayout(false);
-            grpInformacoes.PerformLayout();
             grpDadosItem.ResumeLayout(false);
             grpDadosItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantidade).EndInit();
@@ -447,14 +349,6 @@
         private Button btnAdicionar;
         private Button btnCancelar;
         private Button button1;
-        private GroupBox grpInformacoes;
-        private CheckBox chkItemAtivo;
-        private Label lblStatusItemValor;
-        private Label lblStatusItem;
-        private Label lblUltimaAtualizacaoValor;
-        private Label lblUltimaAtualizacao;
-        private Label lblDataCadastroValor;
-        private Label lblDataCadastro;
         private GroupBox grpDadosItem;
         private TextBox txtObservacao;
         private Label lblObservacao;

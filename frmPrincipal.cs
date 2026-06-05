@@ -42,9 +42,6 @@ namespace Drink
             InitializeComponent();
             _usuarioLogado = usuarioDoLogin; //Escopo local
 
-
-            lblUsuario.Text = "Bem vindo " + _usuarioLogado + "!";
-
         }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)

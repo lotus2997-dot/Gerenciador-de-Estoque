@@ -35,8 +35,6 @@
             btnRetorno = new Button();
             btnEventos = new Button();
             btnEstoque = new Button();
-            panelLogo = new Panel();
-            pictureBox1 = new PictureBox();
             pnlAreaPrincipal = new Panel();
             pnlConteudo = new Panel();
             pnlProximoEvento = new Panel();
@@ -68,11 +66,8 @@
             pnlRodape = new Panel();
             lblRodape = new Label();
             pnlTopo = new Panel();
-            lblUsuario = new Label();
             lblTituloPagina = new Label();
             pnlMenuLateral.SuspendLayout();
-            panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlAreaPrincipal.SuspendLayout();
             pnlConteudo.SuspendLayout();
             pnlProximoEvento.SuspendLayout();
@@ -93,7 +88,6 @@
             pnlMenuLateral.Controls.Add(btnRetorno);
             pnlMenuLateral.Controls.Add(btnEventos);
             pnlMenuLateral.Controls.Add(btnEstoque);
-            pnlMenuLateral.Controls.Add(panelLogo);
             pnlMenuLateral.Dock = DockStyle.Left;
             pnlMenuLateral.Location = new Point(0, 0);
             pnlMenuLateral.Name = "pnlMenuLateral";
@@ -111,7 +105,7 @@
             btnDashboard.ForeColor = Color.White;
             btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.Location = new Point(0, 130);
+            btnDashboard.Location = new Point(0, 85);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Padding = new Padding(25, 0, 0, 0);
             btnDashboard.Size = new Size(220, 50);
@@ -132,7 +126,7 @@
             btnHistorico.ForeColor = Color.White;
             btnHistorico.Image = (Image)resources.GetObject("btnHistorico.Image");
             btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.Location = new Point(0, 350);
+            btnHistorico.Location = new Point(0, 305);
             btnHistorico.Name = "btnHistorico";
             btnHistorico.Padding = new Padding(25, 0, 0, 0);
             btnHistorico.Size = new Size(220, 50);
@@ -153,7 +147,7 @@
             btnRetorno.ForeColor = Color.White;
             btnRetorno.Image = (Image)resources.GetObject("btnRetorno.Image");
             btnRetorno.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRetorno.Location = new Point(0, 295);
+            btnRetorno.Location = new Point(0, 250);
             btnRetorno.Name = "btnRetorno";
             btnRetorno.Padding = new Padding(25, 0, 0, 0);
             btnRetorno.Size = new Size(220, 50);
@@ -175,7 +169,7 @@
             btnEventos.ForeColor = Color.White;
             btnEventos.Image = (Image)resources.GetObject("btnEventos.Image");
             btnEventos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEventos.Location = new Point(0, 240);
+            btnEventos.Location = new Point(0, 195);
             btnEventos.Name = "btnEventos";
             btnEventos.Padding = new Padding(25, 0, 0, 0);
             btnEventos.Size = new Size(220, 50);
@@ -197,7 +191,7 @@
             btnEstoque.ForeColor = Color.White;
             btnEstoque.Image = (Image)resources.GetObject("btnEstoque.Image");
             btnEstoque.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEstoque.Location = new Point(0, 185);
+            btnEstoque.Location = new Point(0, 140);
             btnEstoque.Name = "btnEstoque";
             btnEstoque.Padding = new Padding(25, 0, 0, 0);
             btnEstoque.Size = new Size(220, 50);
@@ -207,26 +201,6 @@
             btnEstoque.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEstoque.UseVisualStyleBackColor = false;
             btnEstoque.Click += btnEstoque_Click;
-            // 
-            // panelLogo
-            // 
-            panelLogo.BackColor = Color.FromArgb(19, 55, 99);
-            panelLogo.Controls.Add(pictureBox1);
-            panelLogo.Dock = DockStyle.Top;
-            panelLogo.Location = new Point(0, 0);
-            panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(220, 129);
-            panelLogo.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(26, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(155, 129);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // pnlAreaPrincipal
             // 
@@ -567,24 +541,12 @@
             // pnlTopo
             // 
             pnlTopo.BackColor = Color.FromArgb(20, 59, 102);
-            pnlTopo.Controls.Add(lblUsuario);
             pnlTopo.Controls.Add(lblTituloPagina);
             pnlTopo.Dock = DockStyle.Top;
             pnlTopo.Location = new Point(0, 0);
             pnlTopo.Name = "pnlTopo";
             pnlTopo.Size = new Size(1130, 85);
             pnlTopo.TabIndex = 0;
-            // 
-            // lblUsuario
-            // 
-            lblUsuario.AutoSize = true;
-            lblUsuario.ForeColor = Color.White;
-            lblUsuario.Location = new Point(510, 54);
-            lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(38, 15);
-            lblUsuario.TabIndex = 1;
-            lblUsuario.Text = "label1";
-            lblUsuario.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblTituloPagina
             // 
@@ -613,8 +575,6 @@
             Text = "Drink Manager";
             FormClosed += frmPrincipal_FormClosed;
             pnlMenuLateral.ResumeLayout(false);
-            panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pnlAreaPrincipal.ResumeLayout(false);
             pnlConteudo.ResumeLayout(false);
             pnlProximoEvento.ResumeLayout(false);
@@ -638,12 +598,10 @@
 
         #endregion
         private Panel pnlMenuLateral;
-        private Panel panelLogo;
         private Button btnEstoque;
         private Button btnRetorno;
         private Button btnEventos;
         private Button btnHistorico;
-        private PictureBox pictureBox1;
         private Button btnDashboard;
         private Panel pnlAreaPrincipal;
         private Panel pnlTopo;
@@ -677,6 +635,5 @@
         private Label lblLocalProximoEvento;
         private Label lblItensProximoEvento;
         private Label lblDataProximoEvento;
-        private Label lblUsuario;
     }
 }

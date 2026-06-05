@@ -15,6 +15,7 @@ namespace Drink
         public frmEventos()
         {
             InitializeComponent();
+            CarregarCombosTela();
             CriarEventoAtual();
             AtualizarTabelaItens();
         }
@@ -22,29 +23,20 @@ namespace Drink
         private void CriarEventoAtual()
         {
             eventoAtual = new Evento();
-
             eventoAtual.Id = GerarProximoIdEvento();
             eventoAtual.Nome = "Evento em edição";
             eventoAtual.Data = DateTime.Today;
             eventoAtual.Status = "Em montagem";
 
             if (eventoAtual.Itens == null)
-            {
                 eventoAtual.Itens = new List<ItemEvento>();
-            }
         }
+
         private int GerarProximoIdEvento()
         {
-            if (DadosTemporarios.Eventos.Count == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                int proximoIdEvento = DadosTemporarios.Eventos.Max(e => e.Id);
-                return proximoIdEvento + 1;
-            }
-         }
+            if (DadosTemporarios.Eventos.Count == 0) return 1;
+            return DadosTemporarios.Eventos.Max(e => e.Id) + 1;
+        }
 
         private List<Item> ObterItensDisponiveisDoEstoque()
         {
@@ -52,19 +44,31 @@ namespace Drink
                 .Where(item =>
                     item.Ativo &&
                     item.QuantidadeAtual > 0 &&
-                    (!item.Validade.HasValue || item.Validade.Value >= DateTime.Today)
-                )
+                    (!item.Validade.HasValue || item.Validade.Value >= DateTime.Today))
                 .ToList();
         }
 
         private int GerarProximoIdItemEvento()
         {
-            if (eventoAtual.Itens.Count == 0)
-            {
-                return 1;
-            }
-
+            if (eventoAtual.Itens.Count == 0) return 1;
             return eventoAtual.Itens.Max(item => item.Id) + 1;
+        }
+        private void CarregarCombosTela()
+        {
+            ComboBoxHelper.Preencher(cmbStatusEvento, CatalogosSistema.StatusEvento);
+
+            cmbFiltroCategoria.Items.Clear();
+            cmbFiltroCategoria.Items.Add("Todas");
+            foreach (var categoria in CatalogosSistema.Categorias)
+                cmbFiltroCategoria.Items.Add(categoria);
+            cmbFiltroCategoria.SelectedIndex = 0;
+
+            cmbFiltroStatus.Items.Clear();
+            cmbFiltroStatus.Items.Add("Todos");
+            foreach (var status in CatalogosSistema.StatusRetorno)
+                cmbFiltroStatus.Items.Add(status);
+            cmbFiltroStatus.Items.Add("Separado");
+            cmbFiltroStatus.SelectedIndex = 0;
         }
 
         private void AtualizarTabelaItens()
@@ -85,6 +89,7 @@ namespace Drink
             dgvItensEvento.DataSource = null;
             dgvItensEvento.DataSource = dadosTabela;
         }
+
         private ItemEvento? ObterItemEventoSelecionado()
         {
             if (dgvItensEvento.SelectedRows.Count > 0)
@@ -96,25 +101,56 @@ namespace Drink
             return null;
         }
 
+        private void SalvarOuAtualizarEvento()
+        {
+            bool eventoExiste = DadosTemporarios.Eventos.Any(e => e.Id == eventoAtual.Id);
+
+            if (eventoExiste)
+            {
+                // Substitui o evento existente na lista pelo atualizado
+                int index = DadosTemporarios.Eventos.FindIndex(e => e.Id == eventoAtual.Id);
+                if (index >= 0)
+                    DadosTemporarios.Eventos[index] = eventoAtual;
+            }
+            else
+            {
+                DadosTemporarios.Eventos.Add(eventoAtual);
+            }
+        }
+
         private void btnNovoItem_Click(object sender, EventArgs e)
         {
             List<Item> itensDisponiveis = ObterItensDisponiveisDoEstoque();
-
             frmNovoItemEvento telaNovoItem = new frmNovoItemEvento(itensDisponiveis);
 
             if (telaNovoItem.ShowDialog() == DialogResult.OK)
             {
                 ItemEvento? novoItem = telaNovoItem.ItemCriado;
-
-                if (novoItem == null)
-                {
-                    return;
-                }
+                if (novoItem == null) return;
 
                 novoItem.Id = GerarProximoIdItemEvento();
-
                 eventoAtual.Itens.Add(novoItem);
+                AtualizarTabelaItens();
+            }
+        }
 
+        private void btnEditarItem_Click(object sender, EventArgs e)
+        {
+            ItemEvento? itemEvento = ObterItemEventoSelecionado();
+
+            if (itemEvento == null)
+            {
+                MessageBox.Show("Selecione um item para editar.");
+                return;
+            }
+
+            List<Item> itensDisponiveis = ObterItensDisponiveisDoEstoque();
+            frmNovoItemEvento telaEditar = new frmNovoItemEvento(itensDisponiveis);
+
+            telaEditar.CarregarItemParaEdicao(itemEvento); // ← ANTES do ShowDialog
+
+            if (telaEditar.ShowDialog() == DialogResult.OK)
+            {
                 AtualizarTabelaItens();
             }
         }
@@ -128,22 +164,17 @@ namespace Drink
                 MessageBox.Show("Selecione um item para remover.");
                 return;
             }
-            DialogResult resposta = MessageBox.Show(
-           "Tem certeza que deseja remover este item?",
-           "Confirmar remoção",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
-            );
 
-            if (resposta == DialogResult.No)
-            {
-                return;
-            }
+            DialogResult resposta = MessageBox.Show(
+                "Tem certeza que deseja remover este item?",
+                "Confirmar remoção",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resposta == DialogResult.No) return;
 
             eventoAtual.Itens.Remove(itemEvento);
-
             AtualizarTabelaItens();
-
             MessageBox.Show("Item removido com sucesso.");
         }
 
@@ -154,17 +185,18 @@ namespace Drink
                 MessageBox.Show("Adicione pelo menos um item antes de confirmar a separação.");
                 return;
             }
+
             if (eventoAtual.Status == "Separado")
             {
                 MessageBox.Show("A separação deste evento já foi confirmada.");
                 return;
             }
+
+            // 1ª passagem: só validações — nada é alterado aqui
             foreach (ItemEvento itemEvento in eventoAtual.Itens)
             {
-                if (!itemEvento.VeioDoEstoque)
-                {
-                    continue;
-                }
+                if (!itemEvento.VeioDoEstoque) continue;
+
                 Item? itemEstoque = itemEvento.Item;
 
                 if (itemEstoque == null)
@@ -175,68 +207,64 @@ namespace Drink
 
                 if (itemEvento.QuantidadeSeparada > itemEstoque.QuantidadeAtual)
                 {
-                    MessageBox.Show(
-                        $"A quantidade separada para o item '{itemEstoque.Nome}' é maior do que a quantidade disponível no estoque."
-                    );
+                    MessageBox.Show($"A quantidade separada para '{itemEstoque.Nome}' é maior do que a disponível no estoque.");
                     return;
                 }
+
                 if (itemEstoque.Validade.HasValue && itemEstoque.Validade.Value < DateTime.Today)
                 {
-                    MessageBox.Show(
-                        $"O item '{itemEstoque.Nome}' está vencido e não pode ser separado."
-                    );
+                    MessageBox.Show($"O item '{itemEstoque.Nome}' está vencido e não pode ser separado.");
                     return;
                 }
-                if (itemEstoque.QuantidadeAtual - itemEvento.QuantidadeSeparada <= itemEstoque.QuantidadeMinima)
+
+                if (itemEstoque.QuantidadeAtual - itemEvento.QuantidadeSeparada < itemEstoque.QuantidadeMinima)
                 {
                     DialogResult resposta = MessageBox.Show(
-                        $"Separar {itemEvento.QuantidadeSeparada} {itemEstoque.Unidade} do item '{itemEstoque.Nome}' deixará o estoque abaixo da quantidade mínima recomendada. Deseja continuar?",
+                        $"Separar {itemEvento.QuantidadeSeparada} {itemEstoque.Unidade} de '{itemEstoque.Nome}' deixará o estoque abaixo do mínimo. Deseja continuar?",
                         "Aviso de estoque baixo",
                         MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning
-                    );
+                        MessageBoxIcon.Warning);
 
-                    if (resposta == DialogResult.No)
-                    {
-                        return;
-                    }
+                    if (resposta == DialogResult.No) return;
                 }
             }
 
+            // 2ª passagem: aplica as baixas e atualiza status
             foreach (ItemEvento itemEvento in eventoAtual.Itens)
             {
-                if (itemEvento.VeioDoEstoque)
+                if (itemEvento.VeioDoEstoque && itemEvento.Item != null)
                 {
-                    Item? itemEstoque = itemEvento.Item;
-
-                    if (itemEstoque != null)
-                    {
-                        itemEstoque.QuantidadeAtual -= itemEvento.QuantidadeSeparada;
-                        itemEstoque.UltimaAtualizacao = DateTime.Now;
-                    }
+                    itemEvento.Item.QuantidadeAtual -= itemEvento.QuantidadeSeparada;
+                    itemEvento.Item.UltimaAtualizacao = DateTime.Now;
                 }
 
                 itemEvento.Status = "Separado";
             }
 
-                eventoAtual.Status = "Separado";
+            eventoAtual.Status = "Separado";
+            SalvarOuAtualizarEvento();
 
-                bool eventoExiste = DadosTemporarios.Eventos.Any(evento => evento.Id == eventoAtual.Id);
-                if (eventoExiste)
-                {
-                MessageBox.Show("Evento ja existe");
-                }
-                else
-                {
-                DadosTemporarios.Eventos.Add(eventoAtual);
-                }
+            btnEditarItem.Enabled = false;
+            btnNovoItem.Enabled = false;
+            btnRemoverItem.Enabled = false;
+            btnConfirmarSeparacao.Enabled = false;
 
-                btnEditarItem.Enabled = false;
-                btnNovoItem.Enabled = false;
-                btnRemoverItem.Enabled = false;
-                btnConfirmarSeparacao.Enabled = false;
-                AtualizarTabelaItens();
-                MessageBox.Show("Separação confirmada com sucesso.");
+            AtualizarTabelaItens();
+            MessageBox.Show("Separação confirmada com sucesso.");
+        }
+
+        private void btnRetorno_Click(object sender, EventArgs e)
+        {
+            if (eventoAtual.Status != "Separado")
+            {
+                MessageBox.Show("Confirme a separação do evento antes de registrar o retorno.", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmAdicionarRetorno telaRetorno = new frmAdicionarRetorno(eventoAtual);
+            telaRetorno.ShowDialog();
+            AtualizarTabelaItens(); // atualiza a grid após o retorno
         }
     }
 }

@@ -212,3 +212,4 @@ C:\Users\lotus\OneDrive\Desktop\New Estoque\New Estoque\Gerenciador-de-Estoque\o
 C:\Users\lotus\OneDrive\Desktop\New Estoque\New Estoque\Gerenciador-de-Estoque\obj\Debug\net10.0-windows\Drink.pdb
 C:\Users\lotus\OneDrive\Desktop\New Estoque\New Estoque\Gerenciador-de-Estoque\obj\Debug\net10.0-windows\Drink.genruntimeconfig.cache
 C:\Users\lotus\OneDrive\Desktop\New Estoque\New Estoque\Gerenciador-de-Estoque\obj\Debug\net10.0-windows\ref\Drink.dll
+C:\Users\lotus\OneDrive\Desktop\New Estoque\Gerenciador-de-Estoque\obj\Debug\net10.0-windows\Drink.frmCadastrosAuxiliares.resources

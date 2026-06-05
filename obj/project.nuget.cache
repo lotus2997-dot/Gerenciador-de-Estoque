@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p9EnGv1YRUo=",
+  "dgSpecHash": "c8U6c0SFuj8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj",
+  "projectFilePath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lotus\\.nuget\\packages\\microsoft.data.sqlite\\10.0.7\\microsoft.data.sqlite.10.0.7.nupkg.sha512",
     "C:\\Users\\lotus\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.7\\microsoft.data.sqlite.core.10.0.7.nupkg.sha512",

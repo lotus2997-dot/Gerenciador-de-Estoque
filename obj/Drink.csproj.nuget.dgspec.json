@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj": {}
+    "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj": {
+    "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj",
+        "projectUniqueName": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj",
         "projectName": "Drink",
-        "projectPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj",
+        "projectPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Drink.csproj",
         "packagesPath": "C:\\Users\\lotus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\New Estoque\\Gerenciador-de-Estoque\\obj\\",
+        "outputPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

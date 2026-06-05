@@ -22,25 +22,8 @@ namespace Drink
         }
         private void CarregarComboBoxes()
         {
-            cmbCategoria.Items.Clear();
-
-            cmbCategoria.Items.Add("Bebidas");
-            cmbCategoria.Items.Add("Frutas");
-            cmbCategoria.Items.Add("Alimentos");
-            cmbCategoria.Items.Add("Descartáveis");
-            cmbCategoria.Items.Add("Limpeza");
-            cmbCategoria.Items.Add("Outros");
-
-            cmbUnidade.Items.Clear();
-
-            cmbUnidade.Items.Add("Unidade");
-            cmbUnidade.Items.Add("Kg");
-            cmbUnidade.Items.Add("g");
-            cmbUnidade.Items.Add("L");
-            cmbUnidade.Items.Add("ml");
-            cmbUnidade.Items.Add("Garrafa");
-            cmbUnidade.Items.Add("Caixa");
-            cmbUnidade.Items.Add("Pacote");
+            ComboBoxHelper.Preencher(cmbCategoria, CatalogosSistema.Categorias);
+            ComboBoxHelper.Preencher(cmbUnidade, CatalogosSistema.Unidades);
         }
 
         public void CarregarItemParaEdicao(Item item)
@@ -55,7 +38,6 @@ namespace Drink
             dtpValidade.Value = item.Validade ?? DateTime.Today;
             nudQuantidadeMinima.Value = item.QuantidadeMinima;
             txtObservacao.Text = item.Observacao ?? "";
-            chkItemAtivo.Checked = item.Ativo;
 
             btnSalvar.Text = "Salvar Alterações";
         }
@@ -81,7 +63,6 @@ namespace Drink
                 _itemEdicao.Validade = dtpValidade.Value;
                 _itemEdicao.QuantidadeMinima = nudQuantidadeMinima.Value;
                 _itemEdicao.Observacao = txtObservacao.Text.Trim();
-                _itemEdicao.Ativo = chkItemAtivo.Checked;
                 _itemEdicao.UltimaAtualizacao = DateTime.Now;
 
                 TLcadastro.AtualizarDados();
@@ -100,7 +81,6 @@ namespace Drink
                 Validade = dtpValidade.Value,
                 QuantidadeMinima = nudQuantidadeMinima.Value,
                 Observacao = txtObservacao.Text.Trim(),
-                Ativo = chkItemAtivo.Checked,
                 UltimaAtualizacao = DateTime.Now
             };
             
