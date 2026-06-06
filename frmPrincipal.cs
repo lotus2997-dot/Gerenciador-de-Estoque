@@ -18,6 +18,7 @@ namespace Drink
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            JsonHelper.Carregar();
             AtualizarDashboard();
         }
 
@@ -89,7 +90,7 @@ namespace Drink
         {
             MarcarBotaoSelecionado(btnEstoque);
             var tela = new frmEstoque();
-            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.FormClosed += (s, args) => { JsonHelper.Salvar(); AtualizarDashboard(); };
             tela.Show();
         }
 
@@ -97,7 +98,7 @@ namespace Drink
         {
             MarcarBotaoSelecionado(btnEventos);
             var tela = new frmEventos();
-            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.FormClosed += (s, args) => { JsonHelper.Salvar(); AtualizarDashboard(); };
             tela.Show();
         }
 
@@ -105,7 +106,7 @@ namespace Drink
         {
             MarcarBotaoSelecionado(btnRetorno);
             var tela = new frmRetorno();
-            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.FormClosed += (s, args) => { JsonHelper.Salvar(); AtualizarDashboard(); };
             tela.Show();
         }
 
@@ -113,7 +114,7 @@ namespace Drink
         {
             MarcarBotaoSelecionado(btnConfiguracao);
             var tela = new frmCadastrosAuxiliares();
-            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.FormClosed += (s, args) => { JsonHelper.Salvar(); AtualizarDashboard(); };
             tela.Show();
         }
 
@@ -121,7 +122,7 @@ namespace Drink
         {
             MarcarBotaoSelecionado(btnEventos);
             var tela = new frmEventos();
-            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.FormClosed += (s, args) => { JsonHelper.Salvar(); AtualizarDashboard(); };
             tela.Show();
         }
     }

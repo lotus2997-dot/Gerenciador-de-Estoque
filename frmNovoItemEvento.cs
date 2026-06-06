@@ -192,6 +192,7 @@ namespace Drink
             ItemCriado = new ItemEvento
             {
                 Item = itemSelecionado,
+                ItemId = itemSelecionado.Id,
                 QuantidadeSeparada = nudQuantidade.Value,
                 QuantidadeRetornada = 0,
                 Status = "Pendente",
@@ -241,6 +242,7 @@ namespace Drink
             ItemCriado = new ItemEvento
             {
                 Item = itemExterno,
+                ItemId = itemExterno.Id,
                 QuantidadeSeparada = nudQuantidade.Value,
                 QuantidadeRetornada = 0,
                 Status = "Pendente",
