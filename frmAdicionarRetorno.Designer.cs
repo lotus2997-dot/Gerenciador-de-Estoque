@@ -49,13 +49,12 @@
             pnlCabecalhoRetorno = new Panel();
             lblTituloRetorno = new Label();
             label1 = new Label();
-            gbTipoItemRetorno = new GroupBox();
-            rdbItemExternoRetorno = new RadioButton();
-            rdbItemEventoRetorno = new RadioButton();
+            nudQuantidadeDevolvida = new NumericUpDown();
+            lblQuantidadeDevolvida = new Label();
             grpDadosItemRetorno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudQuantidadeRetorno).BeginInit();
             pnlCabecalhoRetorno.SuspendLayout();
-            gbTipoItemRetorno.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidadeDevolvida).BeginInit();
             SuspendLayout();
             // 
             // btnLimparRetorno
@@ -98,6 +97,8 @@
             // 
             // grpDadosItemRetorno
             // 
+            grpDadosItemRetorno.Controls.Add(lblQuantidadeDevolvida);
+            grpDadosItemRetorno.Controls.Add(nudQuantidadeDevolvida);
             grpDadosItemRetorno.Controls.Add(lblQuantidadeRetorno);
             grpDadosItemRetorno.Controls.Add(txtObservacaoRetorno);
             grpDadosItemRetorno.Controls.Add(lblObservacaoRetorno);
@@ -133,7 +134,7 @@
             txtObservacaoRetorno.Location = new Point(524, 50);
             txtObservacaoRetorno.Multiline = true;
             txtObservacaoRetorno.Name = "txtObservacaoRetorno";
-            txtObservacaoRetorno.Size = new Size(198, 133);
+            txtObservacaoRetorno.Size = new Size(198, 78);
             txtObservacaoRetorno.TabIndex = 14;
             // 
             // lblObservacaoRetorno
@@ -272,43 +273,23 @@
             label1.TabIndex = 22;
             label1.Text = "Novo item do Retorno";
             // 
-            // gbTipoItemRetorno
+            // nudQuantidadeDevolvida
             // 
-            gbTipoItemRetorno.Controls.Add(rdbItemExternoRetorno);
-            gbTipoItemRetorno.Controls.Add(rdbItemEventoRetorno);
-            gbTipoItemRetorno.Font = new Font("Segoe UI", 9F);
-            gbTipoItemRetorno.Location = new Point(473, 351);
-            gbTipoItemRetorno.Name = "gbTipoItemRetorno";
-            gbTipoItemRetorno.Size = new Size(279, 53);
-            gbTipoItemRetorno.TabIndex = 21;
-            gbTipoItemRetorno.TabStop = false;
-            gbTipoItemRetorno.Text = "Tipo do item :";
+            nudQuantidadeDevolvida.DecimalPlaces = 2;
+            nudQuantidadeDevolvida.Location = new Point(524, 160);
+            nudQuantidadeDevolvida.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            nudQuantidadeDevolvida.Name = "nudQuantidadeDevolvida";
+            nudQuantidadeDevolvida.Size = new Size(198, 23);
+            nudQuantidadeDevolvida.TabIndex = 16;
             // 
-            // rdbItemExternoRetorno
+            // lblQuantidadeDevolvida
             // 
-            rdbItemExternoRetorno.AutoSize = true;
-            rdbItemExternoRetorno.Font = new Font("Segoe UI", 9F);
-            rdbItemExternoRetorno.Location = new Point(156, 24);
-            rdbItemExternoRetorno.Name = "rdbItemExternoRetorno";
-            rdbItemExternoRetorno.Size = new Size(91, 19);
-            rdbItemExternoRetorno.TabIndex = 1;
-            rdbItemExternoRetorno.TabStop = true;
-            rdbItemExternoRetorno.Text = "Item externo";
-            rdbItemExternoRetorno.UseVisualStyleBackColor = true;
-            rdbItemExternoRetorno.CheckedChanged += rdbItemExternoRetorno_CheckedChanged;
-            // 
-            // rdbItemEventoRetorno
-            // 
-            rdbItemEventoRetorno.AutoSize = true;
-            rdbItemEventoRetorno.Font = new Font("Segoe UI", 9F);
-            rdbItemEventoRetorno.Location = new Point(13, 24);
-            rdbItemEventoRetorno.Name = "rdbItemEventoRetorno";
-            rdbItemEventoRetorno.Size = new Size(105, 19);
-            rdbItemEventoRetorno.TabIndex = 0;
-            rdbItemEventoRetorno.TabStop = true;
-            rdbItemEventoRetorno.Text = "Item do Evento";
-            rdbItemEventoRetorno.UseVisualStyleBackColor = true;
-            rdbItemEventoRetorno.CheckedChanged += rdbItemEventoRetorno_CheckedChanged;
+            lblQuantidadeDevolvida.AutoSize = true;
+            lblQuantidadeDevolvida.Location = new Point(524, 140);
+            lblQuantidadeDevolvida.Name = "lblQuantidadeDevolvida";
+            lblQuantidadeDevolvida.Size = new Size(147, 15);
+            lblQuantidadeDevolvida.TabIndex = 17;
+            lblQuantidadeDevolvida.Text = "Quantidade de Devolução:";
             // 
             // frmAdicionarRetorno
             // 
@@ -321,7 +302,6 @@
             Controls.Add(grpDadosItemRetorno);
             Controls.Add(pnlCabecalhoRetorno);
             Controls.Add(label1);
-            Controls.Add(gbTipoItemRetorno);
             Name = "frmAdicionarRetorno";
             Text = "frmAdicionarRetorno";
             grpDadosItemRetorno.ResumeLayout(false);
@@ -329,8 +309,7 @@
             ((System.ComponentModel.ISupportInitialize)nudQuantidadeRetorno).EndInit();
             pnlCabecalhoRetorno.ResumeLayout(false);
             pnlCabecalhoRetorno.PerformLayout();
-            gbTipoItemRetorno.ResumeLayout(false);
-            gbTipoItemRetorno.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidadeDevolvida).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -358,8 +337,7 @@
         private Panel pnlCabecalhoRetorno;
         private Label lblTituloRetorno;
         private Label label1;
-        private GroupBox gbTipoItemRetorno;
-        private RadioButton rdbItemExternoRetorno;
-        private RadioButton rdbItemEventoRetorno;
+        private Label lblQuantidadeDevolvida;
+        private NumericUpDown nudQuantidadeDevolvida;
     }
 }
