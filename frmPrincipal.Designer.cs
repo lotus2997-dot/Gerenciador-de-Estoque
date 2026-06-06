@@ -30,8 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             pnlMenuLateral = new Panel();
-            btnDashboard = new Button();
-            btnHistorico = new Button();
+            btnConfiguracao = new Button();
             btnRetorno = new Button();
             btnEventos = new Button();
             btnEstoque = new Button();
@@ -83,8 +82,7 @@
             // pnlMenuLateral
             // 
             pnlMenuLateral.BackColor = Color.FromArgb(20, 59, 102);
-            pnlMenuLateral.Controls.Add(btnDashboard);
-            pnlMenuLateral.Controls.Add(btnHistorico);
+            pnlMenuLateral.Controls.Add(btnConfiguracao);
             pnlMenuLateral.Controls.Add(btnRetorno);
             pnlMenuLateral.Controls.Add(btnEventos);
             pnlMenuLateral.Controls.Add(btnEstoque);
@@ -94,47 +92,27 @@
             pnlMenuLateral.Size = new Size(220, 729);
             pnlMenuLateral.TabIndex = 1;
             // 
-            // btnDashboard
+            // btnConfiguracao
             // 
-            btnDashboard.BackColor = Color.FromArgb(30, 100, 170);
-            btnDashboard.FlatAppearance.BorderSize = 0;
-            btnDashboard.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 85, 145);
-            btnDashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 100, 170);
-            btnDashboard.FlatStyle = FlatStyle.Flat;
-            btnDashboard.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDashboard.ForeColor = Color.White;
-            btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
-            btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.Location = new Point(0, 85);
-            btnDashboard.Name = "btnDashboard";
-            btnDashboard.Padding = new Padding(25, 0, 0, 0);
-            btnDashboard.Size = new Size(220, 50);
-            btnDashboard.TabIndex = 5;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
-            btnDashboard.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDashboard.UseVisualStyleBackColor = false;
-            // 
-            // btnHistorico
-            // 
-            btnHistorico.BackColor = Color.FromArgb(30, 100, 170);
-            btnHistorico.FlatAppearance.BorderSize = 0;
-            btnHistorico.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 85, 145);
-            btnHistorico.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 100, 170);
-            btnHistorico.FlatStyle = FlatStyle.Flat;
-            btnHistorico.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHistorico.ForeColor = Color.White;
-            btnHistorico.Image = (Image)resources.GetObject("btnHistorico.Image");
-            btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.Location = new Point(0, 305);
-            btnHistorico.Name = "btnHistorico";
-            btnHistorico.Padding = new Padding(25, 0, 0, 0);
-            btnHistorico.Size = new Size(220, 50);
-            btnHistorico.TabIndex = 5;
-            btnHistorico.Text = "Historico de eventos";
-            btnHistorico.TextAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnHistorico.UseVisualStyleBackColor = false;
+            btnConfiguracao.BackColor = Color.FromArgb(30, 100, 170);
+            btnConfiguracao.FlatAppearance.BorderSize = 0;
+            btnConfiguracao.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 85, 145);
+            btnConfiguracao.FlatAppearance.MouseOverBackColor = Color.FromArgb(30, 100, 170);
+            btnConfiguracao.FlatStyle = FlatStyle.Flat;
+            btnConfiguracao.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfiguracao.ForeColor = Color.White;
+            btnConfiguracao.Image = (Image)resources.GetObject("btnConfiguracao.Image");
+            btnConfiguracao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnConfiguracao.Location = new Point(0, 252);
+            btnConfiguracao.Name = "btnConfiguracao";
+            btnConfiguracao.Padding = new Padding(25, 0, 0, 0);
+            btnConfiguracao.Size = new Size(220, 50);
+            btnConfiguracao.TabIndex = 5;
+            btnConfiguracao.Text = "Configuração";
+            btnConfiguracao.TextAlign = ContentAlignment.MiddleLeft;
+            btnConfiguracao.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnConfiguracao.UseVisualStyleBackColor = false;
+            btnConfiguracao.Click += btnConfiguracao_Click;
             // 
             // btnRetorno
             // 
@@ -147,7 +125,7 @@
             btnRetorno.ForeColor = Color.White;
             btnRetorno.Image = (Image)resources.GetObject("btnRetorno.Image");
             btnRetorno.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRetorno.Location = new Point(0, 250);
+            btnRetorno.Location = new Point(0, 196);
             btnRetorno.Name = "btnRetorno";
             btnRetorno.Padding = new Padding(25, 0, 0, 0);
             btnRetorno.Size = new Size(220, 50);
@@ -169,7 +147,7 @@
             btnEventos.ForeColor = Color.White;
             btnEventos.Image = (Image)resources.GetObject("btnEventos.Image");
             btnEventos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEventos.Location = new Point(0, 195);
+            btnEventos.Location = new Point(0, 141);
             btnEventos.Name = "btnEventos";
             btnEventos.Padding = new Padding(25, 0, 0, 0);
             btnEventos.Size = new Size(220, 50);
@@ -191,7 +169,7 @@
             btnEstoque.ForeColor = Color.White;
             btnEstoque.Image = (Image)resources.GetObject("btnEstoque.Image");
             btnEstoque.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEstoque.Location = new Point(0, 140);
+            btnEstoque.Location = new Point(0, 85);
             btnEstoque.Name = "btnEstoque";
             btnEstoque.Padding = new Padding(25, 0, 0, 0);
             btnEstoque.Size = new Size(220, 50);
@@ -255,6 +233,7 @@
             btnVerEvento.TabIndex = 5;
             btnVerEvento.Text = "Ver detalhes";
             btnVerEvento.UseVisualStyleBackColor = false;
+            btnVerEvento.Click += btnVerEvento_Click;
             // 
             // lblLocalProximoEvento
             // 
@@ -554,7 +533,7 @@
             lblTituloPagina.AutoSize = true;
             lblTituloPagina.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTituloPagina.ForeColor = Color.White;
-            lblTituloPagina.Location = new Point(417, 9);
+            lblTituloPagina.Location = new Point(401, 9);
             lblTituloPagina.Name = "lblTituloPagina";
             lblTituloPagina.Size = new Size(225, 40);
             lblTituloPagina.TabIndex = 0;
@@ -601,8 +580,7 @@
         private Button btnEstoque;
         private Button btnRetorno;
         private Button btnEventos;
-        private Button btnHistorico;
-        private Button btnDashboard;
+        private Button btnConfiguracao;
         private Panel pnlAreaPrincipal;
         private Panel pnlTopo;
         private Label lblTituloPagina;

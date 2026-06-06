@@ -1,69 +1,128 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using System.Linq;
 using System.Windows.Forms;
+using Drink.Dados;
 
 namespace Drink
 {
     public partial class frmPrincipal : Form
     {
         private string _usuarioLogado = "";
-        //Passando valores
-
-        private void MarcarBotaoSelecionado(Button botaoSelecionado)
-        {
-            // Cor padrão dos botões.
-            Color corPadrao = Color.FromArgb(20, 59, 102);
-
-            // Cor do botão selecionado.
-            Color corSelecionada = Color.FromArgb(30, 100, 170);
-
-            btnDashboard.BackColor = corPadrao;
-            btnEstoque.BackColor = corPadrao;
-            btnEventos.BackColor = corPadrao;
-            btnRetorno.BackColor = corPadrao;
-            btnHistorico.BackColor = corPadrao;
-
-            botaoSelecionado.BackColor = corSelecionada;
-        }
-
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            lblTituloPagina.Text = "Menu Principal";
-
-            MarcarBotaoSelecionado(btnDashboard);
-        }
 
         public frmPrincipal(string usuarioDoLogin)
         {
             InitializeComponent();
-            _usuarioLogado = usuarioDoLogin; //Escopo local
+            _usuarioLogado = usuarioDoLogin;
+        }
 
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            AtualizarDashboard();
+        }
+
+        public void AtualizarDashboard()
+        {
+                lblTotalEstoque.Text = DadosTemporarios.Itens.Count.ToString();
+
+                int eventosAtivos = DadosTemporarios.Eventos
+                    .Count(ev => ev.Status == "Separado" || ev.Status == "Em andamento");
+                lblEventosAtivos.Text = eventosAtivos.ToString();
+
+                int itensRetorno = DadosTemporarios.Eventos
+                    .SelectMany(ev => ev.Itens)
+                    .Count(i => i.Status == "Separado" && i.QuantidadeRetornada == 0);
+                lblItensRetorno.Text = itensRetorno.ToString();
+
+                int alertas = DadosTemporarios.Itens
+                    .Count(i => i.QuantidadeAtual <= i.QuantidadeMinima);
+                lblAlertas.Text = alertas.ToString();
+
+                var proximoEvento = DadosTemporarios.Eventos
+                    .Where(ev => ev.Data >= DateTime.Today)
+                    .OrderBy(ev => ev.Data)
+                    .FirstOrDefault();
+
+                if (proximoEvento != null)
+                {
+                    lblNomeProximoEvento.Text = proximoEvento.Nome;
+                    lblDataProximoEvento.Text = "Data: " + proximoEvento.Data.ToString("dd/MM/yyyy");
+                    lblLocalProximoEvento.Text = "Local: " + proximoEvento.Local;
+                    lblItensProximoEvento.Text = "Itens reservados: " + proximoEvento.Itens.Count;
+                }
+                else
+                {
+                    lblNomeProximoEvento.Text = "Nenhum evento agendado";
+                    lblDataProximoEvento.Text = "";
+                    lblLocalProximoEvento.Text = "";
+                    lblItensProximoEvento.Text = "";
+                }
+
+                lstMovimentacoes.Items.Clear();
+                foreach (var ev in DadosTemporarios.Eventos.OrderByDescending(ev => ev.Data).Take(20))
+                    lstMovimentacoes.Items.Add(
+                        $"{ev.Data:dd/MM/yyyy}  |  {ev.Nome}  |  {ev.Local}  |  Status: {ev.Status}");
+            }
+
+
+        private void MarcarBotaoSelecionado(Button botaoSelecionado)
+        {
+            Color corPadrao = Color.FromArgb(20, 59, 102);
+            Color corSelecionada = Color.FromArgb(30, 100, 170);
+
+            btnEstoque.BackColor = corPadrao;
+            btnEventos.BackColor = corPadrao;
+            btnRetorno.BackColor = corPadrao;
+            btnConfiguracao.BackColor = corPadrao;
+
+            botaoSelecionado.BackColor = corSelecionada;
         }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
+        // ── Abre telas e atualiza ao fechar ──────────────────
+
         private void btnEstoque_Click(object sender, EventArgs e)
         {
-            frmEstoque tela = new frmEstoque();
+            MarcarBotaoSelecionado(btnEstoque);
+            var tela = new frmEstoque();
+            tela.FormClosed += (s, args) => AtualizarDashboard();
             tela.Show();
         }
 
         private void btnEventos_Click(object sender, EventArgs e)
         {
-            frmEventos tela = new frmEventos();
+            MarcarBotaoSelecionado(btnEventos);
+            var tela = new frmEventos();
+            tela.FormClosed += (s, args) => AtualizarDashboard();
             tela.Show();
         }
 
         private void btnRetorno_Click(object sender, EventArgs e)
         {
-            var form = new frmRetorno();
-            form.ShowDialog();
+            MarcarBotaoSelecionado(btnRetorno);
+            var tela = new frmRetorno();
+            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.Show();
+        }
+
+        private void btnConfiguracao_Click(object sender, EventArgs e)
+        {
+            MarcarBotaoSelecionado(btnConfiguracao);
+            var tela = new frmCadastrosAuxiliares();
+            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.Show();
+        }
+
+        private void btnVerEvento_Click(object sender, EventArgs e)
+        {
+            MarcarBotaoSelecionado(btnEventos);
+            var tela = new frmEventos();
+            tela.FormClosed += (s, args) => AtualizarDashboard();
+            tela.Show();
         }
     }
 }

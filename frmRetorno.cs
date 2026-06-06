@@ -13,10 +13,6 @@ namespace Drink
         public frmRetorno()
         {
             InitializeComponent();
-        }
-
-        private void frmRetorno_Load(object sender, EventArgs e)
-        {
             CarregarCombosTela();
             CarregarEventos();
         }
@@ -39,7 +35,7 @@ namespace Drink
 
         private void CarregarEventos()
         {
-            cmbEventoSelecionado.SelectedIndexChanged -= cmbEventoSelecionado_SelectedIndexChanged_1;
+            cmbEventoSelecionado.SelectedIndexChanged -= cmbEventoSelecionado_SelectedIndexChanged;
             cmbEventoSelecionado.DataSource = null;
             cmbEventoSelecionado.DataSource = DadosTemporarios.Eventos
                 .Where(e => e.Status == "Separado" || e.Status == "Retorno em conferência")
@@ -47,11 +43,11 @@ namespace Drink
             cmbEventoSelecionado.DisplayMember = "Nome";
             cmbEventoSelecionado.ValueMember = "Id";
             cmbEventoSelecionado.SelectedIndex = -1;
-            cmbEventoSelecionado.SelectedIndexChanged += cmbEventoSelecionado_SelectedIndexChanged_1;
+            cmbEventoSelecionado.SelectedIndexChanged += cmbEventoSelecionado_SelectedIndexChanged;
         }
 
         // SELEÇÃO DE EVENTO
-        private void cmbEventoSelecionado_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbEventoSelecionado_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbEventoSelecionado.SelectedItem is not Evento ev) return;
 
@@ -81,7 +77,7 @@ namespace Drink
         }
 
         // TABELA DE ITENS
-        private void AtualizarTabelaItens(string nomeFiltro = "", string unidadeFiltro = "", string statusFiltro = "")
+        private void AtualizarTabelaItens(string nomeFiltro = "", string unidadeFiltro = "Todas",  string statusFiltro = "Todos") 
         {
             if (_eventoAtual == null)
             {
@@ -92,8 +88,7 @@ namespace Drink
             var itens = _eventoAtual.Itens.AsEnumerable();
 
             if (!string.IsNullOrWhiteSpace(nomeFiltro))
-                itens = itens.Where(ie => ie.Item != null &&
-                            ie.Item.Nome.Contains(nomeFiltro, StringComparison.OrdinalIgnoreCase));
+                itens = itens.Where(ie => ie.Item != null && ie.Item.Nome.Contains(nomeFiltro, StringComparison.OrdinalIgnoreCase));
 
             if (unidadeFiltro != "Todas")
                 itens = itens.Where(ie => ie.Item?.Unidade == unidadeFiltro);
@@ -203,8 +198,6 @@ namespace Drink
             bool todos = _eventoAtual.Itens.All(ie => ie.Status == "Retornado");
             if (!todos) return;
 
-            _eventoAtual.Status = "Retorno em conferência";
-
             if (MessageBox.Show(
                     "Todos os itens foram conferidos! Deseja encerrar o evento agora?",
                     "Conferência completa",
@@ -214,8 +207,15 @@ namespace Drink
                 _eventoAtual.Status = "Encerrado";
                 MessageBox.Show("Evento encerrado com sucesso.");
                 CarregarEventos();
+                _eventoAtual = null;        
                 dgvRetorno.DataSource = null;
-                AtualizarResumo();
+                lblEventoValor.Text = "-";
+                lblDataValor.Text = "-";
+                lblResponsavelValor.Text = "-";
+            }
+            else
+            {
+                _eventoAtual.Status = "Retorno em conferência"; 
             }
         }
 

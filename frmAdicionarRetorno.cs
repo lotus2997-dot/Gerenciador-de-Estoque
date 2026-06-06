@@ -137,13 +137,15 @@ namespace Drink
         {
             decimal qtdRetornada = nudQuantidadeRetorno.Value;
 
-            if (_itemEmConferencia!.VeioDoEstoque && _itemEmConferencia.Item != null)
+            _itemEmConferencia!.QuantidadeRetornada = qtdRetornada;
+            // QuantidadeConsumida é calculada automaticamente, não precisa setar
+
+            if (_itemEmConferencia.VeioDoEstoque && _itemEmConferencia.Item != null)
             {
                 _itemEmConferencia.Item.QuantidadeAtual += qtdRetornada;
                 _itemEmConferencia.Item.UltimaAtualizacao = DateTime.Now;
             }
 
-            _itemEmConferencia.QuantidadeRetornada = qtdRetornada;
             _itemEmConferencia.Status = "Retornado";
             _itemEmConferencia.Observacao = txtObservacaoRetorno.Text.Trim();
 

@@ -349,6 +349,7 @@
             btnLimparFiltro.TabIndex = 4;
             btnLimparFiltro.Text = "Limpar";
             btnLimparFiltro.UseVisualStyleBackColor = false;
+            btnLimparFiltro.Click += btnLimparFiltro_Click;
             // 
             // btnPesquisar
             // 
@@ -473,6 +474,7 @@
             btnParaItens.TabIndex = 6;
             btnParaItens.Text = "Ir para Itens";
             btnParaItens.UseVisualStyleBackColor = false;
+            btnParaItens.Click += btnParaItens_Click;
             // 
             // btnSalvarDadosEvento
             // 
@@ -519,6 +521,7 @@
             // 
             nudQtdPessoas.Font = new Font("Segoe UI", 9.75F);
             nudQtdPessoas.Location = new Point(20, 110);
+            nudQtdPessoas.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             nudQtdPessoas.Name = "nudQtdPessoas";
             nudQtdPessoas.Size = new Size(211, 25);
             nudQtdPessoas.TabIndex = 10;

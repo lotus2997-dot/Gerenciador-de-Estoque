@@ -127,7 +127,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(586, 20);
+            label10.Location = new Point(903, 20);
             label10.Name = "label10";
             label10.Size = new Size(46, 15);
             label10.TabIndex = 8;
@@ -136,18 +136,18 @@
             // cmbEventoSelecionado
             // 
             cmbEventoSelecionado.FormattingEnabled = true;
-            cmbEventoSelecionado.Location = new Point(586, 42);
+            cmbEventoSelecionado.Location = new Point(903, 42);
             cmbEventoSelecionado.Name = "cmbEventoSelecionado";
             cmbEventoSelecionado.Size = new Size(165, 23);
             cmbEventoSelecionado.TabIndex = 7;
-            cmbEventoSelecionado.SelectedIndexChanged += cmbEventoSelecionado_SelectedIndexChanged_1;
+            cmbEventoSelecionado.SelectedIndexChanged += cmbEventoSelecionado_SelectedIndexChanged;
             // 
             // lblResponsavelValor
             // 
             lblResponsavelValor.AutoSize = true;
             lblResponsavelValor.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblResponsavelValor.ForeColor = Color.FromArgb(20, 59, 102);
-            lblResponsavelValor.Location = new Point(900, 45);
+            lblResponsavelValor.Location = new Point(613, 45);
             lblResponsavelValor.Name = "lblResponsavelValor";
             lblResponsavelValor.Size = new Size(111, 20);
             lblResponsavelValor.TabIndex = 4;
@@ -167,7 +167,7 @@
             // lblResponsavelTitulo
             // 
             lblResponsavelTitulo.AutoSize = true;
-            lblResponsavelTitulo.Location = new Point(900, 20);
+            lblResponsavelTitulo.Location = new Point(613, 20);
             lblResponsavelTitulo.Name = "lblResponsavelTitulo";
             lblResponsavelTitulo.Size = new Size(75, 15);
             lblResponsavelTitulo.TabIndex = 3;
@@ -268,6 +268,7 @@
             // 
             nudQtdPessoasRetorno.Font = new Font("Segoe UI", 9.75F);
             nudQtdPessoasRetorno.Location = new Point(20, 114);
+            nudQtdPessoasRetorno.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             nudQtdPessoasRetorno.Name = "nudQtdPessoasRetorno";
             nudQtdPessoasRetorno.Size = new Size(211, 25);
             nudQtdPessoasRetorno.TabIndex = 10;

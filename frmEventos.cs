@@ -78,7 +78,7 @@ namespace Drink
             cmbFiltroStatus.Items.Add("Separado");
             cmbFiltroStatus.SelectedIndex = 0;
 
-            RecarregarComboEventos(); // ← carrega cmbEventoSelecionadoE
+            RecarregarComboEventos(); // carrega cmbEventoSelecionadoE
         }
 
         private void RecarregarComboEventos()
@@ -95,7 +95,10 @@ namespace Drink
         }
 
 
-        private void AtualizarTabelaItens(string nomeFiltro = "", string categoriaFiltro = "", string statusFiltro = "")
+        private void AtualizarTabelaItens(
+            string nomeFiltro = "",
+            string categoriaFiltro = "Todas", 
+            string statusFiltro = "Todos")
         {
             var itens = eventoAtual.Itens.AsEnumerable();
 
@@ -377,6 +380,11 @@ namespace Drink
             categoriaFiltro: cmbFiltroCategoria.Text,
             statusFiltro: cmbFiltroStatus.Text
             );
+        }
+
+        private void btnParaItens_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabItensEvento;
         }
 
         private void btnLimparFiltro_Click(object sender, EventArgs e)
