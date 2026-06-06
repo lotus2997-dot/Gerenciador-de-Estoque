@@ -250,6 +250,16 @@ namespace Drink
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            nudQuantidade.Value = 0;
+            cmbItensEstoque.SelectedIndex = -1;
+            txtNomeExterno.Clear();
+            txtCategoriaExterna.Text = "";
+            txtUnidadeExterna.Text = "";
+            txtObservacao.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             DialogResult = DialogResult.Cancel;
             Close();
         }

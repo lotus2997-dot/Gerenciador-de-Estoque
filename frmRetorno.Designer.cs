@@ -61,9 +61,8 @@
             lblTituloDadosEventoRetorno = new Label();
             tabItensRetorno = new TabPage();
             pnlBotoesRetorno = new Panel();
-            btnConfirmar = new Button();
+            btnDevolverEstoque = new Button();
             btnRemover = new Button();
-            btnNovoItem = new Button();
             dgvRetorno = new DataGridView();
             grpFiltros = new GroupBox();
             btnLimparFiltro = new Button();
@@ -74,6 +73,7 @@
             lblFiltroUnidade = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
+            btnConfirmarRetorno = new Button();
             pnlResumoRetorno.SuspendLayout();
             tabControl1.SuspendLayout();
             tabDadosRetorno.SuspendLayout();
@@ -249,6 +249,7 @@
             btnParaItensRetorno.TabIndex = 6;
             btnParaItensRetorno.Text = "Ir para Itens";
             btnParaItensRetorno.UseVisualStyleBackColor = false;
+            btnParaItensRetorno.Click += btnParaItensRetorno_Click;
             // 
             // grpDetalhesEventoRetorno
             // 
@@ -430,28 +431,28 @@
             // pnlBotoesRetorno
             // 
             pnlBotoesRetorno.BackColor = Color.White;
-            pnlBotoesRetorno.Controls.Add(btnConfirmar);
+            pnlBotoesRetorno.Controls.Add(btnConfirmarRetorno);
+            pnlBotoesRetorno.Controls.Add(btnDevolverEstoque);
             pnlBotoesRetorno.Controls.Add(btnRemover);
-            pnlBotoesRetorno.Controls.Add(btnNovoItem);
             pnlBotoesRetorno.Dock = DockStyle.Bottom;
             pnlBotoesRetorno.Location = new Point(3, 453);
             pnlBotoesRetorno.Name = "pnlBotoesRetorno";
             pnlBotoesRetorno.Size = new Size(1336, 80);
             pnlBotoesRetorno.TabIndex = 2;
             // 
-            // btnConfirmar
+            // btnDevolverEstoque
             // 
-            btnConfirmar.BackColor = Color.FromArgb(0, 140, 70);
-            btnConfirmar.FlatStyle = FlatStyle.Flat;
-            btnConfirmar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfirmar.ForeColor = Color.White;
-            btnConfirmar.Location = new Point(477, 20);
-            btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(190, 38);
-            btnConfirmar.TabIndex = 6;
-            btnConfirmar.Text = "Devolver ao Estoque";
-            btnConfirmar.UseVisualStyleBackColor = false;
-            btnConfirmar.Click += btnConfirmar_Click;
+            btnDevolverEstoque.BackColor = Color.FromArgb(20, 59, 102);
+            btnDevolverEstoque.FlatStyle = FlatStyle.Flat;
+            btnDevolverEstoque.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDevolverEstoque.ForeColor = Color.White;
+            btnDevolverEstoque.Location = new Point(18, 20);
+            btnDevolverEstoque.Name = "btnDevolverEstoque";
+            btnDevolverEstoque.Size = new Size(190, 38);
+            btnDevolverEstoque.TabIndex = 6;
+            btnDevolverEstoque.Text = "Devolver ao Estoque";
+            btnDevolverEstoque.UseVisualStyleBackColor = false;
+            btnDevolverEstoque.Click += btnConfirmar_Click;
             // 
             // btnRemover
             // 
@@ -459,27 +460,13 @@
             btnRemover.FlatStyle = FlatStyle.Flat;
             btnRemover.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRemover.ForeColor = Color.White;
-            btnRemover.Location = new Point(217, 20);
+            btnRemover.Location = new Point(237, 20);
             btnRemover.Name = "btnRemover";
             btnRemover.Size = new Size(150, 38);
             btnRemover.TabIndex = 5;
             btnRemover.Text = "Remover";
             btnRemover.UseVisualStyleBackColor = false;
             btnRemover.Click += btnRemover_Click;
-            // 
-            // btnNovoItem
-            // 
-            btnNovoItem.BackColor = Color.FromArgb(20, 59, 102);
-            btnNovoItem.FlatStyle = FlatStyle.Flat;
-            btnNovoItem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnNovoItem.ForeColor = Color.White;
-            btnNovoItem.Location = new Point(30, 20);
-            btnNovoItem.Name = "btnNovoItem";
-            btnNovoItem.Size = new Size(150, 38);
-            btnNovoItem.TabIndex = 3;
-            btnNovoItem.Text = "Novo Item";
-            btnNovoItem.UseVisualStyleBackColor = false;
-            btnNovoItem.Click += btnNovoItem_Click;
             // 
             // dgvRetorno
             // 
@@ -528,6 +515,7 @@
             btnLimparFiltro.TabIndex = 1;
             btnLimparFiltro.Text = "Limpar";
             btnLimparFiltro.UseVisualStyleBackColor = false;
+            btnLimparFiltro.Click += btnLimparFiltro_Click;
             // 
             // btnPesquisar
             // 
@@ -541,6 +529,7 @@
             btnPesquisar.TabIndex = 7;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // cmbFiltroStatus
             // 
@@ -595,6 +584,19 @@
             lblFiltroNome.Size = new Size(43, 15);
             lblFiltroNome.TabIndex = 1;
             lblFiltroNome.Text = "Nome:";
+            // 
+            // btnConfirmarRetorno
+            // 
+            btnConfirmarRetorno.BackColor = Color.FromArgb(0, 140, 70);
+            btnConfirmarRetorno.FlatStyle = FlatStyle.Flat;
+            btnConfirmarRetorno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmarRetorno.ForeColor = Color.White;
+            btnConfirmarRetorno.Location = new Point(1102, 20);
+            btnConfirmarRetorno.Name = "btnConfirmarRetorno";
+            btnConfirmarRetorno.Size = new Size(190, 38);
+            btnConfirmarRetorno.TabIndex = 7;
+            btnConfirmarRetorno.Text = "Confirmar Retorno";
+            btnConfirmarRetorno.UseVisualStyleBackColor = false;
             // 
             // frmRetorno
             // 
@@ -656,8 +658,7 @@
         private Panel pnlBotoesRetorno;
         private DataGridView dgvRetorno;
         private Button btnRemover;
-        private Button btnNovoItem;
-        private Button btnConfirmar;
+        private Button btnDevolverEstoque;
         private Panel pnlDadosEventoRetorno;
         private GroupBox grpDetalhesEventoRetorno;
         private ComboBox cmbStatusEventoRetorno;
@@ -678,5 +679,6 @@
         private Button btnParaItensRetorno;
         private NumericUpDown nudQtdPessoasRetorno;
         private Label label9;
+        private Button btnConfirmarRetorno;
     }
 }

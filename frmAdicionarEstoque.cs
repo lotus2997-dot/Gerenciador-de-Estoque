@@ -5,12 +5,9 @@ using Drink.Dados;
 
 namespace Drink
 {
-
-
     public partial class frmAdicionarEstoque : Form
     {
         private readonly frmEstoque TLcadastro;
-        
         private bool _modoEdicao = false;
         private Item? _itemEdicao = null;
 
@@ -19,7 +16,12 @@ namespace Drink
             InitializeComponent();
             TLcadastro = tL;
             CarregarComboBoxes();
+
+            lblDataCadastroValor.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lblUltimaAtualizacaoValor.Text = "-";
+            lblStatusItemValor.Text = "-";
         }
+
         private void CarregarComboBoxes()
         {
             ComboBoxHelper.Preencher(cmbCategoria, CatalogosSistema.Categorias);
@@ -39,18 +41,22 @@ namespace Drink
             nudQuantidadeMinima.Value = item.QuantidadeMinima;
             txtObservacao.Text = item.Observacao ?? "";
 
+            lblDataCadastroValor.Text = item.UltimaAtualizacao?.ToString("dd/MM/yyyy") ?? "-";
+            lblUltimaAtualizacaoValor.Text = item.UltimaAtualizacao?.ToString("dd/MM/yyyy HH:mm") ?? "-";
+            lblStatusItemValor.Text = item.Status ?? "-";
+
             btnSalvar.Text = "Salvar Alterações";
+            this.Text = "Editar Item";
         }
-
-
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(cmbCategoria.Text)
-                 || string.IsNullOrWhiteSpace(cmbUnidade.Text))
+            if (string.IsNullOrWhiteSpace(txtNome.Text) ||
+                string.IsNullOrWhiteSpace(cmbCategoria.Text) ||
+                string.IsNullOrWhiteSpace(cmbUnidade.Text))
             {
-                MessageBox.Show("Preencha todos os campos obrigatórios.");
+                MessageBox.Show("Preencha todos os campos obrigatórios.",
+                    "Campos obrigatórios", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -70,7 +76,7 @@ namespace Drink
                 this.Close();
                 return;
             }
-            
+
             Item novoItem = new Item
             {
                 Id = GerarId(),
@@ -81,9 +87,10 @@ namespace Drink
                 Validade = dtpValidade.Value,
                 QuantidadeMinima = nudQuantidadeMinima.Value,
                 Observacao = txtObservacao.Text.Trim(),
+                Ativo = true,
                 UltimaAtualizacao = DateTime.Now
             };
-            
+
             DadosTemporarios.Itens.Add(novoItem);
             TLcadastro.AtualizarDados();
             MessageBox.Show("Item adicionado com sucesso!");
@@ -95,6 +102,23 @@ namespace Drink
             return DadosTemporarios.Itens.Any()
                 ? DadosTemporarios.Itens.Max(i => i.Id) + 1
                 : 1001;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtNome.Clear();
+            cmbCategoria.SelectedIndex = -1;
+            nudQuantidadeAtual.Value = 0;
+            cmbUnidade.SelectedIndex = -1;
+            dtpValidade.Value = DateTime.Today;
+            nudQuantidadeMinima.Value = 0;
+            txtObservacao.Clear();
+            txtFornecedor.Clear();
         }
     }
 }

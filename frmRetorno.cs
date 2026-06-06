@@ -15,6 +15,7 @@ namespace Drink
             InitializeComponent();
             CarregarCombosTela();
             CarregarEventos();
+            ComboBoxHelper.Preencher(cmbStatusEventoRetorno, CatalogosSistema.StatusEvento);
         }
 
         // INICIALIZAÇÃO
@@ -77,7 +78,7 @@ namespace Drink
         }
 
         // TABELA DE ITENS
-        private void AtualizarTabelaItens(string nomeFiltro = "", string unidadeFiltro = "Todas",  string statusFiltro = "Todos") 
+        private void AtualizarTabelaItens(string nomeFiltro = "", string unidadeFiltro = "Todas", string statusFiltro = "Todos")
         {
             if (_eventoAtual == null)
             {
@@ -207,7 +208,7 @@ namespace Drink
                 _eventoAtual.Status = "Encerrado";
                 MessageBox.Show("Evento encerrado com sucesso.");
                 CarregarEventos();
-                _eventoAtual = null;        
+                _eventoAtual = null;
                 dgvRetorno.DataSource = null;
                 lblEventoValor.Text = "-";
                 lblDataValor.Text = "-";
@@ -215,7 +216,7 @@ namespace Drink
             }
             else
             {
-                _eventoAtual.Status = "Retorno em conferência"; 
+                _eventoAtual.Status = "Retorno em conferência";
             }
         }
 
@@ -223,19 +224,6 @@ namespace Drink
         private void btnParaItensRetorno_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabItensRetorno;
-        }
-
-        private void btnConferirRetorno_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabItensRetorno;
-        }
-
-        private void btnLimparDadosEventoRetorno_Click(object sender, EventArgs e)
-        {
-            txtNomeEventoRetorno.Clear();
-            txtLocalEventoRetorno.Clear();
-            txtResponsavelEventoRetorno.Clear();
-            nudQtdPessoasRetorno.Value = 0;
         }
     }
 }

@@ -146,6 +146,7 @@
             button1.TabIndex = 19;
             button1.Text = "Cancelar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // btnAdicionar
             // 
