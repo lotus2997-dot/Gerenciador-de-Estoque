@@ -32,6 +32,8 @@
             btnCancelarRetorno = new Button();
             btnAdicionarRetorno = new Button();
             grpDadosItemRetorno = new GroupBox();
+            lblQuantidadeDevolvida = new Label();
+            nudQuantidadeDevolvida = new NumericUpDown();
             lblQuantidadeRetorno = new Label();
             txtObservacaoRetorno = new TextBox();
             lblObservacaoRetorno = new Label();
@@ -49,12 +51,10 @@
             pnlCabecalhoRetorno = new Panel();
             lblTituloRetorno = new Label();
             label1 = new Label();
-            nudQuantidadeDevolvida = new NumericUpDown();
-            lblQuantidadeDevolvida = new Label();
             grpDadosItemRetorno.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidadeDevolvida).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantidadeRetorno).BeginInit();
             pnlCabecalhoRetorno.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nudQuantidadeDevolvida).BeginInit();
             SuspendLayout();
             // 
             // btnLimparRetorno
@@ -119,6 +119,24 @@
             grpDadosItemRetorno.TabIndex = 24;
             grpDadosItemRetorno.TabStop = false;
             grpDadosItemRetorno.Text = "Dados do Item";
+            // 
+            // lblQuantidadeDevolvida
+            // 
+            lblQuantidadeDevolvida.AutoSize = true;
+            lblQuantidadeDevolvida.Location = new Point(524, 140);
+            lblQuantidadeDevolvida.Name = "lblQuantidadeDevolvida";
+            lblQuantidadeDevolvida.Size = new Size(147, 15);
+            lblQuantidadeDevolvida.TabIndex = 17;
+            lblQuantidadeDevolvida.Text = "Quantidade de Devolução:";
+            // 
+            // nudQuantidadeDevolvida
+            // 
+            nudQuantidadeDevolvida.DecimalPlaces = 2;
+            nudQuantidadeDevolvida.Location = new Point(524, 160);
+            nudQuantidadeDevolvida.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            nudQuantidadeDevolvida.Name = "nudQuantidadeDevolvida";
+            nudQuantidadeDevolvida.Size = new Size(198, 23);
+            nudQuantidadeDevolvida.TabIndex = 16;
             // 
             // lblQuantidadeRetorno
             // 
@@ -273,24 +291,6 @@
             label1.TabIndex = 22;
             label1.Text = "Novo item do Retorno";
             // 
-            // nudQuantidadeDevolvida
-            // 
-            nudQuantidadeDevolvida.DecimalPlaces = 2;
-            nudQuantidadeDevolvida.Location = new Point(524, 160);
-            nudQuantidadeDevolvida.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            nudQuantidadeDevolvida.Name = "nudQuantidadeDevolvida";
-            nudQuantidadeDevolvida.Size = new Size(198, 23);
-            nudQuantidadeDevolvida.TabIndex = 16;
-            // 
-            // lblQuantidadeDevolvida
-            // 
-            lblQuantidadeDevolvida.AutoSize = true;
-            lblQuantidadeDevolvida.Location = new Point(524, 140);
-            lblQuantidadeDevolvida.Name = "lblQuantidadeDevolvida";
-            lblQuantidadeDevolvida.Size = new Size(147, 15);
-            lblQuantidadeDevolvida.TabIndex = 17;
-            lblQuantidadeDevolvida.Text = "Quantidade de Devolução:";
-            // 
             // frmAdicionarRetorno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -304,12 +304,13 @@
             Controls.Add(label1);
             Name = "frmAdicionarRetorno";
             Text = "frmAdicionarRetorno";
+            Load += frmAdicionarRetorno_Load;
             grpDadosItemRetorno.ResumeLayout(false);
             grpDadosItemRetorno.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantidadeDevolvida).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantidadeRetorno).EndInit();
             pnlCabecalhoRetorno.ResumeLayout(false);
             pnlCabecalhoRetorno.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nudQuantidadeDevolvida).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
