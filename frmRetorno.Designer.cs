@@ -61,6 +61,7 @@
             lblTituloDadosEventoRetorno = new Label();
             tabItensRetorno = new TabPage();
             pnlBotoesRetorno = new Panel();
+            btnConfirmarRetorno = new Button();
             btnDevolverEstoque = new Button();
             btnRemover = new Button();
             dgvRetorno = new DataGridView();
@@ -73,7 +74,6 @@
             lblFiltroUnidade = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
-            btnConfirmarRetorno = new Button();
             pnlResumoRetorno.SuspendLayout();
             tabControl1.SuspendLayout();
             tabDadosRetorno.SuspendLayout();
@@ -440,6 +440,20 @@
             pnlBotoesRetorno.Size = new Size(1336, 80);
             pnlBotoesRetorno.TabIndex = 2;
             // 
+            // btnConfirmarRetorno
+            // 
+            btnConfirmarRetorno.BackColor = Color.FromArgb(0, 140, 70);
+            btnConfirmarRetorno.FlatStyle = FlatStyle.Flat;
+            btnConfirmarRetorno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfirmarRetorno.ForeColor = Color.White;
+            btnConfirmarRetorno.Location = new Point(1102, 20);
+            btnConfirmarRetorno.Name = "btnConfirmarRetorno";
+            btnConfirmarRetorno.Size = new Size(190, 38);
+            btnConfirmarRetorno.TabIndex = 7;
+            btnConfirmarRetorno.Text = "Confirmar Retorno";
+            btnConfirmarRetorno.UseVisualStyleBackColor = false;
+            btnConfirmarRetorno.Click += btnConfirmarRetorno_Click;
+            // 
             // btnDevolverEstoque
             // 
             btnDevolverEstoque.BackColor = Color.FromArgb(20, 59, 102);
@@ -584,19 +598,6 @@
             lblFiltroNome.Size = new Size(43, 15);
             lblFiltroNome.TabIndex = 1;
             lblFiltroNome.Text = "Nome:";
-            // 
-            // btnConfirmarRetorno
-            // 
-            btnConfirmarRetorno.BackColor = Color.FromArgb(0, 140, 70);
-            btnConfirmarRetorno.FlatStyle = FlatStyle.Flat;
-            btnConfirmarRetorno.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfirmarRetorno.ForeColor = Color.White;
-            btnConfirmarRetorno.Location = new Point(1102, 20);
-            btnConfirmarRetorno.Name = "btnConfirmarRetorno";
-            btnConfirmarRetorno.Size = new Size(190, 38);
-            btnConfirmarRetorno.TabIndex = 7;
-            btnConfirmarRetorno.Text = "Confirmar Retorno";
-            btnConfirmarRetorno.UseVisualStyleBackColor = false;
             // 
             // frmRetorno
             // 

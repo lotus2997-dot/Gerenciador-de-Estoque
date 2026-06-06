@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 using Drink.Dados;
 using Drink.Models;
 
@@ -120,6 +121,25 @@ namespace Drink
             int id = Convert.ToInt32(dgvRetorno.SelectedRows[0].Cells["ID"].Value);
             return _eventoAtual.Itens.FirstOrDefault(ie => ie.Id == id);
         }
+        private void ColorirItensConferidos()
+        {
+            foreach (DataGridViewRow row in dgvRetorno.Rows)
+            {
+                if (row.IsNewRow) continue;
+                string status = row.Cells["Status"].Value?.ToString() ?? "";
+
+                if (status == "Retornado")
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(220, 240, 220); // verde claro
+                    row.DefaultCellStyle.ForeColor = Color.Gray;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
+        }
 
         // FILTROS
         private void btnPesquisar_Click(object sender, EventArgs e)
@@ -138,19 +158,6 @@ namespace Drink
             AtualizarTabelaItens();
         }
 
-        // BOTÕES DA TABELA
-        private void btnNovoItem_Click(object sender, EventArgs e)
-        {
-            if (_eventoAtual == null)
-            {
-                MessageBox.Show("Selecione um evento primeiro.");
-                return;
-            }
-
-            var tela = new frmAdicionarRetorno(_eventoAtual);
-            tela.ShowDialog();
-            AtualizarTabelaItens();
-        }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
@@ -169,8 +176,6 @@ namespace Drink
             _eventoAtual!.Itens.Remove(item);
             AtualizarTabelaItens();
         }
-
-        // DEVOLVER AO ESTOQUE (btnConfirmar)
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             ItemEvento? item = ObterItemSelecionado();
@@ -178,16 +183,15 @@ namespace Drink
 
             if (item.Status == "Retornado")
             {
-                MessageBox.Show("Este item já foi conferido.");
+                MessageBox.Show("Este item já foi conferido e não pode ser alterado.");
                 return;
             }
 
-            using var tela = new frmAdicionarRetorno(_eventoAtual!);
-            tela.CarregarItemParaConferencia(item);
-
+            using var tela = new frmAdicionarRetorno(_eventoAtual!, item);
             if (tela.ShowDialog() == DialogResult.OK)
             {
                 AtualizarTabelaItens();
+                ColorirItensConferidos();
                 VerificarConferenciaCompleta();
             }
         }
@@ -219,11 +223,59 @@ namespace Drink
                 _eventoAtual.Status = "Retorno em conferência";
             }
         }
-
-        // BOTÕES DE NAVEGAÇÃO E DADOS
         private void btnParaItensRetorno_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabItensRetorno;
+        }
+
+        private void btnConfirmarRetorno_Click(object sender, EventArgs e)
+        {
+            if (_eventoAtual == null) { MessageBox.Show("Selecione um evento."); return; }
+
+            var pendentes = _eventoAtual.Itens
+                .Where(i => i.Status != "Retornado").ToList();
+
+            if (pendentes.Any())
+            {
+                var resp = MessageBox.Show(
+                    $"Ainda há {pendentes.Count} item(ns) não conferido(s). Deseja confirmar mesmo assim?",
+                    "Itens pendentes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (resp == DialogResult.No) return;
+
+                // Pendentes = consumidos, não voltaram
+                foreach (var item in pendentes)
+                {
+                    item.QuantidadeRetornada = 0;
+                    item.Status = "Retornado";
+                    item.ConferidoRetorno = true;
+                    // NÃO soma no estoque — quantidade = 0
+                }
+            }
+
+            // Devolve ao estoque apenas os que vieram de lá
+            // e ainda NÃO foram processados individualmente
+            foreach (var item in _eventoAtual.Itens
+                .Where(i => i.VeioDoEstoque && i.Item != null && !i.ConferidoRetorno))
+            {
+                item.Item!.QuantidadeAtual += item.QuantidadeRetornada;
+                item.Item.UltimaAtualizacao = DateTime.Now;
+                item.ConferidoRetorno = true;
+            }
+
+            _eventoAtual.Status = "Encerrado";
+            AtualizarTabelaItens();
+            ColorirItensConferidos();
+
+            MessageBox.Show("Retorno confirmado! Evento encerrado e estoque atualizado.",
+                "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            CarregarEventos();
+            _eventoAtual = null;
+            dgvRetorno.DataSource = null;
+            lblEventoValor.Text = "-";
+            lblDataValor.Text = "-";
+            lblResponsavelValor.Text = "-";
         }
     }
 }
