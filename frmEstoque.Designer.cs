@@ -66,6 +66,9 @@
             lblFiltroCategoria = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
+            btnSalvarItemEstoque = new Button();
+            btnEvento = new Button();
+            button1 = new Button();
             pnlCabecalho.SuspendLayout();
             pnlResumo.SuspendLayout();
             panel1.SuspendLayout();
@@ -229,6 +232,9 @@
             // pnlBotoes
             // 
             pnlBotoes.BackColor = Color.White;
+            pnlBotoes.Controls.Add(button1);
+            pnlBotoes.Controls.Add(btnEvento);
+            pnlBotoes.Controls.Add(btnSalvarItemEstoque);
             pnlBotoes.Controls.Add(btnAtualizarEstoque);
             pnlBotoes.Controls.Add(btnEditar);
             pnlBotoes.Controls.Add(btnRemover);
@@ -244,7 +250,7 @@
             btnAtualizarEstoque.BackColor = Color.FromArgb(20, 59, 102);
             btnAtualizarEstoque.FlatStyle = FlatStyle.Flat;
             btnAtualizarEstoque.ForeColor = Color.White;
-            btnAtualizarEstoque.Location = new Point(384, 18);
+            btnAtualizarEstoque.Location = new Point(337, 18);
             btnAtualizarEstoque.Name = "btnAtualizarEstoque";
             btnAtualizarEstoque.Size = new Size(140, 35);
             btnAtualizarEstoque.TabIndex = 5;
@@ -256,7 +262,7 @@
             btnEditar.BackColor = Color.FromArgb(20, 59, 102);
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(220, 18);
+            btnEditar.Location = new Point(191, 18);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(140, 35);
             btnEditar.TabIndex = 4;
@@ -269,7 +275,7 @@
             btnRemover.BackColor = Color.FromArgb(140, 40, 40);
             btnRemover.FlatStyle = FlatStyle.Flat;
             btnRemover.ForeColor = Color.White;
-            btnRemover.Location = new Point(550, 18);
+            btnRemover.Location = new Point(629, 18);
             btnRemover.Name = "btnRemover";
             btnRemover.Size = new Size(140, 35);
             btnRemover.TabIndex = 3;
@@ -459,6 +465,42 @@
             lblFiltroNome.TabIndex = 0;
             lblFiltroNome.Text = "Nome:";
             // 
+            // btnSalvarItemEstoque
+            // 
+            btnSalvarItemEstoque.BackColor = Color.FromArgb(20, 59, 102);
+            btnSalvarItemEstoque.FlatStyle = FlatStyle.Flat;
+            btnSalvarItemEstoque.ForeColor = Color.White;
+            btnSalvarItemEstoque.Location = new Point(483, 18);
+            btnSalvarItemEstoque.Name = "btnSalvarItemEstoque";
+            btnSalvarItemEstoque.Size = new Size(140, 35);
+            btnSalvarItemEstoque.TabIndex = 6;
+            btnSalvarItemEstoque.Text = "Salvar";
+            btnSalvarItemEstoque.UseVisualStyleBackColor = false;
+            // 
+            // btnEvento
+            // 
+            btnEvento.BackColor = Color.FromArgb(30, 100, 170);
+            btnEvento.FlatStyle = FlatStyle.Flat;
+            btnEvento.ForeColor = Color.White;
+            btnEvento.Location = new Point(1137, 18);
+            btnEvento.Name = "btnEvento";
+            btnEvento.Size = new Size(140, 35);
+            btnEvento.TabIndex = 7;
+            btnEvento.Text = "Evento ->";
+            btnEvento.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(30, 100, 170);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(991, 18);
+            button1.Name = "button1";
+            button1.Size = new Size(140, 35);
+            button1.TabIndex = 8;
+            button1.Text = "<- Retorno";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // frmEstoque
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -528,5 +570,8 @@
         private Button btnRemover;
         private Button btnNovoItem;
         private Button btnAtualizarEstoque;
+        private Button btnEvento;
+        private Button btnSalvarItemEstoque;
+        private Button button1;
     }
 }
