@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmadicionarretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\dados\\dadosjsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:dados\\dadosjsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\dados\\dadostemporarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:dados\\dadostemporarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmnovoitemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\models\\itemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:models\\itemevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmretorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,91 +35,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmNovoItemEvento.cs",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmNovoItemEvento.cs",
-              "RelativeDocumentMoniker": "frmNovoItemEvento.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmNovoItemEvento.cs",
-              "RelativeToolTip": "frmNovoItemEvento.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPQAAAAoAAAAAAAAAA==",
+              "Title": "frmAdicionarRetorno.cs",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs",
+              "RelativeDocumentMoniker": "frmAdicionarRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs",
+              "RelativeToolTip": "frmAdicionarRetorno.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowD0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T15:04:21.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmNovoItemEvento.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmNovoItemEvento.cs",
-              "RelativeDocumentMoniker": "frmNovoItemEvento.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmNovoItemEvento.cs [Design]",
-              "RelativeToolTip": "frmNovoItemEvento.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T15:04:19.64Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ItemEvento.cs",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Models\\ItemEvento.cs",
-              "RelativeDocumentMoniker": "Models\\ItemEvento.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Models\\ItemEvento.cs",
-              "RelativeToolTip": "Models\\ItemEvento.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T14:59:47.568Z",
+              "WhenOpened": "2026-06-07T22:19:35.511Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmPrincipal.cs",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmPrincipal.cs",
-              "RelativeDocumentMoniker": "frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmPrincipal.cs",
-              "RelativeToolTip": "frmPrincipal.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAoAAAAAAAAAA==",
+              "Title": "frmAdicionarRetorno.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs",
+              "RelativeDocumentMoniker": "frmAdicionarRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarRetorno.cs [Design]",
+              "RelativeToolTip": "frmAdicionarRetorno.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T14:54:51.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmPrincipal.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmPrincipal.cs",
-              "RelativeDocumentMoniker": "frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmPrincipal.cs [Design]",
-              "RelativeToolTip": "frmPrincipal.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T14:54:35.078Z",
+              "WhenOpened": "2026-06-07T22:19:33.753Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DadosTemporarios.cs",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Dados\\DadosTemporarios.cs",
-              "RelativeDocumentMoniker": "Dados\\DadosTemporarios.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Dados\\DadosTemporarios.cs",
-              "RelativeToolTip": "Dados\\DadosTemporarios.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "frmRetorno.cs",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
+              "RelativeDocumentMoniker": "frmRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
+              "RelativeToolTip": "frmRetorno.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAiwP0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T14:53:34.637Z",
+              "WhenOpened": "2026-06-07T22:15:42.218Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "DadosJsonHelper.cs",
-              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Dados\\DadosJsonHelper.cs",
-              "RelativeDocumentMoniker": "Dados\\DadosJsonHelper.cs",
-              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Dados\\DadosJsonHelper.cs",
-              "RelativeToolTip": "Dados\\DadosJsonHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "frmRetorno.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
+              "RelativeDocumentMoniker": "frmRetorno.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs [Design]",
+              "RelativeToolTip": "frmRetorno.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T14:52:48.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-07T22:12:58.938Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

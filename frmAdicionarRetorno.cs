@@ -56,13 +56,17 @@ namespace Drink
                 return;
             }
 
-            // Apenas grava os dados — NÃO mexe no estoque aqui
             _item.QuantidadeRetornada = nudQuantidadeRetorno.Value;
             _item.Observacao = txtObservacaoRetorno.Text.Trim();
             _item.Status = "Retornado";
             _item.ConferidoRetorno = true;
 
-            // REMOVIDO: o bloco if (_item.VeioDoEstoque) que somava aqui
+  
+            if (_item.VeioDoEstoque && _item.Item != null)
+            {
+                _item.Item.QuantidadeAtual += _item.QuantidadeRetornada;
+                _item.Item.UltimaAtualizacao = DateTime.Now;
+            }
 
             DialogResult = DialogResult.OK;
             Close();

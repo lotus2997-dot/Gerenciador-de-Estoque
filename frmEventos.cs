@@ -50,7 +50,6 @@ namespace Drink
             return DadosTemporarios.Itens
                 .Where(item =>
                     item.Ativo &&
-                    item.QuantidadeAtual > 0 &&
                     (!item.Validade.HasValue || item.Validade.Value >= DateTime.Today))
                 .ToList();
         }

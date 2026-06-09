@@ -31,12 +31,17 @@ namespace Drink
         {
             CarregarItensDoEstoque();
 
+            // Preenche os combos de categoria e unidade
+            ComboBoxHelper.Preencher(txtCategoriaExterna, CatalogosSistema.Categorias);
+            ComboBoxHelper.Preencher(txtUnidadeExterna, CatalogosSistema.Unidades);
+
             if (_modoEdicao && _itemEmEdicao != null)
             {
                 PreencherCamposEdicao();
             }
             else
             {
+                // Define o radio ANTES de chamar AtualizarTipoItem
                 if (_itensEstoque.Count > 0)
                     rdbItemEstoque.Checked = true;
                 else
