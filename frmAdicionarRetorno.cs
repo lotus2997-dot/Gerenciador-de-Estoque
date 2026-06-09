@@ -1,3 +1,4 @@
+using Drink.Dados;
 using Drink.Models;
 using System;
 using System.Windows.Forms;
@@ -20,7 +21,6 @@ namespace Drink
         {
             this.Text = "Devolver ao Estoque";
 
-            // Campos somente leitura
             txtNomeExternoRetorno.Text = _item.Item?.Nome ?? "";
             txtNomeExternoRetorno.ReadOnly = true;
 
@@ -34,12 +34,10 @@ namespace Drink
                 $"Separado: {_item.QuantidadeSeparada} {_item.Item?.Unidade}  |  " +
                 $"Origem: {(_item.VeioDoEstoque ? "Estoque" : "Compra direta")}";
 
-            // Único campo editável
             nudQuantidadeRetorno.Minimum = 0;
             nudQuantidadeRetorno.Maximum = _item.QuantidadeSeparada;
             nudQuantidadeRetorno.Value = _item.QuantidadeSeparada;
 
-            // Esconde o que não é necessário
             cmbItensEstoqueRetorno.Visible = false;
             dtpValidadeRetorno.Visible = false;
             lblValidadeRetorno.Visible = false;
@@ -60,18 +58,15 @@ namespace Drink
                 if (resposta == DialogResult.No)
                     return;
 
-                // Usuário confirmou: registra retorno com quantidade zero (consumido total)
                 _item.QuantidadeRetornada = 0;
                 _item.Observacao = txtObservacaoRetorno.Text.Trim();
                 _item.Status = "Retornado";
                 _item.ConferidoRetorno = true;
-                // Não soma nada no estoque pois quantidade retornada é zero
 
                 DialogResult = DialogResult.OK;
                 Close();
                 return;
             }
-
             _item.QuantidadeRetornada = nudQuantidadeRetorno.Value;
             _item.Observacao = txtObservacaoRetorno.Text.Trim();
             _item.Status = "Retornado";
@@ -82,13 +77,78 @@ namespace Drink
                 _item.Item.QuantidadeAtual += _item.QuantidadeRetornada;
                 _item.Item.UltimaAtualizacao = DateTime.Now;
             }
+            else if (!_item.VeioDoEstoque && _item.Item != null && _item.QuantidadeRetornada > 0)
+            {
+                AdicionarItemExternoAoEstoque(_item.Item, _item.QuantidadeRetornada);
+            }
 
             DialogResult = DialogResult.OK;
             Close();
         }
 
+        private void AdicionarItemExternoAoEstoque(Item itemExterno, decimal quantidadeRetornada)
+        {
+            // Verifica se já existe no estoque pelo nome e unidade
+            var existente = DadosTemporarios.Itens.Find(i =>
+                i.Ativo &&
+                string.Equals(i.Nome, itemExterno.Nome, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(i.Unidade, itemExterno.Unidade, StringComparison.OrdinalIgnoreCase));
+
+            if (existente != null)
+            {
+                // se ja existe, apenas soma a quantidade retornada
+                existente.QuantidadeAtual += quantidadeRetornada;
+                existente.UltimaAtualizacao = DateTime.Now;
+
+                MessageBox.Show(
+                    $"O item '{existente.Nome}' já existe no estoque.\n" +
+                    $"Quantidade somada: +{quantidadeRetornada} {existente.Unidade}\n" +
+                    $"Novo total: {existente.QuantidadeAtual} {existente.Unidade}",
+                    "Estoque atualizado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                // se não existe, cria novo item no estoque
+                int novoId = DadosTemporarios.Itens.Count > 0
+                    ? DadosTemporarios.Itens.Max(i => i.Id) + 1
+                    : 1001;
+
+                var novoItem = new Item
+                {
+                    Id = novoId,
+                    Nome = itemExterno.Nome,
+                    Categoria = itemExterno.Categoria,
+                    Unidade = itemExterno.Unidade,
+                    QuantidadeAtual = quantidadeRetornada,
+                    QuantidadeMinima = 0,
+                    Observacao = $"Entrada via retorno do evento: {_evento.Nome}",
+                    DataCadastro = DateTime.Now,
+                    UltimaAtualizacao = DateTime.Now,
+                    Ativo = true
+                };
+
+                DadosTemporarios.Itens.Add(novoItem);
+
+                MessageBox.Show(
+                    $"O item externo '{novoItem.Nome}' foi adicionado ao estoque\n" +
+                    $"com {quantidadeRetornada} {novoItem.Unidade}.",
+                    "Item adicionado ao estoque",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+        }
+
         private void btnLimparRetorno_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show(
+                    "Isso vai redefinir a quantidade para o valor separado. Deseja continuar?",
+                    "Limpar campos",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
             nudQuantidadeRetorno.Value = _item.QuantidadeSeparada;
             txtObservacaoRetorno.Clear();
         }

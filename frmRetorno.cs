@@ -248,22 +248,27 @@ namespace Drink
 
                 if (resp == DialogResult.No) return;
 
-                // Pendentes = consumidos totalmente, não voltaram
                 foreach (var item in pendentes)
                 {
                     item.QuantidadeRetornada = 0;
                     item.Status = "Retornado";
                     item.ConferidoRetorno = true;
-                    // NÃO soma no estoque — quantidade retornada = 0
                 }
             }
 
-            // Devolve ao estoque apenas os que vieram de lá e ainda NÃO foram processados
             foreach (var item in _eventoAtual.Itens
-                .Where(i => i.VeioDoEstoque && i.Item != null && !i.ConferidoRetorno))
+                .Where(i => i.Item != null && !i.ConferidoRetorno))
             {
-                item.Item!.QuantidadeAtual += item.QuantidadeRetornada;
-                item.Item.UltimaAtualizacao = DateTime.Now;
+                if (item.VeioDoEstoque)
+                {
+                    item.Item!.QuantidadeAtual += item.QuantidadeRetornada;
+                    item.Item.UltimaAtualizacao = DateTime.Now;
+                }
+                else if (item.QuantidadeRetornada > 0)
+                {
+                    AdicionarItemExternoAoEstoque(item);
+                }
+
                 item.ConferidoRetorno = true;
             }
 
@@ -283,6 +288,41 @@ namespace Drink
             lblEventoValor.Text = "-";
             lblDataValor.Text = "-";
             lblResponsavelValor.Text = "-";
+        }
+        private void AdicionarItemExternoAoEstoque(ItemEvento itemEvento)
+        {
+            if (itemEvento.Item == null || itemEvento.QuantidadeRetornada <= 0) return;
+
+            var existente = DadosTemporarios.Itens.Find(i =>
+                i.Ativo &&
+                string.Equals(i.Nome, itemEvento.Item.Nome, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(i.Unidade, itemEvento.Item.Unidade, StringComparison.OrdinalIgnoreCase));
+
+            if (existente != null)
+            {
+                existente.QuantidadeAtual += itemEvento.QuantidadeRetornada;
+                existente.UltimaAtualizacao = DateTime.Now;
+            }
+            else
+            {
+                int novoId = DadosTemporarios.Itens.Count > 0
+                    ? DadosTemporarios.Itens.Max(i => i.Id) + 1
+                    : 1001;
+
+                DadosTemporarios.Itens.Add(new Item
+                {
+                    Id = novoId,
+                    Nome = itemEvento.Item.Nome,
+                    Categoria = itemEvento.Item.Categoria,
+                    Unidade = itemEvento.Item.Unidade,
+                    QuantidadeAtual = itemEvento.QuantidadeRetornada,
+                    QuantidadeMinima = 0,
+                    Observacao = $"Entrada via retorno do evento: {_eventoAtual?.Nome}",
+                    DataCadastro = DateTime.Now,
+                    UltimaAtualizacao = DateTime.Now,
+                    Ativo = true
+                });
+            }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)

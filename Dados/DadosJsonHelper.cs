@@ -10,7 +10,9 @@ namespace Drink.Dados
     public static class JsonHelper
     {
         private static readonly string _pasta = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory, "dados");
+            Path.GetDirectoryName(Environment.ProcessPath
+                ?? AppContext.BaseDirectory) ?? AppContext.BaseDirectory,
+            "dados");
 
         private static readonly string _arquivoEstoque  = Path.Combine(_pasta, "estoque.json");
 
@@ -76,7 +78,6 @@ namespace Drink.Dados
                         File.ReadAllText(_arquivoEventos), _opcoes);
                     if (eventos != null)
                     {
-                        // Reconecta cada ItemEvento ao seu Item pelo Id
                         foreach (var ev in eventos)
                             foreach (var ie in ev.Itens)
                                 ie.Item = DadosTemporarios.Itens
