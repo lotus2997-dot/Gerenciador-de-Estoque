@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\dados\\dadosjsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:dados\\dadosjsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmadicionarestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmadicionarestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:frmeventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\dados\\dadosjsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|solutionrelative:dados\\dadosjsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20CD669A-83C7-5E6F-A82C-DD51138F9D6F}|Drink.csproj|c:\\users\\lotus\\onedrive\\desktop\\new estoque\\gerenciador-de-estoque\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,11 +62,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "frmPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "frmPrincipal.cs",
@@ -76,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "frmEstoque.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmEstoque.cs",
               "RelativeDocumentMoniker": "frmEstoque.cs",
@@ -90,13 +94,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "frmEventos.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmEventos.cs",
               "RelativeDocumentMoniker": "frmEventos.cs",
               "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmEventos.cs",
               "RelativeToolTip": "frmEventos.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAmwM8AAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM4AAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-09T13:28:18.093Z",
               "IsPinned": true,
@@ -104,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "frmRetorno.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
               "RelativeDocumentMoniker": "frmRetorno.cs",
@@ -117,8 +121,24 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "frmAdicionarEstoque.cs",
+              "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarEstoque.cs",
+              "RelativeDocumentMoniker": "frmAdicionarEstoque.cs",
+              "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmAdicionarEstoque.cs",
+              "RelativeToolTip": "frmAdicionarEstoque.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAIAwwBsAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T15:21:16.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "DadosJsonHelper.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Dados\\DadosJsonHelper.cs",
               "RelativeDocumentMoniker": "Dados\\DadosJsonHelper.cs",
@@ -131,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ItemEvento.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Models\\ItemEvento.cs",
               "RelativeDocumentMoniker": "Models\\ItemEvento.cs",
@@ -139,12 +159,11 @@
               "RelativeToolTip": "Models\\ItemEvento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T14:45:33.76Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-09T14:45:33.76Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Evento.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Models\\Evento.cs",
               "RelativeDocumentMoniker": "Models\\Evento.cs",
@@ -152,12 +171,11 @@
               "RelativeToolTip": "Models\\Evento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T14:45:25.398Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-09T14:45:25.398Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Item.cs",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\Models\\Item.cs",
               "RelativeDocumentMoniker": "Models\\Item.cs",
@@ -165,16 +183,11 @@
               "RelativeToolTip": "Models\\Item.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAowBMAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T14:45:15.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "WhenOpened": "2026-06-09T14:45:15.343Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "frmEstoque.cs [Design]",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmEstoque.cs",
               "RelativeDocumentMoniker": "frmEstoque.cs",
@@ -185,19 +198,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "frmEventos.cs [Design]",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmEventos.cs",
               "RelativeDocumentMoniker": "frmEventos.cs",
               "ToolTip": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmEventos.cs [Design]",
               "RelativeToolTip": "frmEventos.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-09T12:47:02.632Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-06-09T12:47:02.632Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "frmPrincipal.cs [Design]",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "frmPrincipal.cs",
@@ -208,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "frmRetorno.cs [Design]",
               "DocumentMoniker": "C:\\Users\\lotus\\OneDrive\\Desktop\\New Estoque\\Gerenciador-de-Estoque\\frmRetorno.cs",
               "RelativeDocumentMoniker": "frmRetorno.cs",

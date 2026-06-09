@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -54,12 +54,12 @@ namespace Drink
                 .ToList();
         }
 
-
         private int GerarProximoIdItemEvento()
         {
             if (eventoAtual.Itens.Count == 0) return 1;
             return eventoAtual.Itens.Max(item => item.Id) + 1;
         }
+
         private void CarregarCombosTela()
         {
             ComboBoxHelper.Preencher(cmbStatusEvento, CatalogosSistema.StatusEvento);
@@ -77,7 +77,7 @@ namespace Drink
             cmbFiltroStatus.Items.Add("Separado");
             cmbFiltroStatus.SelectedIndex = 0;
 
-            RecarregarComboEventos(); // carrega cmbEventoSelecionadoE
+            RecarregarComboEventos();
         }
 
         private void RecarregarComboEventos()
@@ -92,7 +92,6 @@ namespace Drink
 
             cmbEventoSelecionadoE.SelectedIndexChanged += cmbEventoSelecionadoE_SelectedIndexChanged;
         }
-
 
         private void AtualizarTabelaItens(
             string nomeFiltro = "",
@@ -143,7 +142,6 @@ namespace Drink
 
             if (eventoExiste)
             {
-                // Substitui o evento existente na lista pelo atualizado
                 int index = DadosTemporarios.Eventos.FindIndex(e => e.Id == eventoAtual.Id);
                 if (index >= 0)
                     DadosTemporarios.Eventos[index] = eventoAtual;
@@ -153,6 +151,7 @@ namespace Drink
                 DadosTemporarios.Eventos.Add(eventoAtual);
             }
         }
+
         private void AtualizarResumoEvento()
         {
             lblEventoValor.Text = string.IsNullOrWhiteSpace(eventoAtual.Nome)
@@ -194,7 +193,6 @@ namespace Drink
             return true;
         }
 
-
         private void btnNovoItem_Click(object sender, EventArgs e)
         {
             List<Item> itensDisponiveis = ObterItensDisponiveisDoEstoque();
@@ -205,18 +203,11 @@ namespace Drink
                 ItemEvento? novoItem = telaNovoItem.ItemCriado;
                 if (novoItem == null) return;
 
-                if (novoItem.VeioDoEstoque && novoItem.Item != null)
-                {
-                    novoItem.Item.QuantidadeAtual -= novoItem.QuantidadeSeparada;
-                    novoItem.Item.UltimaAtualizacao = DateTime.Now;
-                }
-
                 novoItem.Id = GerarProximoIdItemEvento();
                 eventoAtual.Itens.Add(novoItem);
                 AtualizarTabelaItens();
             }
         }
-
 
         private void btnEditarItem_Click(object sender, EventArgs e)
         {
@@ -257,6 +248,16 @@ namespace Drink
 
             if (resposta == DialogResult.No) return;
 
+            // BUG #3 CORRIGIDO: Ao remover um item de um evento com status "Separado"
+            // (separação já confirmada e baixa já aplicada), a quantidade deve ser
+            // devolvida ao estoque antes da remoção.
+            if (itemEvento.VeioDoEstoque && itemEvento.Item != null
+                && eventoAtual.Status == "Separado")
+            {
+                itemEvento.Item.QuantidadeAtual += itemEvento.QuantidadeSeparada;
+                itemEvento.Item.UltimaAtualizacao = DateTime.Now;
+            }
+
             eventoAtual.Itens.Remove(itemEvento);
             AtualizarTabelaItens();
             MessageBox.Show("Item removido com sucesso.");
@@ -291,29 +292,30 @@ namespace Drink
 
                 if (itemEvento.QuantidadeSeparada > itemEstoque.QuantidadeAtual)
                 {
-                    MessageBox.Show($"A quantidade separada para '{itemEstoque.Nome}' é maior do que a disponível no estoque.");
+                    MessageBox.Show(
+                        $"A quantidade separada para '{itemEstoque.Nome}' é maior do que a disponível no estoque.");
                     return;
                 }
 
                 if (itemEstoque.Validade.HasValue && itemEstoque.Validade.Value < DateTime.Today)
                 {
-                    MessageBox.Show($"O item '{itemEstoque.Nome}' está vencido e não pode ser separado.");
+                    MessageBox.Show(
+                        $"O item '{itemEstoque.Nome}' está vencido e não pode ser separado.");
                     return;
                 }
 
                 if (itemEstoque.QuantidadeAtual - itemEvento.QuantidadeSeparada < itemEstoque.QuantidadeMinima)
                 {
-                    DialogResult resposta = MessageBox.Show(
-                        $"Separar {itemEvento.QuantidadeSeparada} {itemEstoque.Unidade} de '{itemEstoque.Nome}' deixará o estoque abaixo do mínimo. Deseja continuar?",
+                    DialogResult aviso = MessageBox.Show(
+                        $"Separar {itemEvento.QuantidadeSeparada} {itemEstoque.Unidade} de '{itemEstoque.Nome}' " +
+                        $"deixará o estoque abaixo do mínimo. Deseja continuar?",
                         "Aviso de estoque baixo",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning);
 
-                    if (resposta == DialogResult.No) return;
+                    if (aviso == DialogResult.No) return;
                 }
             }
-
-            // 2ª passagem: aplica as baixas e atualiza status
             foreach (ItemEvento itemEvento in eventoAtual.Itens)
             {
                 if (itemEvento.VeioDoEstoque && itemEvento.Item != null)
@@ -346,6 +348,7 @@ namespace Drink
             AtualizarTabelaItens();
             AtualizarResumoEvento();
         }
+
         private void CarregarCamposDadosEvento()
         {
             txtNomeEvento.Text = eventoAtual.Nome;
@@ -358,8 +361,6 @@ namespace Drink
 
         private void btnLimparDadosEvento_Click(object sender, EventArgs e)
         {
-
-            // Limpa os campos do formulário
             txtNomeEvento.Clear();
             txtLocalEvento.Clear();
             txtResponsavelEvento.Clear();
@@ -367,7 +368,6 @@ namespace Drink
             dtpDataEvento.Value = DateTime.Today;
             cmbStatusEvento.SelectedIndex = 0;
 
-            // Deseleciona o combo para não parecer que ainda está editando um evento salvo
             cmbEventoSelecionadoE.SelectedIndexChanged -= cmbEventoSelecionadoE_SelectedIndexChanged;
             cmbEventoSelecionadoE.SelectedIndex = -1;
             cmbEventoSelecionadoE.SelectedIndexChanged += cmbEventoSelecionadoE_SelectedIndexChanged;
@@ -381,10 +381,9 @@ namespace Drink
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             AtualizarTabelaItens(
-            nomeFiltro: txtFiltroNome.Text.Trim(),
-            categoriaFiltro: cmbFiltroCategoria.Text,
-            statusFiltro: cmbFiltroStatus.Text
-            );
+                nomeFiltro: txtFiltroNome.Text.Trim(),
+                categoriaFiltro: cmbFiltroCategoria.Text,
+                statusFiltro: cmbFiltroStatus.Text);
         }
 
         private void btnParaItens_Click(object sender, EventArgs e)
@@ -395,8 +394,8 @@ namespace Drink
         private void btnLimparFiltro_Click(object sender, EventArgs e)
         {
             txtFiltroNome.Clear();
-            cmbFiltroCategoria.SelectedIndex = 0; // "Todas"
-            cmbFiltroStatus.SelectedIndex = 0; // "Todos"
+            cmbFiltroCategoria.SelectedIndex = 0;
+            cmbFiltroStatus.SelectedIndex = 0;
             AtualizarTabelaItens();
         }
 
@@ -409,7 +408,7 @@ namespace Drink
         private void btnEstoque_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Tag = "Estoque"; 
+            this.Tag = "Estoque";
             this.Close();
         }
 

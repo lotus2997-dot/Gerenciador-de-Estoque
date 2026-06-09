@@ -1,4 +1,4 @@
-﻿using Drink.Dados;
+using Drink.Dados;
 using Drink.Models;
 using System;
 using System.Drawing;
@@ -66,22 +66,47 @@ namespace Drink
 
         private void ColorirStatus()
         {
+            if (!dgvEstoque.Columns.Contains("colStatus"))
+                return;
+
             foreach (DataGridViewRow row in dgvEstoque.Rows)
             {
                 if (row.IsNewRow) continue;
-                string status = row.Cells["colStatus"].Value?.ToString() ?? "";
-                var celula = row.Cells["colStatus"];
 
-                celula.Style.ForeColor = Color.Black;
-                celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Regular);
-
-                switch (status)
+                try
                 {
-                    case "Normal": celula.Style.ForeColor = Color.Green; break;
-                    case "Sem estoque": celula.Style.ForeColor = Color.DarkOrange; celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold); break;
-                    case "Vencendo": celula.Style.ForeColor = Color.Blue; celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold); break;
-                    case "Abaixo do mínimo": celula.Style.ForeColor = Color.Purple; celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold); break;
-                    case "Vencido": celula.Style.ForeColor = Color.Red; celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold); break;
+                    string status = row.Cells["colStatus"].Value?.ToString() ?? "";
+                    var celula = row.Cells["colStatus"];
+
+                    celula.Style.ForeColor = Color.Black;
+                    celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Regular);
+
+                    switch (status)
+                    {
+                        case "Normal":
+                            celula.Style.ForeColor = Color.Green;
+                            break;
+                        case "Sem estoque":
+                            celula.Style.ForeColor = Color.DarkOrange;
+                            celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                            break;
+                        case "Vencendo":
+                            celula.Style.ForeColor = Color.Blue;
+                            celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                            break;
+                        case "Abaixo do mínimo":
+                            celula.Style.ForeColor = Color.Purple;
+                            celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                            break;
+                        case "Vencido":
+                            celula.Style.ForeColor = Color.Red;
+                            celula.Style.Font = new Font(dgvEstoque.Font, FontStyle.Bold);
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    // Ignora erros de acesso a células — não deve bloquear a exibição da tela
                 }
             }
         }
@@ -168,23 +193,21 @@ namespace Drink
 
         private void btnSalvarItemEstoque_Click(object sender, EventArgs e)
         {
-        
             JsonHelper.Salvar();
             MessageBox.Show("Dados salvos!", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-       
         }
 
         private void btnRetorno_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Tag = "Retorno"; 
+            this.Tag = "Retorno";
             this.Close();
         }
 
         private void btnEvento_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Tag = "Eventos"; 
+            this.Tag = "Eventos";
             this.Close();
         }
     }

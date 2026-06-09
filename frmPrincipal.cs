@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -65,7 +65,6 @@ namespace Drink
                     $"{ev.Data:dd/MM/yyyy}  |  {ev.Nome}  |  {ev.Local}  |  Status: {ev.Status}");
         }
 
-
         private void MarcarBotaoSelecionado(Button botaoSelecionado)
         {
             Color corPadrao = Color.FromArgb(20, 59, 102);
@@ -83,8 +82,6 @@ namespace Drink
         {
             Application.Exit();
         }
-
-        //Abre telas e atualiza ao fechar
 
         private void btnEstoque_Click(object sender, EventArgs e)
         {
@@ -139,6 +136,9 @@ namespace Drink
                 tela.Dispose();
 
                 destino = proximoDestino;
+
+                if (destino == "Estoque" || destino == "Eventos" || destino == "Retorno")
+                    AtualizarDashboard();
             }
 
             JsonHelper.Salvar();

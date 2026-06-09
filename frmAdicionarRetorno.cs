@@ -1,4 +1,4 @@
-﻿using Drink.Models;
+using Drink.Models;
 using System;
 using System.Windows.Forms;
 
@@ -51,8 +51,24 @@ namespace Drink
         {
             if (nudQuantidadeRetorno.Value <= 0)
             {
-                MessageBox.Show("Informe uma quantidade maior que zero.",
-                    "Quantidade inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var resposta = MessageBox.Show(
+                    "Este item foi totalmente consumido? Nenhuma unidade voltará ao estoque.",
+                    "Item totalmente consumido",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resposta == DialogResult.No)
+                    return;
+
+                // Usuário confirmou: registra retorno com quantidade zero (consumido total)
+                _item.QuantidadeRetornada = 0;
+                _item.Observacao = txtObservacaoRetorno.Text.Trim();
+                _item.Status = "Retornado";
+                _item.ConferidoRetorno = true;
+                // Não soma nada no estoque pois quantidade retornada é zero
+
+                DialogResult = DialogResult.OK;
+                Close();
                 return;
             }
 
@@ -61,7 +77,6 @@ namespace Drink
             _item.Status = "Retornado";
             _item.ConferidoRetorno = true;
 
-  
             if (_item.VeioDoEstoque && _item.Item != null)
             {
                 _item.Item.QuantidadeAtual += _item.QuantidadeRetornada;
@@ -71,7 +86,6 @@ namespace Drink
             DialogResult = DialogResult.OK;
             Close();
         }
-
 
         private void btnLimparRetorno_Click(object sender, EventArgs e)
         {

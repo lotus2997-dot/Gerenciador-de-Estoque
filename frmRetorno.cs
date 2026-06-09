@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
@@ -121,6 +121,7 @@ namespace Drink
             int id = Convert.ToInt32(dgvRetorno.SelectedRows[0].Cells["ID"].Value);
             return _eventoAtual.Itens.FirstOrDefault(ie => ie.Id == id);
         }
+
         private void ColorirItensConferidos()
         {
             foreach (DataGridViewRow row in dgvRetorno.Rows)
@@ -130,7 +131,7 @@ namespace Drink
 
                 if (status == "Retornado")
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(220, 240, 220); // verde claro
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(220, 240, 220);
                     row.DefaultCellStyle.ForeColor = Color.Gray;
                 }
                 else
@@ -158,7 +159,6 @@ namespace Drink
             AtualizarTabelaItens();
         }
 
-
         private void btnRemover_Click(object sender, EventArgs e)
         {
             ItemEvento? item = ObterItemSelecionado();
@@ -176,6 +176,7 @@ namespace Drink
             _eventoAtual!.Itens.Remove(item);
             AtualizarTabelaItens();
         }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             ItemEvento? item = ObterItemSelecionado();
@@ -193,6 +194,8 @@ namespace Drink
                 JsonHelper.Salvar();
                 AtualizarTabelaItens();
                 ColorirItensConferidos();
+                AtualizarResumo();
+
                 VerificarConferenciaCompleta();
             }
         }
@@ -224,6 +227,7 @@ namespace Drink
                 _eventoAtual.Status = "Retorno em conferência";
             }
         }
+
         private void btnParaItensRetorno_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabItensRetorno;
@@ -244,18 +248,17 @@ namespace Drink
 
                 if (resp == DialogResult.No) return;
 
-                // Pendentes = consumidos, não voltaram
+                // Pendentes = consumidos totalmente, não voltaram
                 foreach (var item in pendentes)
                 {
                     item.QuantidadeRetornada = 0;
                     item.Status = "Retornado";
                     item.ConferidoRetorno = true;
-                    // NÃO soma no estoque — quantidade = 0
+                    // NÃO soma no estoque — quantidade retornada = 0
                 }
             }
 
-            // Devolve ao estoque apenas os que vieram de lá
-            // e ainda NÃO foram processados individualmente
+            // Devolve ao estoque apenas os que vieram de lá e ainda NÃO foram processados
             foreach (var item in _eventoAtual.Itens
                 .Where(i => i.VeioDoEstoque && i.Item != null && !i.ConferidoRetorno))
             {
@@ -267,6 +270,8 @@ namespace Drink
             _eventoAtual.Status = "Encerrado";
             AtualizarTabelaItens();
             ColorirItensConferidos();
+            AtualizarResumo();
+
             JsonHelper.Salvar();
 
             MessageBox.Show("Retorno confirmado! Evento encerrado e estoque atualizado.",

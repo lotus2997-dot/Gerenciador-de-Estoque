@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using Drink.Models;
 using Drink.Dados;
@@ -38,6 +38,7 @@ namespace Drink
             nudQuantidadeAtual.Value = item.QuantidadeAtual;
             cmbUnidade.Text = item.Unidade ?? "";
             dtpValidade.Value = item.Validade ?? DateTime.Today;
+
             nudQuantidadeMinima.Value = item.QuantidadeMinima;
             txtObservacao.Text = item.Observacao ?? "";
 
@@ -66,12 +67,17 @@ namespace Drink
                 _itemEdicao.Categoria = cmbCategoria.Text.Trim();
                 _itemEdicao.QuantidadeAtual = nudQuantidadeAtual.Value;
                 _itemEdicao.Unidade = cmbUnidade.Text.Trim();
-                _itemEdicao.Validade = dtpValidade.Value;
+                _itemEdicao.Validade = dtpValidade.Value.Date == DateTime.Today.Date
+                    ? (DateTime?)null
+                    : dtpValidade.Value;
+
                 _itemEdicao.QuantidadeMinima = nudQuantidadeMinima.Value;
                 _itemEdicao.Observacao = txtObservacao.Text.Trim();
                 _itemEdicao.UltimaAtualizacao = DateTime.Now;
 
                 TLcadastro.AtualizarDados();
+                JsonHelper.Salvar();
+
                 MessageBox.Show("Item atualizado com sucesso!");
                 this.Close();
                 return;
@@ -84,7 +90,11 @@ namespace Drink
                 Categoria = cmbCategoria.Text.Trim(),
                 QuantidadeAtual = nudQuantidadeAtual.Value,
                 Unidade = cmbUnidade.Text.Trim(),
-                Validade = dtpValidade.Value,
+                // "sem validade definida" → null.
+                Validade = dtpValidade.Value.Date == DateTime.Today.Date
+                    ? (DateTime?)null
+                    : dtpValidade.Value,
+
                 QuantidadeMinima = nudQuantidadeMinima.Value,
                 Observacao = txtObservacao.Text.Trim(),
                 Ativo = true,
@@ -93,6 +103,8 @@ namespace Drink
 
             DadosTemporarios.Itens.Add(novoItem);
             TLcadastro.AtualizarDados();
+            JsonHelper.Salvar();
+
             MessageBox.Show("Item adicionado com sucesso!");
             this.Close();
         }

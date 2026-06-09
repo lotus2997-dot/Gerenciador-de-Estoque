@@ -1,4 +1,4 @@
-﻿using Drink.Dados;
+using Drink.Dados;
 using Drink.Models;
 using System;
 using System.Collections.Generic;
@@ -13,12 +13,17 @@ namespace Drink
         private bool _modoEdicao = false;
         private ItemEvento? _itemEmEdicao = null;
 
+        // Referência ao evento atual para cálculo de IDs externos (Bug #8)
+        // Passada opcionalmente pelo construtor; se null, usa lógica de fallback.
+        private Evento? _eventoAtual;
+
         public ItemEvento? ItemCriado { get; private set; }
 
-        public frmNovoItemEvento(List<Item> itensEstoque)
+        public frmNovoItemEvento(List<Item> itensEstoque, Evento? eventoAtual = null)
         {
             InitializeComponent();
             _itensEstoque = itensEstoque;
+            _eventoAtual = eventoAtual;
         }
 
         public void CarregarItemParaEdicao(ItemEvento itemEvento)
@@ -31,7 +36,6 @@ namespace Drink
         {
             CarregarItensDoEstoque();
 
-            // Preenche os combos de categoria e unidade
             ComboBoxHelper.Preencher(txtCategoriaExterna, CatalogosSistema.Categorias);
             ComboBoxHelper.Preencher(txtUnidadeExterna, CatalogosSistema.Unidades);
 
@@ -41,7 +45,6 @@ namespace Drink
             }
             else
             {
-                // Define o radio ANTES de chamar AtualizarTipoItem
                 if (_itensEstoque.Count > 0)
                     rdbItemEstoque.Checked = true;
                 else
@@ -61,8 +64,6 @@ namespace Drink
             if (_itemEmEdicao.VeioDoEstoque && _itemEmEdicao.Item != null)
             {
                 rdbItemEstoque.Checked = true;
-
-                // Trava o tipo — não faz sentido trocar de estoque para externo na edição
                 rdbItemExterno.Enabled = false;
 
                 var itemNoCombo = _itensEstoque
@@ -71,7 +72,6 @@ namespace Drink
                 if (itemNoCombo != null)
                     cmbItensEstoque.SelectedItem = itemNoCombo;
 
-                // Trava o combo — na edição não troca o item, só a quantidade
                 cmbItensEstoque.Enabled = false;
             }
             else
@@ -84,7 +84,6 @@ namespace Drink
                 txtUnidadeExterna.Text = _itemEmEdicao.Item?.Unidade ?? "";
             }
 
-            // Ajusta título e botão para modo edição
             this.Text = "Editar Item do Evento";
             btnAdicionar.Text = "Salvar alterações";
         }
@@ -101,7 +100,6 @@ namespace Drink
         {
             bool itemDoEstoque = rdbItemEstoque.Checked;
 
-            // No modo edição os campos já foram travados em PreencherCamposEdicao
             if (!_modoEdicao)
             {
                 cmbItensEstoque.Enabled = itemDoEstoque;
@@ -148,11 +146,9 @@ namespace Drink
 
         private void SalvarEdicao()
         {
-            // Valida quantidade contra o estoque se vier do estoque
             if (_itemEmEdicao!.VeioDoEstoque && _itemEmEdicao.Item != null)
             {
-                // A quantidade disponível é o que está no estoque + o que já estava separado
-                // (porque a baixa ainda não foi refeita)
+                // A quantidade disponível real = estoque atual + o que já estava separado
                 decimal disponivelReal = _itemEmEdicao.Item.QuantidadeAtual + _itemEmEdicao.QuantidadeSeparada;
 
                 if (nudQuantidade.Value > disponivelReal)
@@ -161,9 +157,21 @@ namespace Drink
                         $"A quantidade informada é maior que a disponível no estoque ({disponivelReal} {_itemEmEdicao.Item.Unidade}).");
                     return;
                 }
+                var eventoDoItem = _eventoAtual
+                    ?? DadosTemporarios.Eventos.FirstOrDefault(ev =>
+                        ev.Itens.Any(i => i.Id == _itemEmEdicao.Id));
+
+                bool separacaoJaConfirmada = eventoDoItem?.Status == "Separado";
+
+                if (separacaoJaConfirmada)
+                {
+                    decimal diferenca = nudQuantidade.Value - _itemEmEdicao.QuantidadeSeparada;
+                    _itemEmEdicao.Item.QuantidadeAtual -= diferenca;
+                    _itemEmEdicao.Item.UltimaAtualizacao = DateTime.Now;
+                }
             }
 
-            // Atualiza só o que o usuário pode mudar
+            // Atualiza a quantidade separada (e campos de item externo, se aplicável)
             _itemEmEdicao.QuantidadeSeparada = nudQuantidade.Value;
 
             if (!_itemEmEdicao.VeioDoEstoque && _itemEmEdicao.Item != null)
@@ -204,13 +212,24 @@ namespace Drink
                 VeioDoEstoque = true
             };
         }
-
         private int GerarIdItemExterno()
         {
-            int maxId = DadosTemporarios.Itens.Any()
-                ? DadosTemporarios.Itens.Max(i => i.Id)
+            int minIdEstoque = DadosTemporarios.Itens.Any(i => i.Id < 0)
+                ? DadosTemporarios.Itens.Where(i => i.Id < 0).Min(i => i.Id)
                 : 0;
-            return maxId + 1;
+
+            int minIdEvento = 0;
+            if (_eventoAtual != null && _eventoAtual.Itens.Any())
+            {
+                var idsExternos = _eventoAtual.Itens
+                    .Where(ie => !ie.VeioDoEstoque && ie.Item != null && ie.Item.Id < 0)
+                    .Select(ie => ie.Item!.Id);
+                if (idsExternos.Any())
+                    minIdEvento = idsExternos.Min();
+            }
+
+            int minId = Math.Min(minIdEstoque, minIdEvento);
+            return minId - 1;
         }
 
         private void AdicionarItemExterno()
@@ -254,7 +273,6 @@ namespace Drink
                 VeioDoEstoque = false
             };
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             nudQuantidade.Value = 0;
@@ -263,6 +281,10 @@ namespace Drink
             txtCategoriaExterna.Text = "";
             txtUnidadeExterna.Text = "";
             txtObservacao.Clear();
+
+            // Fecha o formulário como cancelamento
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

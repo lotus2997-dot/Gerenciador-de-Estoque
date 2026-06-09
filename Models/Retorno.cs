@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Drink.Models
 {
@@ -16,5 +16,3 @@ namespace Drink.Models
         public string? StatusFinal { get; set; }
     }
 }
-
-

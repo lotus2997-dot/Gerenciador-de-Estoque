@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.Json.Serialization;
 
 namespace Drink.Models
@@ -17,6 +17,7 @@ namespace Drink.Models
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime? UltimaAtualizacao { get; set; } = DateTime.Now;
         public bool Ativo { get; set; } = true;
+
         [JsonIgnore]
         public string Status
         {
@@ -25,17 +26,18 @@ namespace Drink.Models
                 if (!Ativo)
                     return "Inativo";
 
+                // Validade vem antes da quantidade: um item pode estar vencido E sem estoque
                 if (Validade.HasValue && Validade.Value < DateTime.Today)
                     return "Vencido";
+
+                if (Validade.HasValue && Validade.Value <= DateTime.Today.AddDays(7))
+                    return "Vencendo";
 
                 if (QuantidadeAtual <= 0)
                     return "Sem estoque";
 
                 if (QuantidadeAtual <= QuantidadeMinima)
                     return "Abaixo do mínimo";
-
-                if (Validade.HasValue && Validade.Value <= DateTime.Today.AddDays(7))
-                    return "Vencendo";
 
                 return "Normal";
             }
