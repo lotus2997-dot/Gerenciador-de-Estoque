@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Drink.Models
 {
@@ -16,7 +17,7 @@ namespace Drink.Models
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime? UltimaAtualizacao { get; set; } = DateTime.Now;
         public bool Ativo { get; set; } = true;
-
+        [JsonIgnore]
         public string Status
         {
             get

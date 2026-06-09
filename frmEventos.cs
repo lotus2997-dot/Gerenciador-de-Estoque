@@ -205,6 +205,12 @@ namespace Drink
                 ItemEvento? novoItem = telaNovoItem.ItemCriado;
                 if (novoItem == null) return;
 
+                if (novoItem.VeioDoEstoque && novoItem.Item != null)
+                {
+                    novoItem.Item.QuantidadeAtual -= novoItem.QuantidadeSeparada;
+                    novoItem.Item.UltimaAtualizacao = DateTime.Now;
+                }
+
                 novoItem.Id = GerarProximoIdItemEvento();
                 eventoAtual.Itens.Add(novoItem);
                 AtualizarTabelaItens();
@@ -403,18 +409,14 @@ namespace Drink
         private void btnEstoque_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Hide();
-            var tela = new frmEstoque();
-            tela.ShowDialog();
+            this.Tag = "Estoque"; 
             this.Close();
         }
 
         private void btnRetorno_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Hide();
-            var tela = new frmRetorno();
-            tela.ShowDialog();
+            this.Tag = "Retorno";
             this.Close();
         }
     }

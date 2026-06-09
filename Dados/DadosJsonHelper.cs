@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Windows.Forms;
 
 namespace Drink.Dados
+
 {
     public static class JsonHelper
     {
@@ -17,8 +18,11 @@ namespace Drink.Dados
 
         private static readonly JsonSerializerOptions _opcoes = new()
         {
-            WriteIndented = true
+            WriteIndented = true,
+            ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles
         };
+
+
 
         public static void Salvar()
         {
@@ -75,5 +79,6 @@ namespace Drink.Dados
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
     }
 }

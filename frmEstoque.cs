@@ -177,21 +177,15 @@ namespace Drink
         private void btnRetorno_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Hide();
-            var tela = new frmRetorno();
-            tela.ShowDialog();
+            this.Tag = "Retorno"; 
             this.Close();
-
         }
 
         private void btnEvento_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Hide();
-            var tela = new frmEventos();
-            tela.ShowDialog();
+            this.Tag = "Eventos"; 
             this.Close();
-
         }
     }
 }

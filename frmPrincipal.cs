@@ -84,33 +84,24 @@ namespace Drink
             Application.Exit();
         }
 
-        // ── Abre telas e atualiza ao fechar ──────────────────
+        //Abre telas e atualiza ao fechar
 
         private void btnEstoque_Click(object sender, EventArgs e)
         {
             MarcarBotaoSelecionado(btnEstoque);
-            using var tela = new frmEstoque();
-            tela.ShowDialog();
-            JsonHelper.Salvar();
-            AtualizarDashboard();
+            NavegacaoLoop("Estoque");
         }
 
         private void btnEventos_Click(object sender, EventArgs e)
         {
             MarcarBotaoSelecionado(btnEventos);
-            using var tela = new frmEventos();
-            tela.ShowDialog();
-            JsonHelper.Salvar();
-            AtualizarDashboard();
+            NavegacaoLoop("Eventos");
         }
 
         private void btnRetorno_Click(object sender, EventArgs e)
         {
             MarcarBotaoSelecionado(btnRetorno);
-            using var tela = new frmRetorno();
-            tela.ShowDialog();
-            JsonHelper.Salvar();
-            AtualizarDashboard();
+            NavegacaoLoop("Retorno");
         }
 
         private void btnConfiguracao_Click(object sender, EventArgs e)
@@ -125,11 +116,33 @@ namespace Drink
         private void btnVerEvento_Click(object sender, EventArgs e)
         {
             MarcarBotaoSelecionado(btnEventos);
-            using var tela = new frmEventos();
-            tela.ShowDialog();
+            NavegacaoLoop("Eventos");
+        }
+
+        private void NavegacaoLoop(string destinoInicial)
+        {
+            string destino = destinoInicial;
+
+            while (destino == "Estoque" || destino == "Eventos" || destino == "Retorno")
+            {
+                Form tela = destino switch
+                {
+                    "Estoque" => new frmEstoque(),
+                    "Eventos" => new frmEventos(),
+                    "Retorno" => new frmRetorno(),
+                    _ => null!
+                };
+
+                tela.ShowDialog();
+
+                string proximoDestino = tela.Tag?.ToString() ?? "";
+                tela.Dispose();
+
+                destino = proximoDestino;
+            }
+
             JsonHelper.Salvar();
             AtualizarDashboard();
-
         }
     }
 }

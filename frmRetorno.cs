@@ -190,6 +190,7 @@ namespace Drink
             using var tela = new frmAdicionarRetorno(_eventoAtual!, item);
             if (tela.ShowDialog() == DialogResult.OK)
             {
+                JsonHelper.Salvar();
                 AtualizarTabelaItens();
                 ColorirItensConferidos();
                 VerificarConferenciaCompleta();
@@ -266,6 +267,7 @@ namespace Drink
             _eventoAtual.Status = "Encerrado";
             AtualizarTabelaItens();
             ColorirItensConferidos();
+            JsonHelper.Salvar();
 
             MessageBox.Show("Retorno confirmado! Evento encerrado e estoque atualizado.",
                 "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -287,18 +289,14 @@ namespace Drink
         private void btnEvento_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Hide();
-            var tela = new frmEventos();
-            tela.ShowDialog();
+            this.Tag = "Eventos";
             this.Close();
         }
 
         private void btnEstoque_Click(object sender, EventArgs e)
         {
             JsonHelper.Salvar();
-            this.Hide();
-            var tela = new frmEstoque();
-            tela.ShowDialog();
+            this.Tag = "Estoque";
             this.Close();
         }
     }
