@@ -10,8 +10,8 @@ namespace Drink.Dados
     public static class JsonHelper
     {
         private static readonly string _pasta = Path.Combine(
-            Path.GetDirectoryName(Environment.ProcessPath
-                ?? AppContext.BaseDirectory) ?? AppContext.BaseDirectory,
+            Path.GetDirectoryName(
+                System.Diagnostics.Process.GetCurrentProcess().MainModule!.FileName)!,
             "dados");
 
         private static readonly string _arquivoEstoque  = Path.Combine(_pasta, "estoque.json");
@@ -78,6 +78,26 @@ namespace Drink.Dados
                         File.ReadAllText(_arquivoEventos), _opcoes);
                     if (eventos != null)
                     {
+                        // BUG 2 FIX (reconexão de referências após desserialização):
+                        // Item tem [JsonIgnore] para evitar referência circular no JSON.
+                        // ItemId NÃO tem [JsonIgnore] — é salvo e carregado corretamente.
+                        // Esta reconexão já existia e funciona corretamente DESDE QUE
+                        // ItemId esteja salvo no JSON. Confirmado: não há [JsonIgnore]
+                        // em ItemId no Models/ItemEvento.cs.
+                        //
+                        // Porém, para itens de compra direta (VeioDoEstoque == false)
+                        // adicionados como externos (sem ID real no estoque), o ItemId
+                        // pode referenciar um Id negativo ou temporário. Se DadosTemporarios.Itens
+                        // não contiver esse Id, Item ficará null após o reload.
+                        //
+                        // Isso não impede o retorno ao estoque — AdicionarItemExternoAoEstoque
+                        // já trata esse caso em frmAdicionarRetorno. Mas significa que
+                        // txtNomeExternoRetorno, txtCategoriaExternaRetorno e
+                        // txtUnidadeExternaRetorno ficarão vazios na UI após reload.
+                        //
+                        // A reconexão abaixo mantém o comportamento correto para itens
+                        // do estoque (VeioDoEstoque == true), onde ItemId sempre
+                        // corresponde a um Id em DadosTemporarios.Itens.
                         foreach (var ev in eventos)
                             foreach (var ie in ev.Itens)
                                 ie.Item = DadosTemporarios.Itens

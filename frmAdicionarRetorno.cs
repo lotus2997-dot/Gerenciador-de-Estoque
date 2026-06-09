@@ -33,10 +33,12 @@ namespace Drink
             lblItemEventoRetorno.Text =
                 $"Separado: {_item.QuantidadeSeparada} {_item.Item?.Unidade}  |  " +
                 $"Origem: {(_item.VeioDoEstoque ? "Estoque" : "Compra direta")}";
-
-            nudQuantidadeRetorno.Minimum = 0;
             nudQuantidadeRetorno.Maximum = _item.QuantidadeSeparada;
             nudQuantidadeRetorno.Value = _item.QuantidadeSeparada;
+
+            nudQuantidadeDevolvida.Minimum = 0;
+            nudQuantidadeDevolvida.Maximum = _item.QuantidadeSeparada;
+            nudQuantidadeDevolvida.Value = _item.QuantidadeSeparada;
 
             cmbItensEstoqueRetorno.Visible = false;
             dtpValidadeRetorno.Visible = false;
@@ -47,7 +49,9 @@ namespace Drink
 
         private void btnAdicionarRetorno_Click(object sender, EventArgs e)
         {
-            if (nudQuantidadeRetorno.Value <= 0)
+            decimal quantidadeInformada = nudQuantidadeDevolvida.Value;
+
+            if (quantidadeInformada <= 0)
             {
                 var resposta = MessageBox.Show(
                     "Este item foi totalmente consumido? Nenhuma unidade voltará ao estoque.",
@@ -67,11 +71,11 @@ namespace Drink
                 Close();
                 return;
             }
-            _item.QuantidadeRetornada = nudQuantidadeRetorno.Value;
+
+            _item.QuantidadeRetornada = quantidadeInformada;
             _item.Observacao = txtObservacaoRetorno.Text.Trim();
             _item.Status = "Retornado";
             _item.ConferidoRetorno = true;
-
             if (_item.VeioDoEstoque && _item.Item != null)
             {
                 _item.Item.QuantidadeAtual += _item.QuantidadeRetornada;
@@ -148,8 +152,8 @@ namespace Drink
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.No)
                 return;
-
             nudQuantidadeRetorno.Value = _item.QuantidadeSeparada;
+            nudQuantidadeDevolvida.Value = _item.QuantidadeSeparada;
             txtObservacaoRetorno.Clear();
         }
 

@@ -553,6 +553,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Drink Manager";
             FormClosed += frmPrincipal_FormClosed;
+            Load += frmPrincipal_Load;
             pnlMenuLateral.ResumeLayout(false);
             pnlAreaPrincipal.ResumeLayout(false);
             pnlConteudo.ResumeLayout(false);

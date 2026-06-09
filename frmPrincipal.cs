@@ -77,6 +77,15 @@ namespace Drink
 
             botaoSelecionado.BackColor = corSelecionada;
         }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            if (!e.Cancel)
+            {
+                // Salva os dados sempre que o programa for fechado
+                JsonHelper.Salvar();
+            }
+        }
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
