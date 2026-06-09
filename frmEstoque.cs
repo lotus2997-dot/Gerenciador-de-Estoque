@@ -165,5 +165,33 @@ namespace Drink
             AtualizarDados();
             MessageBox.Show("Item removido com sucesso.");
         }
+
+        private void btnSalvarItemEstoque_Click(object sender, EventArgs e)
+        {
+        
+            JsonHelper.Salvar();
+            MessageBox.Show("Dados salvos!", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+       
+        }
+
+        private void btnRetorno_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            this.Hide();
+            var tela = new frmRetorno();
+            tela.ShowDialog();
+            this.Close();
+
+        }
+
+        private void btnEvento_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            this.Hide();
+            var tela = new frmEventos();
+            tela.ShowDialog();
+            this.Close();
+
+        }
     }
 }

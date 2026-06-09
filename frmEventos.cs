@@ -96,7 +96,7 @@ namespace Drink
 
         private void AtualizarTabelaItens(
             string nomeFiltro = "",
-            string categoriaFiltro = "Todas", 
+            string categoriaFiltro = "Todas",
             string statusFiltro = "Todos")
         {
             var itens = eventoAtual.Itens.AsEnumerable();
@@ -392,6 +392,30 @@ namespace Drink
             cmbFiltroCategoria.SelectedIndex = 0; // "Todas"
             cmbFiltroStatus.SelectedIndex = 0; // "Todos"
             AtualizarTabelaItens();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            MessageBox.Show("Dados salvos!", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            this.Hide();
+            var tela = new frmEstoque();
+            tela.ShowDialog();
+            this.Close();
+        }
+
+        private void btnRetorno_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            this.Hide();
+            var tela = new frmRetorno();
+            tela.ShowDialog();
+            this.Close();
         }
     }
 }

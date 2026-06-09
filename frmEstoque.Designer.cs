@@ -43,6 +43,9 @@
             tabEstoque = new TabControl();
             tabTodosItens = new TabPage();
             pnlBotoes = new Panel();
+            btnRetorno = new Button();
+            btnEvento = new Button();
+            btnSalvarItemEstoque = new Button();
             btnAtualizarEstoque = new Button();
             btnEditar = new Button();
             btnRemover = new Button();
@@ -66,9 +69,6 @@
             lblFiltroCategoria = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
-            btnSalvarItemEstoque = new Button();
-            btnEvento = new Button();
-            button1 = new Button();
             pnlCabecalho.SuspendLayout();
             pnlResumo.SuspendLayout();
             panel1.SuspendLayout();
@@ -232,7 +232,7 @@
             // pnlBotoes
             // 
             pnlBotoes.BackColor = Color.White;
-            pnlBotoes.Controls.Add(button1);
+            pnlBotoes.Controls.Add(btnRetorno);
             pnlBotoes.Controls.Add(btnEvento);
             pnlBotoes.Controls.Add(btnSalvarItemEstoque);
             pnlBotoes.Controls.Add(btnAtualizarEstoque);
@@ -244,6 +244,45 @@
             pnlBotoes.Name = "pnlBotoes";
             pnlBotoes.Size = new Size(1336, 70);
             pnlBotoes.TabIndex = 7;
+            // 
+            // btnRetorno
+            // 
+            btnRetorno.BackColor = Color.FromArgb(30, 100, 170);
+            btnRetorno.FlatStyle = FlatStyle.Flat;
+            btnRetorno.ForeColor = Color.White;
+            btnRetorno.Location = new Point(991, 18);
+            btnRetorno.Name = "btnRetorno";
+            btnRetorno.Size = new Size(140, 35);
+            btnRetorno.TabIndex = 8;
+            btnRetorno.Text = "<- Retorno";
+            btnRetorno.UseVisualStyleBackColor = false;
+            btnRetorno.Click += btnRetorno_Click;
+            // 
+            // btnEvento
+            // 
+            btnEvento.BackColor = Color.FromArgb(30, 100, 170);
+            btnEvento.FlatStyle = FlatStyle.Flat;
+            btnEvento.ForeColor = Color.White;
+            btnEvento.Location = new Point(1137, 18);
+            btnEvento.Name = "btnEvento";
+            btnEvento.Size = new Size(140, 35);
+            btnEvento.TabIndex = 7;
+            btnEvento.Text = "Evento ->";
+            btnEvento.UseVisualStyleBackColor = false;
+            btnEvento.Click += btnEvento_Click;
+            // 
+            // btnSalvarItemEstoque
+            // 
+            btnSalvarItemEstoque.BackColor = Color.FromArgb(20, 59, 102);
+            btnSalvarItemEstoque.FlatStyle = FlatStyle.Flat;
+            btnSalvarItemEstoque.ForeColor = Color.White;
+            btnSalvarItemEstoque.Location = new Point(483, 18);
+            btnSalvarItemEstoque.Name = "btnSalvarItemEstoque";
+            btnSalvarItemEstoque.Size = new Size(140, 35);
+            btnSalvarItemEstoque.TabIndex = 6;
+            btnSalvarItemEstoque.Text = "Salvar";
+            btnSalvarItemEstoque.UseVisualStyleBackColor = false;
+            btnSalvarItemEstoque.Click += btnSalvarItemEstoque_Click;
             // 
             // btnAtualizarEstoque
             // 
@@ -465,42 +504,6 @@
             lblFiltroNome.TabIndex = 0;
             lblFiltroNome.Text = "Nome:";
             // 
-            // btnSalvarItemEstoque
-            // 
-            btnSalvarItemEstoque.BackColor = Color.FromArgb(20, 59, 102);
-            btnSalvarItemEstoque.FlatStyle = FlatStyle.Flat;
-            btnSalvarItemEstoque.ForeColor = Color.White;
-            btnSalvarItemEstoque.Location = new Point(483, 18);
-            btnSalvarItemEstoque.Name = "btnSalvarItemEstoque";
-            btnSalvarItemEstoque.Size = new Size(140, 35);
-            btnSalvarItemEstoque.TabIndex = 6;
-            btnSalvarItemEstoque.Text = "Salvar";
-            btnSalvarItemEstoque.UseVisualStyleBackColor = false;
-            // 
-            // btnEvento
-            // 
-            btnEvento.BackColor = Color.FromArgb(30, 100, 170);
-            btnEvento.FlatStyle = FlatStyle.Flat;
-            btnEvento.ForeColor = Color.White;
-            btnEvento.Location = new Point(1137, 18);
-            btnEvento.Name = "btnEvento";
-            btnEvento.Size = new Size(140, 35);
-            btnEvento.TabIndex = 7;
-            btnEvento.Text = "Evento ->";
-            btnEvento.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(30, 100, 170);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(991, 18);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 35);
-            button1.TabIndex = 8;
-            button1.Text = "<- Retorno";
-            button1.UseVisualStyleBackColor = false;
-            // 
             // frmEstoque
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -572,6 +575,6 @@
         private Button btnAtualizarEstoque;
         private Button btnEvento;
         private Button btnSalvarItemEstoque;
-        private Button button1;
+        private Button btnRetorno;
     }
 }

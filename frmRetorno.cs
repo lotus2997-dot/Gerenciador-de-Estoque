@@ -277,5 +277,29 @@ namespace Drink
             lblDataValor.Text = "-";
             lblResponsavelValor.Text = "-";
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            MessageBox.Show("Dados salvos!", "Salvo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnEvento_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            this.Hide();
+            var tela = new frmEventos();
+            tela.ShowDialog();
+            this.Close();
+        }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        {
+            JsonHelper.Salvar();
+            this.Hide();
+            var tela = new frmEstoque();
+            tela.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -61,6 +61,9 @@
             lblTituloDadosEventoRetorno = new Label();
             tabItensRetorno = new TabPage();
             pnlBotoesRetorno = new Panel();
+            btnSalvar = new Button();
+            btnEstoque = new Button();
+            btnEvento = new Button();
             btnConfirmarRetorno = new Button();
             btnDevolverEstoque = new Button();
             btnRemover = new Button();
@@ -74,9 +77,6 @@
             lblFiltroUnidade = new Label();
             txtFiltroNome = new TextBox();
             lblFiltroNome = new Label();
-            btnEvento = new Button();
-            btnEstoque = new Button();
-            btnSalvarRetorno = new Button();
             pnlResumoRetorno.SuspendLayout();
             tabControl1.SuspendLayout();
             tabDadosRetorno.SuspendLayout();
@@ -434,7 +434,7 @@
             // pnlBotoesRetorno
             // 
             pnlBotoesRetorno.BackColor = Color.White;
-            pnlBotoesRetorno.Controls.Add(btnSalvarRetorno);
+            pnlBotoesRetorno.Controls.Add(btnSalvar);
             pnlBotoesRetorno.Controls.Add(btnEstoque);
             pnlBotoesRetorno.Controls.Add(btnEvento);
             pnlBotoesRetorno.Controls.Add(btnConfirmarRetorno);
@@ -445,6 +445,48 @@
             pnlBotoesRetorno.Name = "pnlBotoesRetorno";
             pnlBotoesRetorno.Size = new Size(1336, 80);
             pnlBotoesRetorno.TabIndex = 2;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.BackColor = Color.FromArgb(20, 59, 102);
+            btnSalvar.FlatStyle = FlatStyle.Flat;
+            btnSalvar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalvar.ForeColor = Color.White;
+            btnSalvar.Location = new Point(214, 20);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(150, 38);
+            btnSalvar.TabIndex = 10;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // btnEstoque
+            // 
+            btnEstoque.BackColor = Color.FromArgb(30, 100, 170);
+            btnEstoque.FlatStyle = FlatStyle.Flat;
+            btnEstoque.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEstoque.ForeColor = Color.White;
+            btnEstoque.Location = new Point(1162, 19);
+            btnEstoque.Name = "btnEstoque";
+            btnEstoque.Size = new Size(150, 38);
+            btnEstoque.TabIndex = 9;
+            btnEstoque.Text = "Estoque ->";
+            btnEstoque.UseVisualStyleBackColor = false;
+            btnEstoque.Click += btnEstoque_Click;
+            // 
+            // btnEvento
+            // 
+            btnEvento.BackColor = Color.FromArgb(30, 100, 170);
+            btnEvento.FlatStyle = FlatStyle.Flat;
+            btnEvento.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEvento.ForeColor = Color.White;
+            btnEvento.Location = new Point(990, 20);
+            btnEvento.Name = "btnEvento";
+            btnEvento.Size = new Size(150, 38);
+            btnEvento.TabIndex = 8;
+            btnEvento.Text = "<- Evento ";
+            btnEvento.UseVisualStyleBackColor = false;
+            btnEvento.Click += btnEvento_Click;
             // 
             // btnConfirmarRetorno
             // 
@@ -605,45 +647,6 @@
             lblFiltroNome.TabIndex = 1;
             lblFiltroNome.Text = "Nome:";
             // 
-            // btnEvento
-            // 
-            btnEvento.BackColor = Color.FromArgb(30, 100, 170);
-            btnEvento.FlatStyle = FlatStyle.Flat;
-            btnEvento.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEvento.ForeColor = Color.White;
-            btnEvento.Location = new Point(990, 20);
-            btnEvento.Name = "btnEvento";
-            btnEvento.Size = new Size(150, 38);
-            btnEvento.TabIndex = 8;
-            btnEvento.Text = "<- Evento ";
-            btnEvento.UseVisualStyleBackColor = false;
-            // 
-            // btnEstoque
-            // 
-            btnEstoque.BackColor = Color.FromArgb(30, 100, 170);
-            btnEstoque.FlatStyle = FlatStyle.Flat;
-            btnEstoque.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEstoque.ForeColor = Color.White;
-            btnEstoque.Location = new Point(1162, 19);
-            btnEstoque.Name = "btnEstoque";
-            btnEstoque.Size = new Size(150, 38);
-            btnEstoque.TabIndex = 9;
-            btnEstoque.Text = "Estoque ->";
-            btnEstoque.UseVisualStyleBackColor = false;
-            // 
-            // btnSalvarRetorno
-            // 
-            btnSalvarRetorno.BackColor = Color.FromArgb(20, 59, 102);
-            btnSalvarRetorno.FlatStyle = FlatStyle.Flat;
-            btnSalvarRetorno.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSalvarRetorno.ForeColor = Color.White;
-            btnSalvarRetorno.Location = new Point(214, 20);
-            btnSalvarRetorno.Name = "btnSalvarRetorno";
-            btnSalvarRetorno.Size = new Size(150, 38);
-            btnSalvarRetorno.TabIndex = 10;
-            btnSalvarRetorno.Text = "Salvar";
-            btnSalvarRetorno.UseVisualStyleBackColor = false;
-            // 
             // frmRetorno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -728,6 +731,6 @@
         private Button btnConfirmarRetorno;
         private Button btnEstoque;
         private Button btnEvento;
-        private Button btnSalvarRetorno;
+        private Button btnSalvar;
     }
 }
